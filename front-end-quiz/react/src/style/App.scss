@@ -1,0 +1,295 @@
+$color-fancy: #A79561;
+$color-background: #FBFBFB;
+$color-shadow: #AAA;
+
+body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+html { 
+  margin: 0;
+}
+
+#stDibs-root {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #aaaaaa;
+
+  .top-page {
+    width: 100%;
+    height: 6%;
+    height: 8%;
+    margin-top: -1.5em;
+    margin-bottom: 5px;
+    -webkit-box-shadow: 0px 3px 3px 0px $color-shadow;
+    -moz-box-shadow: 0px 3px 3px 0px $color-shadow;
+    box-shadow: 0px 3px 3px 0px $color-shadow;
+
+    button {
+      position: absolute;
+      left: 0;
+      border: none;
+      background:$color-background;
+      border-bottom: 3px solid $color-background;
+      width: 15%;
+      height: 100%;
+      color: $color-fancy;
+      display: inline-block;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .text {
+        font-size: large;
+      }
+    }
+
+    button:hover {
+      border-bottom: 3px solid $color-fancy;
+
+    }
+
+    .text {
+      padding-top: 0.5em;
+      color: gray;
+      //margin-top: 1em;
+    }
+  }
+
+  .browse-items, .view-item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $color-background;
+  }
+
+  .browse-items {
+    .item {
+      position: relative;
+      display: inline-block;
+      background-color: white;
+      width: 25%;
+      height: 28%;
+      margin: 0.5em;
+      -webkit-box-shadow: 0px 3px 3px 0px $color-shadow;
+      -moz-box-shadow: 0px 3px 3px 0px $color-shadow;
+      box-shadow: 0px 1px 1px 0px $color-shadow;
+      
+      .top-bar {
+        position: relative;
+        width: 80%;
+        height: 20%;
+        margin: 0;
+        margin-left:10%;
+
+        span {
+          position: absolute;
+          top: 15%;
+          left: 10%;
+          right: 10%;
+          font-size: small;
+          color: black;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 77%;
+        margin-bottom: 3%;
+        cursor: pointer;
+      }
+
+      .price-container {
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+      }
+
+      .like-container {
+        position: absolute;
+        right: 5%;
+        bottom: 5%;
+        
+      }
+
+      .details-container {
+        position: absolute;
+        right: 10%;
+        bottom: 5%;
+      }
+    }
+
+    .item:hover {
+      -webkit-box-shadow: 0px 3px 3px 0px $color-shadow;
+      -moz-box-shadow: 0px 3px 3px 0px $color-shadow;
+      box-shadow: 0px 3px 3px 0px $color-shadow;
+      transform: scale(1.01);
+    }
+  }
+
+  .view-item {
+    background-color: $color-background;
+  }
+  
+  .view-item .top-page {
+    height: 8%;
+    margin-top: 0;
+    position: relative;
+    background-color: $color-background;
+
+    .goto-browseItems {
+      position: absolute;
+      width: 15%;
+      height: 100%;
+      left: 0;
+
+      svg {
+        position: absolute;
+        left: 1em;
+        top: 1em;
+        color: $color-fancy
+      }
+      div {
+        position: absolute;
+        left: 2.5em;
+        top: 1em;
+        font-size: large;
+        color: $color-fancy;
+      }
+    }
+
+    .represent-house {
+      padding-top: 1%;
+      font-size: x-large;
+    }
+  }
+
+  .left-panel, .right-panel {
+      position: absolute;
+      display: block;
+      background-color: white;
+      height: 60%;
+      top: 20%;
+  }
+
+  .left-panel {
+    left: 5%;
+    width: 25%;
+    height: 60%;
+    background-color: white;
+
+
+    .panel-top {
+      top: 0;
+      left: 0;
+      height: 15%;
+      width: 100%;
+    }
+
+    .panel-bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 10%;
+
+      button {
+        background:#ffffff;
+        border: 1px solid #f3f3f3;
+        border-radius: 0px;
+        padding: 10px 25px;
+        width: 50%;
+        height: 100%;
+        color: $color-fancy;
+        display: inline-block;
+        text-align: center;
+      }
+
+      button:hover {
+        border: 1px solid $color-fancy;
+      }
+    }
+    
+    .price-container {
+      position: absolute;
+      top: 1em;
+      left: 1em;
+    }
+    
+    .like-container {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+    }
+
+    
+    img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+  }
+
+  .right-panel {
+    left: 35%;
+    width: 40%;
+
+    .item-basicProps, .item-basicValues {
+      position: absolute;
+      left: 0;
+      top: 18%;
+      width: 25%;
+      height: 40%;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .item-basicProps {
+      left: 5%;
+    }
+
+    .item-basicValues {
+      left: 25%;
+      width: 60%;
+    }
+
+    .item-description {
+      border-top: 1px solid $color-background;
+      position: absolute;
+      bottom: 0px;
+      height: 50%;
+      width: 100%;
+
+      p {
+        width: 80%;
+        padding-left: 10%;
+      }
+    }
+  }
+
+  .like-container {
+    .item-like {
+      transition: 200ms;
+      transition-timing-function: ease-in-out;
+      -webkit-transition: 200ms;
+      -webkit-transition-timing-function: ease-in-out;
+      color: $color-fancy;
+    }
+
+    .item-like:hover {
+      fill-opacity: 1;  
+    }
+  }
+
+  p {
+    color: lightgray;
+  }
+
+  p.prop-values {
+    color: $color-fancy;
+  }
+}

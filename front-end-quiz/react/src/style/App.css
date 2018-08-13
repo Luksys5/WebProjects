@@ -1,0 +1,245 @@
+body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+html {
+  margin: 0;
+}
+
+#stDibs-root {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #aaaaaa;
+}
+#stDibs-root .top-page {
+  width: 100%;
+  height: 6%;
+  height: 8%;
+  margin-top: -1.5em;
+  margin-bottom: 5px;
+  -webkit-box-shadow: 0px 3px 3px 0px #AAA;
+  -moz-box-shadow: 0px 3px 3px 0px #AAA;
+  box-shadow: 0px 3px 3px 0px #AAA;
+}
+#stDibs-root .top-page button {
+  position: absolute;
+  left: 0;
+  border: none;
+  background: #FBFBFB;
+  border-bottom: 3px solid #FBFBFB;
+  width: 15%;
+  height: 100%;
+  color: #A79561;
+  display: inline-block;
+  text-align: center;
+}
+#stDibs-root .top-page button a {
+  text-decoration: none;
+  color: white;
+}
+#stDibs-root .top-page button .text {
+  font-size: large;
+}
+#stDibs-root .top-page button:hover {
+  border-bottom: 3px solid #A79561;
+}
+#stDibs-root .top-page .text {
+  padding-top: 0.5em;
+  color: gray;
+}
+#stDibs-root .browse-items, #stDibs-root .view-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #FBFBFB;
+}
+#stDibs-root .browse-items .item {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  width: 25%;
+  height: 28%;
+  margin: 0.5em;
+  -webkit-box-shadow: 0px 3px 3px 0px #AAA;
+  -moz-box-shadow: 0px 3px 3px 0px #AAA;
+  box-shadow: 0px 1px 1px 0px #AAA;
+}
+#stDibs-root .browse-items .item .top-bar {
+  position: relative;
+  width: 80%;
+  height: 20%;
+  margin: 0;
+  margin-left: 10%;
+}
+#stDibs-root .browse-items .item .top-bar span {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  right: 10%;
+  font-size: small;
+  color: black;
+}
+#stDibs-root .browse-items .item img {
+  max-width: 100%;
+  max-height: 77%;
+  margin-bottom: 3%;
+  cursor: pointer;
+}
+#stDibs-root .browse-items .item .price-container {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+}
+#stDibs-root .browse-items .item .like-container {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
+#stDibs-root .browse-items .item .details-container {
+  position: absolute;
+  right: 10%;
+  bottom: 5%;
+}
+#stDibs-root .browse-items .item:hover {
+  -webkit-box-shadow: 0px 3px 3px 0px #AAA;
+  -moz-box-shadow: 0px 3px 3px 0px #AAA;
+  box-shadow: 0px 3px 3px 0px #AAA;
+  transform: scale(1.01);
+}
+#stDibs-root .view-item {
+  background-color: #FBFBFB;
+}
+#stDibs-root .view-item .top-page {
+  height: 8%;
+  margin-top: 0;
+  position: relative;
+  background-color: #FBFBFB;
+}
+#stDibs-root .view-item .top-page .goto-browseItems {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  left: 0;
+}
+#stDibs-root .view-item .top-page .goto-browseItems svg {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  color: #A79561;
+}
+#stDibs-root .view-item .top-page .goto-browseItems div {
+  position: absolute;
+  left: 2.5em;
+  top: 1em;
+  font-size: large;
+  color: #A79561;
+}
+#stDibs-root .view-item .top-page .represent-house {
+  padding-top: 1%;
+  font-size: x-large;
+}
+#stDibs-root .left-panel, #stDibs-root .right-panel {
+  position: absolute;
+  display: block;
+  background-color: white;
+  height: 60%;
+  top: 20%;
+}
+#stDibs-root .left-panel {
+  left: 5%;
+  width: 25%;
+  height: 60%;
+  background-color: white;
+}
+#stDibs-root .left-panel .panel-top {
+  top: 0;
+  left: 0;
+  height: 15%;
+  width: 100%;
+}
+#stDibs-root .left-panel .panel-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+}
+#stDibs-root .left-panel .panel-bottom button {
+  background: #ffffff;
+  border: 1px solid #f3f3f3;
+  border-radius: 0px;
+  padding: 10px 25px;
+  width: 50%;
+  height: 100%;
+  color: #A79561;
+  display: inline-block;
+  text-align: center;
+}
+#stDibs-root .left-panel .panel-bottom button:hover {
+  border: 1px solid #A79561;
+}
+#stDibs-root .left-panel .price-container {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+#stDibs-root .left-panel .like-container {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+#stDibs-root .left-panel img {
+  max-width: 80%;
+  max-height: 80%;
+}
+#stDibs-root .right-panel {
+  left: 35%;
+  width: 40%;
+}
+#stDibs-root .right-panel .item-basicProps, #stDibs-root .right-panel .item-basicValues {
+  position: absolute;
+  left: 0;
+  top: 18%;
+  width: 25%;
+  height: 40%;
+  display: inline-block;
+  text-align: left;
+}
+#stDibs-root .right-panel .item-basicProps {
+  left: 5%;
+}
+#stDibs-root .right-panel .item-basicValues {
+  left: 25%;
+  width: 60%;
+}
+#stDibs-root .right-panel .item-description {
+  border-top: 1px solid #FBFBFB;
+  position: absolute;
+  bottom: 0px;
+  height: 50%;
+  width: 100%;
+}
+#stDibs-root .right-panel .item-description p {
+  width: 80%;
+  padding-left: 10%;
+}
+#stDibs-root .like-container .item-like {
+  transition: 200ms;
+  transition-timing-function: ease-in-out;
+  -webkit-transition: 200ms;
+  -webkit-transition-timing-function: ease-in-out;
+  color: #A79561;
+}
+#stDibs-root .like-container .item-like:hover {
+  fill-opacity: 1;
+}
+#stDibs-root p {
+  color: lightgray;
+}
+#stDibs-root p.prop-values {
+  color: #A79561;
+}
+
+/*# sourceMappingURL=App.css.map */

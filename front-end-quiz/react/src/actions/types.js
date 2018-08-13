@@ -1,0 +1,2 @@
+export const GET_BROWSE_ITEMS = 'GET_BROWSE_ITEMS';
+export const GET_VIEW_ITEM = 'GET_VIEW_ITEM'
