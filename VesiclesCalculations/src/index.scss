@@ -90,6 +90,21 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         border-right: $sidebarBorder;
     }
 
+    .footer {
+        height: 100%;
+        color: #A9927D;
+        font-weight: 500;
+    }
+    
+    .footer div {
+        display: inline-block;
+        padding-top: 40px;
+        width: 25%;
+        cursor: pointer;
+    }
 
+    .footer div:hover {
+        font-weight: 600;
+    }
 }
 
