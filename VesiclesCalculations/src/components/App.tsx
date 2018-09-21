@@ -1,5 +1,6 @@
 import * as React from 'react';
 import SidebarButton from './subComponents/SidebarButton';
+import { Footer } from './subComponents/Footer';
 
 interface AppProps {
   currentSectionName: string;
@@ -29,8 +30,10 @@ class App extends React.Component<AppProps, AppState> {
         <div className='flex-row horizontaly-filled row__top'>
           <div className='flex-column column__left'></div>
           <div className='flex-column column__right'>
-            <div><h1>Vesicles Content Calculations</h1></div>
-            <div><h2>{ currentSectionName }</h2></div>
+            <header>
+              <div><h1>Vesicles Content Calculations</h1></div>
+              <div><h2>{ currentSectionName }</h2></div>
+            </header>
           </div>
         </div>
         <div className='flex-row horizontaly-filled row__middle'>
@@ -54,11 +57,13 @@ class App extends React.Component<AppProps, AppState> {
               label='Molecular weight calculator'
             />
           </div>
-          <div className='flex-column column__right'>b</div>
+          <div className='flex-column column__right'></div>
         </div>
         <div className='flex-row horrizontaly-filled row__bottom'>
-          <div className='flex-column column__left'>a</div>
-          <div className='flex-column column__right'>b</div>
+          <div className='flex-column column__left'></div>
+          <div className='flex-column column__right'>
+            <Footer />
+          </div>
         </div>
       </div>
     );
