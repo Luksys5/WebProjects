@@ -1,0 +1,82 @@
+$backgroundColor: #23c030;
+$mainAxis: 'center';
+$crossAxis: 'center';
+
+$backgroundBorder: 1.5px solid #b6ebbb;
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.flex-align {
+    justify-content: $mainAxis;
+    align-items: $crossAxis;
+}
+
+body {
+    text-align: center;
+}
+
+html, body, #vesiclesCalcs-root, #vesiclesCalcs-root { 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#vesiclesCalcs-root { 
+    background-color: $backgroundColor;
+}
+
+#vesiclesCalcs-root .app-container {
+    position: absolute;
+    left: 0.5%;
+    top: 0.5%;
+    margin: 0;
+    padding: 0;
+    background-color: $backgroundColor;
+    width: 99%;
+    height: 99%;
+
+    .row__middle {
+        width: 100%;
+        height: 60%;
+    }
+
+    .row__non-middle {
+        width: 100%;
+        height: 20%;
+    }
+
+    .column__center {
+        width: 60%;
+        height: 100%;
+    }
+
+    .column__non-center {
+        width: 20   %;
+        height: 100%;
+    }
+
+    .row__middle .column__center {
+        border: $backgroundBorder;
+    }
+
+    .row__middle .column__non-center { 
+        border-top: $backgroundBorder;
+        border-bottom: $backgroundBorder;
+    } 
+    
+    .row__non-middle .column__center { 
+        border-left: $backgroundBorder;
+        border-right: $backgroundBorder;
+    } 
+}
+

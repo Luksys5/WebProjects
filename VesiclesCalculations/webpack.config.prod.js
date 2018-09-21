@@ -1,7 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/index.tsx',
     output: {
         path: __dirname + '/dist',
@@ -11,20 +13,24 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js']
     },
     module: {
-        rules: [
-        {
+        rules: [{
             test: /\.tsx?$/,
             use: 'ts-loader'
-        },
-        {
+        }, {
             test: /\.s?css$/,
-            use: ['style-loader', 'css-loader', 'sass-loader']
-        }
-    ]
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        }]
+    },
+    optimization: {
+        minimizer: [new UglifyJsPlugin()]
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: __dirname + '\\src\\index.html',
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: '[id].css'
         })
     ]
 }
