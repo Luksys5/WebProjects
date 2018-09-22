@@ -39,22 +39,25 @@ class App extends React.Component<AppProps, AppState> {
         <div className='flex-row horizontaly-filled row__middle'>
           <div className='flex-column column__left'>
             <SidebarButton
-              className={ 'sidebar__button ' + (this._homeSection == currentSectionName ? 'active' : '') }
+              className={ 'sidebar__button ' }
               linkClassName='home-link'
               linkTarget='/home'
-              label='Home'
+              label={ this._homeSection }
+              active={ this._homeSection == currentSectionName }
             />
             <SidebarButton
-              className={ 'sidebar__button ' + (this._lipidVolumeSection == currentSectionName ? 'active' : '') }
+              className={ 'sidebar__button ' }
               linkClassName='lipid-vol-link'
               linkTarget='/lipidVolume'
-              label='Lipid volume calculator'
+              label={ this._lipidVolumeSection }
+              active={ this._lipidVolumeSection == currentSectionName }
             />
             <SidebarButton
-              className={ 'sidebar__button ' + (this._molWeightSection == currentSectionName ? 'active' : '') }
+              className={ 'sidebar__button ' }
               linkClassName='mol-weight-link'
               linkTarget='/molWeight'
-              label='Molecular weight calculator'
+              label={ this._molWeightSection }
+              active={ this._molWeightSection == currentSectionName }
             />
           </div>
           <div className='flex-column column__right'></div>
