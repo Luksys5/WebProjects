@@ -19,6 +19,21 @@ module.exports = {
         {
             test: /\.s?css$/,
             use: ['style-loader', 'css-loader', 'sass-loader']
+        },
+        {
+            test: /\.(png|jp(e*)g|svg)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8000,
+                    name: '[name].[ext]'
+                }
+            }]
+        },
+        {
+            test: /\.ico/,
+            use: 'file-loader?name=[name].[ext]',
+            include: /assets/
         }
     ]
     },
@@ -26,5 +41,5 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: __dirname + '\\src\\index.html',
         })
-    ]
+    ],
 }
