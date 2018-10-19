@@ -11,7 +11,7 @@
     "outDir": "dist",
     "allowUnusedLabels": false,
     "noImplicitReturns": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noUnusedLocals": true,
     "lib": [
       "es7",

@@ -2,34 +2,27 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 interface SidebarButtonProps {
-  className: string;
-  linkClassName: string;
   linkTarget: string;
   label: string;
   active: boolean;
 }
 
-interface SidebarButtonState {
-
-}
-
-class SidebarButton extends React.Component<SidebarButtonProps, SidebarButtonState> {
+export class SidebarButton extends React.Component<SidebarButtonProps, {}> {
   public render(): JSX.Element {
-    const { className, linkClassName, linkTarget, label, active } = this.props;
+    const { linkTarget, label, active } = this.props;
     return (
-      <button className={ className + (active ? 'active' : '') }>
+      <button className={ 'sidebar__button ' + (active ? 'active' : '') }>
         { active ? (
-          <a className={ linkClassName } onClick={() => {}}>
-            <label>{ label }</label>
+          <a className='sidebar-button__link'>
+              <span>{ label }</span>
           </a>
         ) : (
-          <Link className={ linkClassName } to={ linkTarget } replace>
-            <label>{ label }</label>
+          <Link className='sidebar-button__link' to={ linkTarget } >
+            <span>{ label }</span>
           </Link>
         )}
+        { this.props.children }
       </button>
     );
   }
 }
-
-export default SidebarButton;

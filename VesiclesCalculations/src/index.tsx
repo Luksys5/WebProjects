@@ -1,26 +1,29 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/App';
+import configureStore from './store';
 import { hot } from 'react-hot-loader';
+import { Provider } from 'react-redux';
 import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import './index.scss';
-
-
+require('../assets/favicon.ico');
 
 const AppComponent = (): any => {
     return(
         ReactDOM.render(
-            <HashRouter>
-                <Switch>
-                    <Redirect exact from='/' to='/Home' />
-                    <Route exact path='/Home' render={ () => <App currentSectionName={ 'Home' } /> } />
-                    <Route exact path='/lipidVolume' render={ () => <App currentSectionName={ 'Lipid volume calculator' } /> } />
-                    <Route exact path='/molWeight' render={ () => <App currentSectionName={ 'Molecular weight calculator' } /> } />
-                    <Route exact path='/custom' render={ () => <App currentSectionName={ 'vescalc' } /> } />
-                </Switch>
-            </HashRouter>
-            ,document.getElementById('vesiclesCalcs-root')
+            <Provider store={ configureStore() }>
+                <HashRouter>
+                    <Switch>
+                        <Redirect exact from='/' to='/Home' />
+                        <Route exact path='/Home' component={App} /> } />
+                        <Route exact path='/lipidsVolume' component={App} />
+                        <Route exact path='/molecularWeight' component={App} />
+                        <Route exact path='/projects' component={App} />
+                    </Switch>
+                </HashRouter>
+            </Provider>,
+            document.getElementById('vesiclesCalcs-root')
         )
     );
 }
