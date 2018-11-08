@@ -14,9 +14,10 @@ export const ProjectGeneralInfo = (props) => {
             <h2 className='form__header'>Example</h2>
             <img src={ props.exampleSrc }
                 id={`${header}-example`}
-                className='example__img'/> 
+                className='example__img'/>
+            <h3 className='example__header'>{ props.exampleHeader }</h3>
             <p className='example__text'>
-                Setup for looping all vesicles from diameter 10 to 2000 and each step increasing diameter by 5 and searching best fitting vesicle for later specified lipids
+                { props.exampleText }
             </p>
         </div>
         <div>
@@ -27,6 +28,7 @@ export const ProjectGeneralInfo = (props) => {
                         key={ name }
                         label={ field.label }
                         name={ name }
+                        unitClassName={ field.unitClassName }
                         helpText={ field.helpText }
                         component={ FormField }
                         type={ field.type }

@@ -1,7 +1,8 @@
 import { SET_LIPID_VOLUME_INFO, SET_VOLUME_FORM_STEP,
-    COPY_LIPID_VOLUME_DATA, SET_LIPID_VOLUME_DATA, CLEAR_LIPIDS_VOL_DATA, SET_LOADING, SET_LIPID_VOLUME_RESULTS
+    COPY_LIPID_VOLUME_DATA, SET_LIPID_VOLUME_DATA, CLEAR_LIPIDS_VOL_DATA, SET_LIPID_VOLUME_RESULTS,
+    SET_LOADING, SET_ERROR
 } from './types';
-import { LipidsVolInfo, LipidVolData } from '../models';
+import { LipidsVolInfo, LipidVolData, ILipidData } from '../models';
 import { calculateLipidsVolume } from '../services/gcf';
     
 export const setLipidsVolInfo = (lipidsVolInfo: LipidsVolInfo) => dispatch => {
@@ -12,20 +13,37 @@ export const setLipidsVolInfo = (lipidsVolInfo: LipidsVolInfo) => dispatch => {
     });
 }
 
-export const setLipidsVolData = (lipidsVolData: { lipid: LipidVolData[] }, step: number, volumeInfo: LipidsVolInfo) =>
-    async(dispatch) => {
+export const setLipidsVolData = (lipidsVolData: ILipidData, step: number, volumeInfo: LipidsVolInfo) =>
+async(dispatch) => {
+
     // set loading if calculate is true
-    if(LipidsVolInfo != null) {
+    if(volumeInfo != null) {
         dispatch({
             type: SET_LOADING,
-            loading: true
+            loading: true,
+            loadingText: 'Calculating'
         })
-        
-        const results: any = await calculateLipidsVolume(volumeInfo, lipidsVolData);
 
+        let error: string = null;
+        let results: any = null;
+        try {
+            results = await calculateLipidsVolume(volumeInfo.finalMass, lipidsVolData.lipids);
+            results.calculated = true;
+
+            // when no errors occured dispatch results
+            dispatch({
+                type: SET_LIPID_VOLUME_RESULTS,
+                payload: results,
+            });
+            
+        } catch(ex) {
+            error = ex.toString()
+        }
+
+        // Reset error
         dispatch({
-            type: SET_LIPID_VOLUME_RESULTS,
-            payload: results
+            type: SET_ERROR,
+            error: error
         })
 
         dispatch({
@@ -40,6 +58,27 @@ export const setLipidsVolData = (lipidsVolData: { lipid: LipidVolData[] }, step:
         step
     });
 
+}
+
+export const setLipidsVolInfoAndData = (volumeInfo: LipidsVolInfo, volumeData: ILipidData, clearResults: boolean) => dispatch => {
+    dispatch({
+        type: SET_LIPID_VOLUME_INFO,
+        payload: volumeInfo,
+        step: 0
+    });
+
+    dispatch({
+        type: SET_LIPID_VOLUME_DATA,
+        payload: volumeData,
+        step: 0
+    });
+
+    if(clearResults) {
+        dispatch({
+            type: SET_LIPID_VOLUME_RESULTS,
+            payload: { lipids: volumeData.lipids.map(lipid => {}) }
+        })
+    }
 }
 
 export const copyLipidsVolData = (lipidsVolData: LipidVolData) => dispatch => {

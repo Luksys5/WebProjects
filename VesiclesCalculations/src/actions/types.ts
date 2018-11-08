@@ -19,3 +19,8 @@ export const CLEAR_LIPIDS_VOL_DATA: string = 'CLEAR_LIPIDS_VOL_DATA';
 export const CLEAR_LIPIDS_MOL_W_DATA: string = 'CLEAR_LIPIDS_MOL_W_DATA';
 
 export const SET_LOADING: string = 'SET_LOADING';
+export const SET_INFO: string = 'SET_INFO';
+export const SET_STRINGIFIED_RESULTS: string = 'SET_STRINGIFIED_RESULTS';
+export const SET_DIALOG: string = 'SET_DIALOG';
+export const SET_ERROR: string = 'SET_ERROR';
+export const SAVE_PROJECT: string = 'SAVE_PROJECT';

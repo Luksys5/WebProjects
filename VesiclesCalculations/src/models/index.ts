@@ -5,8 +5,10 @@ import LipidMolWData from './LipidMolWeightData';
 import LipidsVolResults from './LipidsVolumeResults';
 import { IField } from './subModels/IField';
 import { ISidebarButton } from './subModels/ISidebarButton';
+import { IShareButton } from './subModels/IShareButton';
 import { ILipidData } from './subModels/ILipidData';
 import { RoutePaths } from './subModels/RouteEnum';
+import { ProjectTypes } from './subModels/ProjectTypes';
 
 export {
     LipidsVolInfo,
@@ -16,6 +18,8 @@ export {
     LipidsVolResults,
     IField,
     ISidebarButton,
+    IShareButton,
     ILipidData,
-    RoutePaths
+    RoutePaths,
+    ProjectTypes
 }

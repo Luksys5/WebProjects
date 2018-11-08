@@ -8,17 +8,12 @@ $footerBackgroundColor: #2A363B;
 $footerColor: #A9927D;
 $errorColor: rgb(168, 0, 0);
 $warningColor: #D19C0A; 
+$textTheme: #4b4b4b;
 $mainAxis: 'center';
 $crossAxis: 'center';
 
 $backgroundBorder: 1.5px solid #b6ebbb;
 $sidebarBorder: 3px solid #3C3A3A;
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
 
 body {
     text-align: center;
@@ -58,7 +53,24 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
     padding: 0;
 }
 
+
+#vesiclesCalcs-root .app-container.shaded {
+    transform: scaleX(1.00001) translateX(-5px);
+    overflow: hidden;
+
+    .column__left {
+        filter: blur(1px);
+    }
+
+    .column__right {
+        filter: blur(1px);
+    }
+}
+
 #vesiclesCalcs-root .app-container {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
     position: absolute;
     margin: 0;
     padding: 0;
@@ -69,40 +81,105 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
     overflow-x: hidden;
     padding-right: 17px;
 
+    .messages-container {
+        position: absolute;
+        top: 5%;
+        width: 50%;
+        left: 25%;
+        z-index: 5;
+        
+        .error-message, .info-message {
+            display: grid;
+            grid-template-columns: 5% 90% 5%;
+            grid-template-rows: 100%;
+            align-items: center;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .message__icon {
+            position: relative;
+            height: 100%;
+            color: white;
+
+            svg {
+                position: absolute;
+                top: 10%;
+                left: 5px;
+            }
+        }
+
+        .error-message {
+            background-color: $errorColor;
+        }
+
+        .info-message {
+            background-color: #35baf6;
+        }
+
+        .message__close {
+            color: white;
+            position: relative;
+            height: 100%;
+
+            .close__icon {
+                position: absolute;
+                top: 10%; right: 5px;
+            }
+        }
+
+        .message__close:hover {
+            color: black;
+        }
+
+        .message__text {
+            margin-left: 2%;
+            text-align: left;
+
+            span {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: #fafafa;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+    }
+
     .column__left { 
-        width: 15%;
+        position: relative;
+        width: 50px;
         height: 100%;
         box-shadow: 2px 0px 2px 2px $secondaryThemeColor;
         margin-top: 0px;
         margin-bottom: 0px;
         background-color: $secondaryThemeColor;
         z-index: 1;
+        transition: 100ms;
+    }
+
+    .column__left:hover {
+        width: 15%;
     }
 
     .column__right { 
+        position: relative;
         width: 90%;
         height: 100%;
-        // border-left: $backgroundBorder;
+    }
+
+    .column__right.extended {
+        width: 98%;
     }
 
     .row__middle {
         width: 100%;
-        height: 90%;
-    }
-
-    .column__right .row__middle {
-        padding-left: 20px;
-        padding-right: 17px;
-        overflow: auto;
-
-        header {
-            height: 5%;
-        }
     }
 
     .column__left .row__middle {
+        position: absolute;
         height: auto;
-        margin-top: 50%;
+        top: 30%;
         
         .sidebar__button { 
             position: relative;
@@ -134,6 +211,10 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
                 top: 35%; right: 3%;
                 color: $sidebarTextColor;
             }
+
+            .sidebar-button__icon.extended {
+                right: 13px;
+            }
         }
     }
 
@@ -156,13 +237,42 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         background-color: #716F6F;
     }
 
+    .column__right .row__middle {
+        padding-left: 20px;
+        padding-right: 17px;
+        height: 100%;
+        overflow: auto;
+
+
+        .route-wrapper {
+            .fade-enter {
+                opacity: 0.01;
+            }
+            .fade-enter.fade-enter-active {
+                opacity: 1;
+                transition: opacity 300ms ease-in;
+            }
+            .fade-exit {
+                opacity: 1;
+            }
+            
+            .fade-exit.fade-exit-active {
+                opacity: 0.01;
+                transition: opacity 300ms ease-in;
+            }
+        }
+    }
+    
+    .column__right .row__middle.fill-height {
+        height: 100%;
+    }
+
     .footer {
         display: table;
         background-color: white;
         position: absolute;
-        bottom: -160px; left: 0;
+        top: 100%; left: 0;
         width: 100%;
-        height: 160px;
         box-shadow: 0px 3px 0px 0px #eaeaea;
         background-color: $footerBackgroundColor;
         color: $footerColor;
@@ -283,11 +393,11 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         display: -ms-flexbox;
         display: flex;
         flex-direction: row;
-        flex-wrap:  nowrap;
+        flex-wrap:  wrap;
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 90%;
+        height: 100%;
         text-align: center;
 
         .home__image {
@@ -297,7 +407,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         }
 
         .home__text {
-            height: 90%;
+            height: 100%;
             width: 50%;
             color: #333;
             font-weight: 400;
@@ -365,7 +475,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         justify-content: space-evenly;
 
         > div {
-            width: 40%;
+            width: 45%;
         }
 
         .form__fields {
@@ -382,7 +492,6 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
     .form {
         display: inline-block;
         width: 100%;
-        margin-top: 20px;
         margin-bottom: 20px;
         margin-right: auto;
         color: #333;
@@ -390,22 +499,28 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         .form__example {
 
             .example__img {
-                width: 80%;
+                width: 70%;
                 margin: 5px;
                 border: 5px solid #fafafa;
                 border-radius: 10px;
             }
 
+            .example__header {
+                color: $textTheme;
+            }
+
             .example__text {
-                color: #4b4b4b;
+                color: $textTheme;
                 font-size: 18px;
                 font-weight: 600;
             }
         }
 
         .form__header {
+            margin: 5px 5px 10px 5px;
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
+            color: $textTheme;
         }
 
         ul h2.form__sub-header {
@@ -415,7 +530,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         .field {
             display: table;
             position: relative;
-            width: 90%;
+            width: 95%;
             margin-right: auto;
             margin-left: 5px;
             padding: 5px;
@@ -471,7 +586,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
                 color: #fafafa;
                 font-weight: 500;
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                z-index: 3;
+                z-index: 5;
             }
 
             .field__input-block {
@@ -524,18 +639,30 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
                 background-color: transparent;
             }
 
+            .field__input.no-units {
+                width: 100%;
+            }
+
+            .field__input.disabled {
+                pointer-events: none;
+            }
+
             .field__input:focus {
                 outline: 0;
             }
 
             .field_units {
                 width: 13%;
-                height: 100%;
+                height: 99%;
                 line-height: 3em;
                 border-left: 1px solid $borderColor;
                 background-color: $sidebarTextColor;
                 font-size: 16px;
                 font-weight: 500;
+            }
+
+            .field__search {
+                background: none;
             }
             
             .field__icon {
@@ -567,7 +694,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
             left: 15%;
 
             button {
-                width: 160px;
+                width: auto;
             }
         }
 
@@ -578,7 +705,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
             right: 10px;
 
             button {
-                width: 200px;
+                width: auto;
             }
 
         }
@@ -586,19 +713,23 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         
         .solution-results {
             display: inline-block;
-            width: auto;
+            width: 80%;
+            margin-top: 10px;
             font-size: 18px;
             font-weight: 700;
             font-family: Verdana, Geneva, Tahoma, Arial, sans-serif;
-            text-align: left;
-            padding: 20px;
             
+            h2 {
+                margin: 5px;
+            }
+
             .solution-result {
                 padding: 10px;
+                text-align: center;
                 
                 div {
-                    width: 200px;
                     display: inline-block;
+                    margin-right: 20px;
                 }
                 span {
                     display: inline-block;
@@ -609,12 +740,20 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         }
 
         .form__error {
-            font-size: 20px;
+            display: inline-block;
+            position: relative;
+            height: 57px;
+            flex-grow: 2;
+            font-size: 18px;
             font-weight: 600;
             color: $errorColor;
-            margin-top: 5px;
             font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
             -webkit-font-smoothing: antialiased;
+
+            span {
+                position: relative;
+                transform: translateY(-50%);
+            }
         }
     }
 
@@ -624,12 +763,13 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         height: auto;
         margin: 10px;
         border: none;
-        padding: 15px 25px;
+        padding: 10px 25px;
         font-size: 20px;
         white-space: nowrap;
         color: #fafafa;
         background-color: #2E5077;
         cursor: pointer;
+        text-decoration: none;
 
         .button__icon {
             display: inline-block;
@@ -654,11 +794,25 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         margin: 0;
         padding: 0;
         list-style: none;
-    
+        margin-bottom: 40px;
+
         .lipid-actions {
             position: absolute;
-            bottom: 10px;
-            left: 30%;
+            display: flex;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            width: 100%;
+            bottom: 5px;
+            left: 10px;
+
+            .row-end {
+                align-self: flex-end;
+            }
+
+            .block {
+                display: block;
+                width: 90%
+            }
         }
 
         .form__sub-header {
@@ -682,9 +836,13 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
 
             .lipid-result, .lipid-data {
                 position: relative;
-                padding: 25px;
+                padding: 0 15px 0 15px;
                 margin: 20px;
                 width: 40%;
+            }
+
+            .lipid-result .field__input {
+                text-align: left;
             }
 
             .lipid__name { 
@@ -695,19 +853,19 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
 
             .remove-data-btn {
                 position: absolute;
-                top: 15px; right: 15px;
+                top: 20px; right: 15px;
             }
 
             .remove-data-btn:hover {
                 width: 24px;
                 height: 24px;
-                top: 13px;
+                top: 18px;
                 right: 13px;
             }
 
             .lipid-btn-container {
-                margin-top: 20px;
-                height: 75px;
+                margin-top: 10px;
+                height: 140px;
             }
 
             .lipid__button {
@@ -736,28 +894,85 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
                 font-size: 16px;
                 font-weight: 700;    
             }
+
         }
 
     }
 
+    .projects {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
 
-    .overlay-container {
-        position: fixed; /* Sit on top of the page content */
-        display: none; /* Hidden by default */
-        width: 100%; /* Full width (cover the whole page) */
-        height: 100%; /* Full height (cover the whole page) */
-        top: 0; 
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-        z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-        cursor: pointer; /* Add a pointer on hover */
+
+        .projects__table {
+            width: 50%;
+            margin-right: 5%;
+
+            > div {
+                display: grid;
+                grid-template-columns: 25% 25% 25% 25%;
+                grid-template-rows: 50px;
+                align-items: center;
+            }
+            
+            .table__name {
+                margin: 5px 5px 10px 5px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                color: $textTheme;
+            }
+
+            .table__header {
+                color: $textTheme;
+                font-weight: 700;
+                font-size: 16px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                border-bottom: 1px solid #999;
+            }
+
+            .table__item {
+                color: #666;
+                font-weight: 500;
+                font-size: 16px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                border-bottom: 1px solid #999;
+                cursor: pointer;
+
+                > div {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+                .item__link {
+                    margin-left: auto;
+                    margin-right: auto;
+                    color: blue;
+                }
+
+                .item__link:hover {
+                    color: #7D84B2;
+                }
+            }
+
+            .table__item.active {
+                background-color: #A5C096;
+            }
+
+            .table__item:hover {
+                background-color: #A5C096;
+            }
+
+        }
+
+        .project__form {
+            width: 35%;
+            
+        }
     }
 
     // loader 
-
-    .ring-container {
+    .overlay-container {
         display: inline-block;
         position: fixed;
         top: 0; right:0; bottom: 0; left: 0;
@@ -765,6 +980,59 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         height: 100%;
         background-color: rgba(0,0,0,0.5); /* Black background with opacity */
         z-index: 3;
+
+        .dialog-container {
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            width: 30%;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+            
+            .dialog__header {
+                display: table;
+                width: 100%;
+                height: 40px;
+                background-color: #666;
+                overflow: hidden;
+
+                h3 {
+                    display: table-cell;
+                    vertical-align: middle;
+                    margin: 0;
+                    padding: 0;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
+            }
+
+            .dialog__content {
+                width: 80%;
+                height: auto;
+                padding-left: 10%;
+                padding-right: 10%;
+                padding-top: 1em;
+                padding-bottom: 1em;
+                background-color: #eaeaea;
+                text-align: left;
+
+                p {
+                    margin: 0;
+                    padding-top: 1em;
+                    padding-bottom: 1em;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
+            }
+            .dialog__footer {
+                width: 100%;
+                height: 30%;
+                margin-top: 0;
+                padding-top: 0;
+                background-color: #eaeaea;
+
+            }
+
+        }
     
 
         .lds-ring {

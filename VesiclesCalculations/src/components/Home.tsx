@@ -3,9 +3,9 @@ import * as React from 'react';
 export const Home: any = (): JSX.Element => {
 
     return (
-    <div className='home-container flex-row'>
-        <img src={ require('../../assets/logo.png') } id="logo" className='home__image flex-column'/> 
-        <div className='home__text flex-column flex-align'>
+    <div className='home-container'>
+        <img src={ require('../../assets/logo.png') } id="logo" className='home__image'/> 
+        <div className='home__text'>
             <div className='body'>
                 <h2>About</h2>
                 <p>

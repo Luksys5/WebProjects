@@ -1,5 +1,14 @@
-import { LipidsVolInfo } from ".";
+export default class LipidsMolWInfo  {
+    title: string;
+    diameterStart: string;
+    diameterEnd: string;
+    step: string;
+    lipidsCount: string;
+    type: number;
+    modifiedDate: string;
+    filled: boolean;
 
-export default class LipidsMolWInfo extends LipidsVolInfo {
-
+    constructor() {
+        this.title = '';
+    }
 }

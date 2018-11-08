@@ -4,6 +4,8 @@ import LipidsVolResultFields from './lipidsVolumeResults';
 import LipidsMolWInfoFields from './lipidsMolWInfo';
 import LipidsMolWDataFields from './lipidsMolWData';
 import SidebarBtns from './sidebarBtns';
+import ShareBtns from './shareBtns';
+import EmailFields from './email';
 
 export {
     LipidsVolInfoFields,
@@ -11,5 +13,7 @@ export {
     LipidsVolResultFields, 
     LipidsMolWInfoFields,
     LipidsMolWDataFields,
-    SidebarBtns
+    SidebarBtns,
+    ShareBtns,
+    EmailFields
 }

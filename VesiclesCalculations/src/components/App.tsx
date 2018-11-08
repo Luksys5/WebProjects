@@ -1,191 +1,321 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { FaThumbsUp, FaGooglePlusG, FaTwitter, 
-  FaFacebook, FaCcPaypal 
-} from 'react-icons/fa';
+import * as ReactDOM from 'react-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { withCookies, Cookies} from 'react-cookie';
 import { Home } from './Home';
-import { Footer, ShareButton, SidebarButton } from './subComponents';
 import { LipidsVolInfoForm, LipidsVolDataForm, LipidsMolWInfoForm, LipidsMolWDataForm } from '../forms';
-import { LipidsVolInfo, ISidebarButton, RoutePaths, LipidsMolWInfo } from '../models';
-import { SidebarBtns } from '../fields';
-import { setLipidsVolInfo, setLipidsMolWInfo } from '../actions';
+import { Footer, ShareButton, SidebarButton, OverlayDialog } from './subComponents';
+import { LipidsVolInfo, ISidebarButton, IShareButton, LipidsMolWInfo, RoutePaths, ProjectTypes } from '../models';
+import { SidebarBtns, ShareBtns } from '../fields';
+import { connect } from 'react-redux';
+import { bindActionCreators, compose } from 'redux';
+import { setLipidsVolInfo, setLipidsMolWInfo, closeError, setDialog, closeInfo } from '../actions';
+import { FaTimesCircle, FaInfoCircle, FaExclamationCircle, FaCheck, FaBan } from 'react-icons/fa';
+import { IDialog } from '../models/subModels/IDialog';
+import Projects from './Projects';
 import * as _ from 'lodash';
 
 interface AppProps {
-  lipidsVolInfo: LipidsVolInfo;
+  cookies: Cookies;
+  history: any;
   location: any;
+  dialog: IDialog; 
+  error: string;
+  info: string;
   volumeFormStep: number;
   molWFormStep: number;
   loading: boolean;
+  loadingText: string;
+  molWInfoFormFilled: boolean;
+  volInfoFormFilled: boolean;
   setLipidsVolInfo: (lipidsVolInfo: LipidsVolInfo) => void;
   setLipidsMolWInfo: (lipidsVolInfo: LipidsMolWInfo) => void;
+  setDialog: (header: string, content: JSX.Element[], buttons: JSX.Element[], info: JSX.Element, overlay: boolean) => void;
+  closeError: () => void;
+  closeInfo: () => void;
 }
 
-const siteUrl = (encode: boolean): string => {
-  const url: string = window.location.origin;
-  return encode ? url.replace(':', '%3A').replace(/\//g, '%2F') : url;
-};
+interface AppState {
+  canUseCookies: boolean;
+  showFullMenu: boolean;
+  showMenuText: boolean;
+}
 
-class App extends React.Component<AppProps, {}> {
+const cookiesHeader = 'Cookie Policy';
+const cookiesContent = [
+  'Our website uses cookies. We use them for saving your projects. ',
+  'You can either Allow or Disallow cookies usage.\n Just remember that you can change cookie settings anytime in website footer link'
+].map((content, index) => <p key={ index }>{ content }</p>);
+
+const cookiesInfo = React.createElement('a', { href: 'https://en.wikipedia.org/wiki/HTTP_cookie', target: '_blank' }, 'More Info about Cookies here');
+const cookiesButtons = [
+  { type: 'button', value: 'Allow', iconComponent: FaCheck, onClick: null },
+  { type: 'button', value: 'Disallow', iconComponent: FaBan, onClick: null },
+];
+class App extends React.Component<AppProps, AppState> {
+  private _menuUpdate: boolean = true;
+
+  constructor(props) {
+    super(props);
+
+    this.state = { canUseCookies: false, showFullMenu: false, showMenuText: false };
+    
+    const canUseCookies: boolean = !!props.cookies.get('VCC-canUse');
+    cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
+    cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
+    props.setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, !canUseCookies);
+  }
+
+  public componentDidMount() {
+    const { location, cookies } = this.props;
+    const canUseCookies: boolean = !!cookies.get('VCC-canUse');
+  
+    // set cookies usage
+    this.setState({
+      canUseCookies
+    });
+    
+    location.pathname.match('/') 
+  }
+
   public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.log(error);
   }
-  
-  private _supportByPayPal(): void {
-    window.open('https://www.paypal.me/vescalc', '_blank');
+
+  componentDidUpdate() {
+    if(this._menuUpdate) {
+      this._menuUpdate = false;
+      return;
+    }
+    const node: any = ReactDOM.findDOMNode(this);
+    node.scrollTop = 0;
   }
 
-  private _shareFb(): void {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${siteUrl(true)}`, '_blank');
+  private _submitVolumeInfo(values: LipidsVolInfo): void {
+    const { history, setLipidsVolInfo } = this.props;
+
+    values.filled = true;
+    values.type = ProjectTypes.LipidVolume;
+    values.modifiedDate = new Date().toLocaleString();
+    setLipidsVolInfo(values);
+
+    history.push('/lipidsVolume/1');
   }
 
-  private _likeFb(): void {
-    window.open(`https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FVesCalc&amp;send=false&amp;layout=button_count&amp;width=125&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21`, '_blank');
-  }
-
-  private _shareGPlus(): void {
-    window.open(`https://plus.google.com/share?url=${siteUrl(true)}`, '_blank');
-  }
-
-  private _shareTwitter(): void {
-    window.open(`https://twitter.com/intent/tweet?text=Calculate%20Your%20Vesicles%20Content%20And%20More&url=${siteUrl(false)}`, '_blank');
-  }
-
-  private _submitVolumeInfo(values: any): void {
-    this.props.setLipidsVolInfo(values);
-  }
-
-  private _submitMolWeightInfo(values: any): void {
-    this.props.setLipidsMolWInfo(values);
+  private _submitMolWeightInfo(values: LipidsMolWInfo): void {
+    const { history, setLipidsMolWInfo } = this.props;
     
+    values.filled = true;
+    values.type = ProjectTypes.LipidVolume;
+    values.modifiedDate = new Date().toLocaleString();
+    setLipidsMolWInfo(values);
+   
+    history.push('/molecularWeight/1');
+  }
+  
+  private _getSectionName(sectionName, fillHeight): string {
+    if (sectionName.match(RoutePaths.Home)) {
+      fillHeight.className = 'fill-height'
+      return "Vesicles Content Calculations"
+    } else if (sectionName.match(RoutePaths.LipidsVolume)) {
+      return "Calculate Lipids Volume"
+    } else if (sectionName.match(RoutePaths.MolecularWeight)) {
+      return "Calculate Molecular Weight"
+    } else {
+      fillHeight.className = 'fill-height'
+      return "Vesicles Content Calculations"
+    } 
   }
 
-  private _getSectionName(sectionName): string {
-    switch(sectionName) {
-      case RoutePaths.Home:
-        return "Vesicles Content Calculations"
-      case RoutePaths.LipidsVolume:
-        return "Calculate Lipids Volume"
-      case RoutePaths.MolecularWeight:
-        return "Calculate Molecular Weight"
-      default:
-        return "Vesicles Content Calculations"
-    } 
+  private _allowCookieUsage(): void {
+    const { dialog, setDialog, cookies} = this.props;
+    
+    cookies.set('VCC-canUse', true);
+    this.setState({ canUseCookies: true });
 
+    dialog.overlay = false;
+    setDialog(dialog.header, dialog.content, dialog.buttons, dialog.info, dialog.overlay);
+  }
+
+  private _disallowCookieUsage(): void {
+    const { cookies, dialog, setDialog} = this.props;
+    const { canUseCookies } = this.state;
+    
+    canUseCookies && cookies.remove('VCC-canUse');
+    this.setState({ canUseCookies: false });
+    
+    dialog.overlay = false;
+    setDialog(dialog.header, dialog.content, dialog.buttons, dialog.info, dialog.overlay);
+  }
+
+  private _setCookies(): void {
+    window.scrollTo(0, 0);
+    const { dialog, setDialog} = this.props;
+    
+    dialog.header = cookiesHeader;
+    dialog.content = cookiesContent;
+    dialog.buttons = cookiesButtons;
+    dialog.info = cookiesInfo;
+    dialog.overlay = true;
+    setDialog(dialog.header, dialog.content, dialog.buttons, dialog.info, dialog.overlay);
+  }
+
+  private _showMenu() {
+    this._menuUpdate = true;
+    this.setState({ showFullMenu: true });
+    setTimeout(() => {
+      this._menuUpdate = true;
+      this.setState({ showMenuText: this.state.showFullMenu }), 100
+    });
+
+  }
+
+  private _hideMenu() {
+    this._menuUpdate = true;
+    this.setState({ showFullMenu: false, showMenuText: false });
   }
 
   public render(): JSX.Element {
-    const currentPath = this.props.location.pathname;
-    const header: string = this._getSectionName(currentPath);
+    const { loading, loadingText, error, info, location, cookies, dialog, closeError, closeInfo } = this.props;
+    const { canUseCookies, showMenuText } = this.state;
 
-    const { loading } = this.props;
-    
+    let fillHeight = { className: ''}
+    const header: string = this._getSectionName(location.pathname, fillHeight);
+    const shadedContainer = loading || dialog.overlay ? 'shaded' : '';
+
     return (
-      <div className='app-container flex-row'>
+      <div className={`app-container ${shadedContainer}`}>
+        {
+          dialog.overlay && <OverlayDialog {...dialog}
+            acceptAction={ this._allowCookieUsage.bind(this) } declineAction={ this._disallowCookieUsage.bind(this) } />
+        }
         {
           loading && 
-          <div className='ring-container'>
+          <div className='overlay-container'>
             <div className="lds-ring">
               <div></div><div></div><div></div><div></div>
-              <p className='saving'>Calculating<span>.</span><span>.</span><span>.</span></p>
+              <p className='saving'>{ loadingText }<span>.</span><span>.</span><span>.</span></p>
             </div>
           </div>
         }
-        <div className='flex-column column__left'>
+        <div className='messages-container'>
+          
+          { error &&
+            <div className='error-message'>
+              <div className='message__icon'>
+                <FaExclamationCircle />
+              </div>
+              <div className='message__text'>
+                <span>{ error }</span>
+              </div>
+              <div className='message__close' onClick={ closeError }>
+                <FaTimesCircle  className='close__icon'/>
+              </div>
+            </div>
+          } { info &&
+            <div className='info-message'>
+              <div className='message__icon'>
+                <FaInfoCircle />
+              </div>
+              <div className='message__text'>
+                <span>{ info }</span>
+              </div>
+              <div className='message__close' onClick={ closeInfo }>
+                <FaTimesCircle  className='close__icon'/>
+              </div>
+            </div>
+          } 
+        </div>
+
+        <div className='column__left' onMouseEnter={ this._showMenu.bind(this) } onMouseLeave={ this._hideMenu.bind(this) }>
           <div className='row__middle'>
             {
               _.map(SidebarBtns, (field: ISidebarButton, name: string) => 
                 <SidebarButton
                   key={ name }
-                  linkTarget={ field.path }
-                  label={ name }
-                  active={ field.path === currentPath }
+                  linkTarget={ field.path + field.step }
+                  label={ !showMenuText ? '' : name }
+                  active={ location.pathname.match(field.path) != null }
                 >
-                  <field.icon className='sidebar-button__icon'/>
+                  <field.icon className={ `sidebar-button__icon ${ showMenuText ? '' : 'extended'}` }/>
                 </SidebarButton>
               )
             }
           </div>
         </div>
 
-        <div className='flex-column column__right'>
-          <div className='row__middle'>
-            <header>
-              <div>
-                <h1>{ header }</h1>
-              </div>
+        <div className={ `column__right ${ showMenuText ? '' : 'extended'}` }>
+        { 
+          <div className={ `row__middle ${fillHeight.className}` }>
+            <header className='app-header'>
+                <div>
+                  <h1>{ header }</h1>
+                </div>
             </header>
-            { 
-              this._renderSectionComponent(currentPath)
+            {
+              <Switch location={ location }>
+                <Route exact path='/home' component={ Home } />
+                <Route exact path='/lipidsVolume/:step?' render={ ({ match }) => {
+                  if(match.params.step == "1" && this.props.volInfoFormFilled) {
+                    return <LipidsVolDataForm canUseCookies={canUseCookies} cookies={cookies} />
+                  } else {
+                    return <LipidsVolInfoForm onSubmit={ (values: any) => this._submitVolumeInfo(values) } />
+                  }
+                }} />
+                <Route exact path='/molecularWeight/:step?' render={ ({ match }) => {
+                  return <h2>Currently under construction</h2>;
+                  if(match.params.step == "1" && this.props.molWInfoFormFilled) {
+                    return <LipidsMolWDataForm />
+                  } else {
+                    return <LipidsMolWInfoForm onSubmit={ (values: any) => this._submitMolWeightInfo(values) } />
+                  }
+                }} />
+                <Route exact path='/projects' render={ () => <Projects cookies={cookies} /> } />
+                <Redirect from='/' to='/home' />
+              </Switch>
             }
           </div>
+        }
         </div>
         <div className='share-site-bar'>
-          <ShareButton id='PayPal-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaCcPaypal } tooltipText='Support our site via PayPal!'
-            iconColor='#8AD4DF' iconSize={32} iconClick={ this._supportByPayPal } />
-          <ShareButton id='FbShare-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaFacebook } tooltipText='Share our site in FaceBook!'
-            iconColor='#4267B2' iconSize={32} iconClick={ this._shareFb } />
-          <ShareButton id='FbLike-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaThumbsUp } tooltipText='Like our site in FaceBook!'
-            iconColor='#4267B2' iconSize={32} iconClick={ this._likeFb } />
-          <ShareButton id='GoogleShare-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaGooglePlusG } tooltipText='Share our site in Google+!'
-            iconColor='#DD5245' iconSize={32} iconClick={ this._shareGPlus } />
-          <ShareButton id='Twitter-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaTwitter } tooltipText='Share our site in Twitter!'
-            iconColor='#1DA1F2' iconSize={32} iconClick={ this._shareTwitter } />
+          {
+            _.map(ShareBtns, (field: IShareButton, index) => 
+              <ShareButton key={index} { ...field } />
+            )  
+          }
         </div>
-        <Footer />
+        { Footer(this._setCookies.bind(this)) }
       </div>
     );
-  }
-
-  private _renderSectionComponent(currentPath: string): JSX.Element {
-    const { volumeFormStep, molWFormStep } = this.props;
-
-    switch(currentPath) {
-      case RoutePaths.Home:
-        return <Home />;
-      case RoutePaths.LipidsVolume:
-        switch(volumeFormStep) {
-          case 0:
-            return <LipidsVolInfoForm onSubmit={ (values: any) => this._submitVolumeInfo(values) }/>
-          case 1:
-            return <LipidsVolDataForm />
-          default:
-            return <Home />;
-        }
-      case RoutePaths.MolecularWeight:
-        switch(molWFormStep) {
-          case 0:
-            return <LipidsMolWInfoForm onSubmit={ (values: any) => this._submitMolWeightInfo(values) }/>
-          case 1:
-            return <LipidsMolWDataForm />
-          default:
-            return <Home />;
-        }
-      default:
-        return <Home />
-    } 
   }
 }
 
 const mapStateToProps = state => ({
-  lipidsVolInfo: state.lipidsVolume.lipidsVolInfo,
   volumeFormStep: state.lipidsVolume.step,
   molWFormStep: state.lipidsMolWeight.step,
-  loading: state.globals.loading
+  volInfoFormFilled: state.lipidsVolume.lipidsVolInfo.filled,
+  molWInfoFormFilled: state.lipidsMolWeight.lipidsMolWInfo.filled,
+  dialog: state.globals.dialog,
+  loading: state.globals.loading,
+  loadingText: state.globals.loadingText,
+  error: state.globals.error,
+  info: state.globals.info
 });
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators({
       setLipidsVolInfo,
       setLipidsMolWInfo,
+      setDialog,
+      closeError,
+      closeInfo
     }, dispatch
   )
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App); 
+const composedApp: any = compose(
+  withCookies,
+  connect(mapStateToProps, mapDispatchToProps)
+)(App);
+
+export default composedApp;
