@@ -31,7 +31,7 @@ export class OverlayDialog extends React.Component<DialogProps, {}> {
             {
               buttons && buttons.map((buttonProps: any, index: number) =>
                 <button key={ index } type={ buttonProps.type } onClick={ buttonProps.onClick } className='button-with-icon'>
-                  { buttonProps.iconComponent && React.createElement(buttonProps.iconComponent, { className: 'button__icon', size: 16 }) }
+                  { buttonProps.iconComponent }
                   { buttonProps.value }
                 </button>
               )

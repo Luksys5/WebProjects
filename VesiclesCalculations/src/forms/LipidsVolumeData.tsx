@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { reduxForm, FieldArray, InjectedFormProps } from 'redux-form';
-import { FaSave } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { validateData } from '../validations';
 import { FormButton, LipidsDataContent } from './components';
 import { setLipidsVolData, setLipidsVolInfoAndData, copyLipidsVolData, clearLipidsVolData, saveProject, setVolFormStep } from '../actions';
-import { LipidsVolInfoFields, LipidsVolDataFields, LipidsVolResultFields } from '../fields';
+import { LipidsVolInfoFields, LipidsVolDataFields } from '../fields';
 import { ILipidData } from '../models';
 import { LipidVolResult } from './components/LipidVolResult';
 import { stringifyResults } from '../actions/globalActions';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 export let linkElement = null;
 
 const LipidsVolumeData = (props: InjectedFormProps | any) => {
     const {
-        cookies, volumeInfo, results, copiedLipid, canUseCookies,
+        cookies, volumeInfo, results, copiedLipid, canUseCookies, dirty,
         handleSubmit, copyLipidsVolData, clearLipidsVolData, setVolFormStep 
     } = props;
 
@@ -33,7 +33,8 @@ const LipidsVolumeData = (props: InjectedFormProps | any) => {
                 copiedLipid={ copiedLipid }
                 resultComponent={ LipidVolResult(results) }
                 saveProjectBtn={
-                    FormButton('submit', 'Save', FaSave, 'row-end', handleSubmit(
+                    dirty && canUseCookies &&
+                    FormButton('submit', 'Save', faSave, 'row-end', handleSubmit(
                         (values, dispatch) => {
                             setLipidsVolInfoAndData(volumeInfo, values, false)(dispatch);
                             canUseCookies && saveProject(cookies, volumeInfo, values, 'VCC-L')(dispatch);
@@ -61,7 +62,7 @@ const LipidsVolumeData = (props: InjectedFormProps | any) => {
                 } }
                 handleSubmit={handleSubmit}
                 stringifyResults={
-                    (values: ILipidData) => stringifyResults(LipidsVolInfoFields, LipidsVolDataFields, LipidsVolResultFields, volumeInfo, values, results, 0)
+                    (values: ILipidData) => stringifyResults(LipidsVolInfoFields, LipidsVolDataFields, volumeInfo, values, 0)
                 } 
             />
         </div>

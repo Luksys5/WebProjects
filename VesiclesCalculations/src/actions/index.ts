@@ -7,7 +7,7 @@ import { setLipidsMolWInfo, setLipidsMolWData, setLipidsMolWInfoAndData,
 } from './lipidsMolWeightActions';
 
 
-import { saveProject, sendDataToEmail, setDialogEmailForm, setStringifiedResults, setDialog, setError, setInfo, closeInfo, closeError } from './globalActions';
+import { saveProject, stringifyResults, sendDataToEmail, setDialogEmailForm, setStringifiedResults, setDialog, setError, setInfo, closeInfo, closeError } from './globalActions';
 
 export {
     setLipidsVolInfo,
@@ -23,6 +23,7 @@ export {
     copyLipidsMolWData,
     clearLipidsMolWData,
     saveProject,
+    stringifyResults,
     sendDataToEmail,
     setDialogEmailForm,
     setStringifiedResults,

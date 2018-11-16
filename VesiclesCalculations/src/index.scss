@@ -1,3 +1,4 @@
+
 $themeColor: #CAE7B9;
 $secondaryThemeColor: #5A5657;
 $borderColor: #dbdbdb; 
@@ -66,6 +67,78 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         filter: blur(1px);
     }
 }
+    
+.messages-container {
+    position: absolute;
+    top: 5%;
+    width: 50%;
+    left: 25%;
+    z-index: 5;
+    
+    .error-message, .info-message {
+        display: grid;
+        grid-template-columns: 5% 90% 5%;
+        grid-template-rows: 100%;
+        align-items: center;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px;
+
+        a {
+            color: '#083d8d';
+            font-weight: '600';
+            cursor: 'pointer';
+        }
+    }
+
+    .message__icon {
+        position: relative;
+        height: 100%;
+        color: white;
+
+        svg {
+            position: absolute;
+            top: 10%;
+            left: 5px;
+        }
+    }
+
+    .error-message {
+        background-color: $errorColor;
+    }
+
+    .info-message {
+        background-color: #35baf6;
+    }
+
+    .message__close {
+        color: white;
+        position: relative;
+        height: 100%;
+
+        .close__icon {
+            position: absolute;
+            top: 10%; right: 5px;
+        }
+    }
+
+    .message__close:hover {
+        color: black;
+    }
+
+    .message__text {
+        font-weight: 600;
+        margin-left: 2%;
+        text-align: left;
+
+        span {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: #fafafa;
+            font-size: 15px;
+            font-weight: 500;
+        }
+    }
+}
 
 #vesiclesCalcs-root .app-container {
     display: -webkit-flex;
@@ -81,70 +154,6 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
     overflow-x: hidden;
     padding-right: 17px;
 
-    .messages-container {
-        position: absolute;
-        top: 5%;
-        width: 50%;
-        left: 25%;
-        z-index: 5;
-        
-        .error-message, .info-message {
-            display: grid;
-            grid-template-columns: 5% 90% 5%;
-            grid-template-rows: 100%;
-            align-items: center;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 5px;
-        }
-
-        .message__icon {
-            position: relative;
-            height: 100%;
-            color: white;
-
-            svg {
-                position: absolute;
-                top: 10%;
-                left: 5px;
-            }
-        }
-
-        .error-message {
-            background-color: $errorColor;
-        }
-
-        .info-message {
-            background-color: #35baf6;
-        }
-
-        .message__close {
-            color: white;
-            position: relative;
-            height: 100%;
-
-            .close__icon {
-                position: absolute;
-                top: 10%; right: 5px;
-            }
-        }
-
-        .message__close:hover {
-            color: black;
-        }
-
-        .message__text {
-            margin-left: 2%;
-            text-align: left;
-
-            span {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                color: #fafafa;
-                font-size: 15px;
-                font-weight: 500;
-            }
-        }
-    }
 
     .column__left { 
         position: relative;
@@ -342,8 +351,10 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
             cursor: pointer;
 
             .share-btn__icon {
+                width: 32px;
+                height: 32px;
                 position: absolute;
-                left: 0;
+                top: 0; left: 0;
             }
 
             .share-btn__icon:hover {
@@ -794,7 +805,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         margin: 0;
         padding: 0;
         list-style: none;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
 
         .lipid-actions {
             position: absolute;
@@ -830,7 +841,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
             justify-content: space-around;
 
             .lipid-data {
-                box-shadow: 2px 0 3px 3px $lipidDataColor;
+                box-shadow: 2px 0i3px 3px $lipidDataColor;
                 background-color: $lipidDataColor;
             }
 
@@ -841,8 +852,46 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
                 width: 40%;
             }
 
+            .lipid-result.extend--width {
+                width: 50%;
+            }
+
             .lipid-result .field__input {
                 text-align: left;
+            }
+
+            .lipid-result .chart-container {
+                margin-top: 10%;
+            }
+
+            .lipid-result .result__selection {
+                position: absolute;
+                top: 0; right: 0; left: 0;
+
+                 label {
+                     margin-right: 15px;
+                 }
+
+                 select {
+                    padding: 10px;
+                    border: none;
+                    line-height: 1.5em;
+                    background-color: #fff;
+                    border-color: $borderColor;
+                    border: 1px solid transparent;
+                    border-radius: 3px;
+                    color: #363636;
+                    box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+                    -webkit-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+                 }
+            }
+
+            .lipid-result .x-axis-label {
+                position: absolute;
+                right: -70px; bottom: 70px;
+                font-weight: 500;
+                font-size: 22px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
             }
 
             .lipid__name { 
@@ -911,7 +960,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
 
             > div {
                 display: grid;
-                grid-template-columns: 25% 25% 25% 25%;
+                grid-template-columns: 22.5% 22.5% 22.5% 22.5% 10%;
                 grid-template-rows: 50px;
                 align-items: center;
             }
@@ -952,6 +1001,10 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
 
                 .item__link:hover {
                     color: #7D84B2;
+                }
+
+                .remove__icon:hover {
+                    color: $errorColor;
                 }
             }
 

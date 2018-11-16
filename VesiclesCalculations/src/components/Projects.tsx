@@ -1,19 +1,20 @@
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { setLipidsVolInfoAndData } from '../actions';
-import { Cookies } from 'react-cookie';
-import * as _ from 'lodash';
-import lipidsVolumeInfo from '../fields/lipidsVolumeInfo';
-import { LipidsVolInfo, LipidsMolWInfo, ProjectTypes, IField, ILipidData, LipidVolData } from '../models';
-import lipidsMolWInfo from '../fields/lipidsMolWInfo';
-import { FormField, FormButton} from '../forms/components';
-import { FaExternalLinkAlt, FaSave} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Cookies } from 'react-cookie';
+import { map } from 'lodash';
+import { faSave, faExternalLinkAlt, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { setLipidsVolInfoAndData } from '../actions';
+import { LipidsVolInfoFields, LipidsMolWInfoFields } from '../fields';
+import { LipidsVolInfo, LipidsMolWInfo, ProjectTypes, IField, ILipidData, LipidVolData, LipidMolWData } from '../models';
+import { FormField, FormButton} from '../forms/components';
 import { setError } from '../actions/globalActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProjectsProps {
     cookies: Cookies;
+    canUseCookies: boolean;
     setLipidsVolInfoAndData: (lipidsInfo: LipidsVolInfo, lipidsData: ILipidData, clearResults: boolean) => void;
     setError: (error: string) => void;
 }
@@ -44,7 +45,11 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
     private _addProjectInput = null;
 
     componentDidMount() {
-        const { cookies } = this.props;
+        const { cookies, canUseCookies } = this.props;
+        if(!canUseCookies) {
+            return;
+        }
+
         const projects: any[] = cookies.get('VCC-LI') || [];
         const projectsData: any[] = this.props.cookies.get('VCC-LD') || { 'lipids': []};
 
@@ -53,7 +58,8 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                 projects,
                 projectsData,
                 selectedProject: projects[0],
-                selectedProjectType: projects[0].type
+                selectedProjectType: projects[0].type,
+                selectedProjectIndex: 0
             })
         }
     }
@@ -61,9 +67,9 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
     private _getSelectedProjectFields() {
         switch(this.state.selectedProjectType) {
             case ProjectTypes.LipidVolume:
-                return lipidsVolumeInfo;
+                return LipidsVolInfoFields;
             case ProjectTypes.LipidMolWeight:
-                return lipidsMolWInfo;
+                return LipidsMolWInfoFields;
             default:
                 return {};
         }   
@@ -85,7 +91,7 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
             case ProjectTypes.LipidVolume:
                 return `/lipidsVolume/0/`;
             case ProjectTypes.LipidMolWeight:
-                return `/lipidsMolWeight/0/`;
+                return `/molecularWeight/0/`;
             default:
                 return 'none';
         }
@@ -108,7 +114,11 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
     private _selectProject(index: number) {
         const { projects } = this.state;
         const selectedProject = projects[index];
-        this.setState({ selectedProject, selectedProjectType: selectedProject.type, selectedProjectIndex: index });
+        if(selectedProject == null) {
+            this.setState({ selectedProject, selectedProjectType: null, selectedProjectIndex: -1 });
+        } else {
+            this.setState({ selectedProject, selectedProjectType: selectedProject == null ? null : selectedProject.type, selectedProjectIndex: index });
+        }
     }
 
     private _readFromFile(ev) {
@@ -184,17 +194,60 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                         // add project info and data to array of all projects
                         projects.push(lipidsVolInfo);
                         projectsData.push(lipidsVolData);
-                        if(this.state.selectedProjectIndex == -1) {
-                            this.setState({ selectedProject: projects[0], selectedProjectIndex: 0, selectedProjectType: projects[0].type });
-                        }
-                        this.setState({ projects, projectsData });
 
                         break;
                     case ProjectTypes.LipidMolWeight:
+                        // set lipid volume info from file values separated by comma    
+                        const lipidsMolWInfo: LipidsMolWInfo = {
+                            type: projectType,
+                            modifiedDate: infoValues[1].replace(';', ','),
+                            title: projectTitle,
+                            diameterStart: infoValues[3],
+                            diameterEnd: infoValues[4], 
+                            step: infoValues[5],
+                            lipidsCount: infoValues[6],
+                            filled: true
+                        };
+
+                        // set array of lipid data
+                        const lipidsMolWData: ILipidData = { lipids: [] };
+                        
+                        // push into array each lipid data
+                        for(let i = 1; i < data.length; i++) {
+                            // if empty then pass
+                            if(data[i].match(new RegExp(/^\s*$/)) != null) {
+                                continue;
+                            }
+                            
+                            const dataLine = data[i].split(',');
+                            // if dont contain any members pass
+                            if(dataLine.length == 0) {
+                                continue;
+                            }
+
+                            const lipidMolWData: LipidMolWData = {
+                                name: dataLine[1],
+                                percentage: dataLine[2],
+                                molWeight: dataLine[3], 
+                                height: dataLine[4],
+                                area: dataLine[5]
+                            };
+                            lipidsMolWData.lipids.push(lipidMolWData);
+                        }
+                        projects.push(lipidsMolWInfo);
+                        projectsData.push(lipidsMolWData);
+
                         break;
                     default:
                         throw("Project type not found")
                 }
+
+                // add project info and data to array of all projects
+                if(this.state.selectedProjectIndex == -1) {
+                    this.setState({ selectedProject: projects[0], selectedProjectIndex: 0, selectedProjectType: projects[0].type });
+                }
+                this.setState({ projects, projectsData });
+
                 
             } catch(ex) {
                 setError('Error occurred: ' + ex.toString());
@@ -208,9 +261,16 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
         this._addProjectInput.value = "";
     }
 
+    private _removeProject(index: number) {
+        const { projects, projectsData } = this.state;
+        projects.splice(index, 1);
+        projectsData.splice(index, 1);
+        this.setState({ projects, projectsData });
+    }
+
     render(): JSX.Element {
         const { projects, selectedProject, selectedProjectIndex } = this.state;
-        const Fields: any = this._getSelectedProjectFields(); 
+        const Fields: any = projects.length !== 0 ? this._getSelectedProjectFields() : {}; 
         
         return (
         <div className='projects'>
@@ -223,12 +283,21 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                     <div>Project Link</div>
                 </div>
                 { 
-                    projects.map((project: LipidsVolInfo | LipidsMolWInfo, index: number) => 
+                    projects.length !== 0 && projects.map((project: LipidsVolInfo | LipidsMolWInfo, index: number) => 
                         <div key={ index } className={ `table__item ${index == selectedProjectIndex ? 'active' : '' }`} onClick={ () => this._selectProject(index) }>
-                            { ProjectFields.map((field, subIndex) => <div key={subIndex}> { subIndex == 1 ? this._getProjectTypeName(project[field]) : project[field] }</div>) }
-                            <Link className='item__link' to={ this._getProjectLink(project.type) } onClick={ () => this._loadProjectToState(project, index) }> 
-                                <FaExternalLinkAlt />
+                            { 
+                                ProjectFields.map((field, subIndex) => 
+                                    <div key={subIndex}>
+                                        { subIndex == 1 ? this._getProjectTypeName(project[field]) : project[field] }
+                                    </div>
+                                ) 
+                            }
+                            <Link className='item__link' to={ this._getProjectLink(project.type) } onClick={ () => this._loadProjectToState(project, index) }>
+                                <FontAwesomeIcon icon={ faExternalLinkAlt } />
                             </Link>
+                            <div onClick={ this._removeProject.bind(this, index) }>
+                                <FontAwesomeIcon icon={ faTimesCircle } className='remove__icon' />
+                            </div>
                         </div>
                     )
                 }
@@ -236,16 +305,16 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                 <input type='file' accept='.csv, .txt, text/plain' multiple={false}
                     ref={ (el) => this._addProjectInput = el } style={{ display: 'none'}} onChange={ this._readFromFile.bind(this) }
                 />
-                { FormButton('button', 'Load Project From File', FaSave, '', () => this._addProjectInput.click() ) }
+                { FormButton('button', 'Load Project From File', faSave, '', () => this._addProjectInput.click() ) }
 
             </div>
             <div className='project__form'>
                 <div className='form'>
                     <h2 className='form__header'>Project Details</h2>
                     <div className='form__fields'>
-                    { _.map(Fields, (field: IField, name: string) => 
-                        <FormField key={name}
-                            input={ { className: 'field__input disabled', defaultValue: !selectedProject ? '' : selectedProject[name] } }
+                    { map(Fields, (field: IField, name: string) => {
+                        return <FormField key={name}
+                            input={ { className: 'field__input disabled', value: !selectedProject ? '' : selectedProject[name], readOnly: true } }
                             unitClassName=''
                             label={ field.label }
                             type={ field.type }
@@ -253,6 +322,8 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                             units={ field.units }
                             meta={{ touched: false, error: null, warning: null}}
                         />
+
+                    }
                     )}
                     </div>
                 </div>
@@ -268,4 +339,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     }, dispatch
 );
 
-export default connect(null, mapDispatchToProps)(Projects);  
+export default connect(null, mapDispatchToProps)(Projects);

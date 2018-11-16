@@ -1,9 +1,9 @@
 import { createElement } from 'react';
-import * as gcf from '../services/gcf';
+import { sendDataToEmail as sendEmail } from '../services/gcf';
 import { SET_ERROR, SET_INFO, SET_DIALOG, SET_STRINGIFIED_RESULTS, SET_LOADING } from "./types";
 import { LipidsVolInfo, ILipidData, LipidsMolWInfo } from "../models";
 import { Cookies } from "react-cookie";
-import { EmailForm } from '../forms';
+import EmailForm from '../forms/Email';
 
 export const saveProject = (cookies: Cookies, projectInfo: any, projectData: ILipidData, cookieNamespace: string) => dispatch => {
     try {
@@ -34,18 +34,13 @@ export const saveProject = (cookies: Cookies, projectInfo: any, projectData: ILi
     }
 }
 
-export const stringifyResults = (infoFields: any, dataFields: any, resultFields, lipidsInfo: LipidsVolInfo, lipidsData: ILipidData, lipidsResults: ILipidData | any, projectType: number) => {
+export const stringifyResults = (infoFields: any, dataFields: any, lipidsInfo: any, lipidsData: any, projectType: number) => {
     let results: string = '';
 
     // Concatenating Project field labels
-    const allFields = Object.assign({},
-        infoFields,
-        { 'totalMass': { label: 'Total Mass' } },
-        { 'totalVolume': { label: 'Total Volume'}},
-    );
     results += 'Project Type,Modified Date,'
-    for(let fieldName in allFields) {
-        results += allFields[fieldName].label + ',';
+    for(let fieldName in infoFields) {
+        results += infoFields[fieldName].label + ',';
     }
     results = results.substr(0, results.length - 1) + '\n';
 
@@ -61,11 +56,11 @@ export const stringifyResults = (infoFields: any, dataFields: any, resultFields,
     for(let fieldName in infoFields) {
         results += lipidsInfo[fieldName] + ',';
     }
-    results += lipidsResults.totalMass + ',' + lipidsResults.totalVolume + '\n\n';
+    results = results.substr(0, results.length - 1) + '\n\n';
 
     const dataAndResultFields = Object.assign({}, 
         { lipid: { label: 'Lipid No.' } },
-        dataFields, resultFields
+        dataFields
     );
     for(let fieldName in dataAndResultFields) {
         results += dataAndResultFields[fieldName].label + ',';
@@ -73,7 +68,6 @@ export const stringifyResults = (infoFields: any, dataFields: any, resultFields,
     results = results.substr(0, results.length - 1) + '\n';
 
     // add field values to results
-
     for(let i = 0; i < lipidsData.lipids.length; i++) {
         // log lipid number
         results += (i + 1) + ',';
@@ -81,10 +75,6 @@ export const stringifyResults = (infoFields: any, dataFields: any, resultFields,
         // insert data values and result values
         let lipid = lipidsData.lipids[i];
         for(let fieldName in dataFields) {
-            results += lipid[fieldName] + ',';
-        }
-        lipid = lipidsResults.lipids[i];
-        for(let fieldName in resultFields) {
             results += lipid[fieldName] + ',';
         }
         results = results.substr(0, results.length - 1) + '\n';
@@ -101,7 +91,7 @@ export const sendDataToEmail = async(values: any, stringifiedResults: string, di
     });
 
     try {
-        await gcf.sendDataToEmail(stringifiedResults, values.email);
+        await sendEmail(stringifiedResults, values.email);
         setInfo('Data has been sent to specified email')(dispatch); 
     } catch(ex) {
         setError(ex.toString())(dispatch); 

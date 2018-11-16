@@ -8,9 +8,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    lipidsMolWInfo: { title: 'SolutionNr1', diameterStart: '10', diameterEnd: '1000', step: '5', lipidsCount: '1', filled: false },
-    lipidsMolWData: { lipids: [{ name: 'test' }] },
-    lipidsMolWResults: { lipids: [{}], lipidsMass: 100, lipidsVolume: 15, calculated: true },
+    lipidsMolWInfo: { filled: false },
+    lipidsMolWData: { lipids: [] },
+    lipidsMolWResults: { data: [], calculated: false },
     copiedMolWData: {},
     step: 0
 }

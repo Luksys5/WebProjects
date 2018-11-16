@@ -8,9 +8,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    lipidsVolInfo: { title: 'filled', finalMass: '1', finalVolume: '10', lipidsCount: 1, filled: true },
-    lipidsVolData: { lipids: [{ name: 'test', percentage: '100', concentration: '0.100', molWeight: '0.100' }] },
-    lipidsVolResults: { lipids: [{ requiredVolume: '0.75' }], totalMass: 100, totalVolume: 15, calculated: true },
+    lipidsVolInfo: { filled: true },
+    lipidsVolData: { lipids: [] },
+    lipidsVolResults: { lipids: [], calculated: false },
     copiedVolData: {},
     step: 1
 }

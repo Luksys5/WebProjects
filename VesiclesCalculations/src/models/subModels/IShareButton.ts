@@ -1,8 +1,8 @@
 export interface IShareButton {
     id: string;
     className: string;
+    iconComponent: string;
     tooltipClassName: string;
-    iconComponent: any;
     tooltipText: string;
     iconColor: string;
     iconSize: number;

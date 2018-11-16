@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Field, GenericField } from 'redux-form';
-import { FaArrowRight } from 'react-icons/fa';
 import { FormField, FormButton } from '.';
 import { IField } from '../../models/subModels/IField';
-import * as _ from 'lodash';
+import { map } from 'lodash';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const FieldCustom = Field as new() => GenericField<any>;
 export const ProjectGeneralInfo = (props) => {
@@ -23,7 +23,7 @@ export const ProjectGeneralInfo = (props) => {
         <div>
             <h2 className='form__header'>{ header }</h2>
             <div className='form__fields'>
-                { _.map(props.formFields, (field: IField, name: number) => (
+                { map(props.formFields, (field: IField, name: number) => (
                     <FieldCustom
                         key={ name }
                         label={ field.label }
@@ -37,7 +37,7 @@ export const ProjectGeneralInfo = (props) => {
                     />
                 ))}
                 <div className='field'>
-                    { FormButton('submit', 'Next', FaArrowRight) } 
+                    { FormButton('submit', 'Next', faArrowRight) } 
                 </div>
             </div>
         </div>

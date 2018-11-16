@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IconType } from 'react-icons/lib/iconBase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface ShareButtonProps {
-  iconComponent: IconType;
   id: string;
   className: string;
+  iconComponent: any;
   tooltipClassName: string;
   tooltipText: string;
   iconColor: string;
@@ -40,21 +40,17 @@ export class ShareButton extends React.Component<ShareButtonProps, ShareButtonSt
   } 
 
   public render(): JSX.Element {
-    const { id, className, tooltipClassName, tooltipText, iconComponent, iconColor, iconSize, iconClick } = this.props;
+    const { className, iconComponent, tooltipClassName, tooltipText, iconColor, iconClick } = this.props;
     const { tooltipActive } = this.state;
 
     const tooltipClassNameFull: string = `${tooltipClassName} ${tooltipActive ? 'active' : ''}`;
     return (
       <div className={ className }
         onMouseEnter={ this._mouseEnterBtn.bind(this) }
-        onMouseLeave={ this._mouseLeaveBtn.bind(this)}>
-        { React.createElement(iconComponent, {
-          id: id,
-          className: `${className}__icon`,
-          size: iconSize,
-          color: iconColor,
-          onClick: iconClick
-        }) }
+        onMouseLeave={ this._mouseLeaveBtn.bind(this)}
+        onClick={iconClick}
+      >
+        <FontAwesomeIcon icon={ iconComponent } className={ `${className}__icon` } color={ iconColor } />
         <span className={ tooltipClassNameFull }>
           <span>{ tooltipText }</span>
           <div className='triangle'></div>

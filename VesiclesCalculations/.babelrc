@@ -1,8 +1,33 @@
 {
     "presets": [
-        "react", "es2015"
+        "@babel/react",
+        ["@babel/preset-env", {
+            "useBuiltIns": false
+        }],
+        "@babel/preset-typescript"
     ],
     "plugins": [
-        "react-hot-loader/babel"
+        "react-hot-loader/babel",
+        "react-loadable/babel",
+        "syntax-dynamic-import",
+        "transform-class-properties",
+        "recharts",
+        ["transform-imports", {
+            "@fortawesome/free-solid-svg-icons": {
+                "transform": "@fortawesome/free-solid-svg-icons/${member}",
+                "skipDefaultConversion": true,
+                "preventFullImport": true
+            },
+            "@fortawesome/free-brands-svg-icons": {
+                "transform": "@fortawesome/free-brands-svg-icons/${member}",
+                "skipDefaultConversion": true,
+                "preventFullImport": true
+            },
+            "lodash": {
+                "transform": "lodash/${member}",
+                "preventFullImport": true
+            }
+        }],
+        "@babel/plugin-transform-runtime"
     ]
 }

@@ -7,8 +7,9 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route} from 'react-router-dom';
 import { CookiesProvider} from 'react-cookie';
 
-import './index.scss';
-require('../assets/favicon.ico');
+require('./index.scss');
+// @ts-ignore
+import(/* webpackMode: "eager" */ '../assets/favicon.ico');
 
 const AppComponent = (): any => {
     return(
@@ -24,6 +25,5 @@ const AppComponent = (): any => {
         )
     );
 }
-
 
 export default hot(module)(AppComponent());

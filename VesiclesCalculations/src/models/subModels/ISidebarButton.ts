@@ -1,5 +1,7 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 export interface ISidebarButton {
     path: string;
-    icon: string;
+    icon: IconProp;
     step?: string;
 }

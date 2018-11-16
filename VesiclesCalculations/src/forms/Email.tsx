@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Field, GenericField, reduxForm } from 'redux-form';
 import { FormField } from './components';
 import { connect } from 'react-redux';
-import { FaEnvelope } from 'react-icons/fa';
 import { bindActionCreators } from 'redux';
 import { sendDataToEmail } from '../actions';
 import { validateValues } from '../validations';
@@ -19,7 +18,7 @@ const EmailForm = props => {
     }>
         <BasicField component={ FormField } { ...EmailFields['email'] }/>
         <button type='submit' className='button-with-icon'>
-            <FaEnvelope className='button__icon' size={16} />
+            <i className='button__icon fa fa-envelope' style={{ fontSize: 16 }} />
             Send
         </button>
     </form>

@@ -1,12 +1,13 @@
 import { IField } from "../models";
-import * as _ from 'lodash';
+// @ts-ignore
+import { each } from 'lodash';
 import { ILipidData } from "../models/subModels/ILipidData";
 import LipidData from "../models/LipidVolumeData";
 
 export const validateValues = (values: any, fields: any) => {
   let errors = {};
 
-  _.each(fields, (field: IField, name: string) => {
+  each(fields, (field: IField, name: string) => {
     if(!values[name]) {
       errors = Object.assign(errors, { [name]: `${field.label} is required to be filled`});
     } else if(field.validator) {

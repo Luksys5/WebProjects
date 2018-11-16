@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { reduxForm, FieldArray, InjectedFormProps } from 'redux-form';
-import { FaSave } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { validateData } from '../validations';
 import { FormButton, LipidsDataContent } from './components';
 import { setLipidsMolWData, setLipidsMolWInfoAndData,
-    copyLipidsMolWData, clearLipidsMolWData, saveProject } from '../actions';
-import { LipidsMolWDataFields } from '../fields';
+    copyLipidsMolWData, clearLipidsMolWData, saveProject, stringifyResults } from '../actions';
+import { LipidsMolWDataFields, LipidsMolWInfoFields } from '../fields';
 import { ILipidData } from '../models';
-import { LipidMolWResult } from './components/LipidMolWResult';
+import LipidsMolWResult from './components/LipidsMolWResult';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 const LipidsMolWeightData = (props: InjectedFormProps | any): JSX.Element => {
     const { 
@@ -19,7 +19,7 @@ const LipidsMolWeightData = (props: InjectedFormProps | any): JSX.Element => {
     
     return (
     <form className='form' onSubmit={
-        handleSubmit((values, dispatch) => { setLipidsMolWData(values, 1, {})(dispatch); }) 
+        handleSubmit((values, dispatch) => { setLipidsMolWData(values, 1, molWInfo)(dispatch); }) 
     }>
         <h2 className='form__header'>{ molWInfo.title  }</h2>
         <div>
@@ -31,17 +31,21 @@ const LipidsMolWeightData = (props: InjectedFormProps | any): JSX.Element => {
                 copiedLipid={ copiedLipid }
                 saveProjectBtn={
                     dirty && canUseCookies &&
-                    FormButton('submit', 'Save', FaSave, 'row-end', handleSubmit(
+                    FormButton('submit', 'Save', faSave, 'row-end', handleSubmit(
                         (values, dispatch) => {
                             setLipidsMolWInfoAndData(molWInfo, values)(dispatch);
-                            saveProject(cookies, molWInfo, values, 'VCC-L');
+                            saveProject(cookies, molWInfo, values, 'VCC-L')(dispatch);
                         }
                     ))
                 }
-                resultComponent={ LipidMolWResult(results) }
+                resultComponent={ (index: number) => index === 0 && <LipidsMolWResult  results={results} />}
                 copyLipidVolData={ copyLipidsMolWData }
                 clearLipidsVolData={ clearLipidsMolWData }
                 goToPreviousPage={ handleSubmit((values, dispatch) => setLipidsMolWData(values, 0, null)(dispatch)) }
+                handleSubmit={handleSubmit}
+                stringifyResults={
+                    (values: ILipidData) => stringifyResults(LipidsMolWInfoFields, LipidsMolWDataFields, molWInfo, values, 1)
+                } 
             />
         </div>
     </form>

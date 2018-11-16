@@ -2,7 +2,8 @@ import * as React from 'react';
 import { IField } from '../../models';
 import { ILipidVolResult } from '../../models/subModels/ILipidVolumeResult';
 import { LipidsVolResultFields as FIELDS } from '../../fields';
-import * as _ from 'lodash';
+// @ts-ignore
+import { map } from 'lodash';
 
 export const LipidVolResult = (results: any) => (index: number): JSX.Element => {
     // if results undefined empty return null
@@ -17,7 +18,7 @@ export const LipidVolResult = (results: any) => (index: number): JSX.Element => 
     <div className='lipid-result'>
         <h2 className='lipid__name'>Lipid Result #{ index + 1 }</h2>
         {
-            _.map(FIELDS, (field: IField, name: string) => (
+            map(FIELDS, (field: IField, name: string) => (
                 <div key={ name + index } className='field'>
                     <div className='field__name'>{ field.label }</div>
                     <div className='field__input'>
