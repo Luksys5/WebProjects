@@ -34,8 +34,6 @@ interface AppProps {
 
 interface AppState {
   canUseCookies: boolean;
-  showFullMenu: boolean;
-  showMenuText: boolean;
 }
 
 const cookiesHeader = 'Cookie Policy';
@@ -104,13 +102,12 @@ const LoadableLipidsVolInfoForm = Loadable({
 
 
 class App extends React.Component<AppProps, AppState> {
-  private _menuUpdate: boolean = true;
 
   constructor(props) {
     super(props);
 
     const canUseCookies: boolean = !!props.cookies.get('VCC-canUse');
-    this.state = { canUseCookies, showFullMenu: false, showMenuText: false };
+    this.state = { canUseCookies };
     
     cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
     cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
@@ -127,10 +124,6 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   componentDidUpdate() {
-    if(this._menuUpdate) {
-      this._menuUpdate = false;
-      return;
-    }
     const node: any = ReactDOM.findDOMNode(this);
     node.scrollTop = 0;
   }
@@ -156,7 +149,7 @@ class App extends React.Component<AppProps, AppState> {
    
     history.push('/molecularWeight/1');
   }
-  
+
   private _getSectionName(sectionName, fillHeight): string {
     if (sectionName.match(RoutePaths.Home)) {
       fillHeight.className = 'fill-height'
@@ -199,24 +192,9 @@ class App extends React.Component<AppProps, AppState> {
     setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, true);
   }
 
-  private _showMenu() {
-    this._menuUpdate = true;
-    this.setState({ showFullMenu: true });
-    setTimeout(() => {
-      this._menuUpdate = true;
-      this.setState({ showMenuText: this.state.showFullMenu }), 100
-    });
-
-  }
-
-  private _hideMenu() {
-    this._menuUpdate = true;
-    this.setState({ showFullMenu: false, showMenuText: false });
-  }
-
   public render(): JSX.Element {
     const { loading, loadingText, error, info, location, cookies, dialog, closeError, closeInfo } = this.props;
-    const { canUseCookies, showMenuText } = this.state;
+    const { canUseCookies } = this.state;
 
     let fillHeight = { className: ''}
     const header: string = this._getSectionName(location.pathname, fillHeight);
@@ -236,24 +214,24 @@ class App extends React.Component<AppProps, AppState> {
           { info && Message('info-message', info, faInfoCircle, faTimesCircle, closeInfo) }
         </div>
 
-        <div className='column__left' onMouseEnter={ this._showMenu.bind(this) } onMouseLeave={ this._hideMenu.bind(this) }>
+        <div className='column__left' >
           <div className='row__middle'>
             {
               map(SidebarBtns, (field: ISidebarButton, name: string) => 
                 <SidebarButton
                   key={ name }
                   linkTarget={ field.path + field.step }
-                  label={ !showMenuText ? '' : name }
+                  label={ name }
                   active={ location.pathname.match(field.path) != null }
                 >
-                  <FontAwesomeIcon className={ `sidebar-button__icon ${ showMenuText ? '' : 'extended'}`  } icon={field.icon} />
+                  <FontAwesomeIcon className={ 'sidebar-button__icon' } icon={field.icon} />
                 </SidebarButton>
               )
             }
           </div>
         </div>
 
-        <div className={ `column__right ${ showMenuText ? '' : 'extended'}` }>
+        <div className={ 'column__right' }>
         { 
           <div className={ `row__middle ${fillHeight.className}` }>
             <header className='app-header'>

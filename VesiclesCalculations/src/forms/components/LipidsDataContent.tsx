@@ -10,6 +10,7 @@ import { faRecycle, faPlusSquare, faDownload, faEnvelope, faCalculator, faArrowL
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface LipidsArrayProps {
+    prevPagePath: string;
     fields: FieldArrayFieldsProps<any>;
     formFields: any;
     meta: FieldArrayMetaProps;
@@ -22,7 +23,6 @@ interface LipidsArrayProps {
     copyLipidVolData: (lipidsVolData: LipidVolData) => void;
     clearLipidsVolData: () => void;
     stringifyResults: (values: any) => string;
-    goToPreviousPage: () => void;
     handleSubmit: (method: any) => void;
     [x: string]: any;
 }
@@ -95,7 +95,7 @@ export class LipidsData extends React.Component<LipidsArrayProps, LipidsArraySta
     
     public render() {
         const { fields, formFields, results, resultComponent, solutionResults, meta,
-            saveProjectBtn, clearLipidsVolData, goToPreviousPage, handleSubmit
+            saveProjectBtn, clearLipidsVolData, prevPagePath, handleSubmit
         } = this.props;
 
         return (
@@ -130,7 +130,7 @@ export class LipidsData extends React.Component<LipidsArrayProps, LipidsArraySta
                         } 
                     </div>
                     {   
-                        <Link to='/lipidsVolume/0' className='row-end button-with-icon' onClick={ goToPreviousPage } >
+                        <Link to={ prevPagePath } className='row-end button-with-icon'>
                             <FontAwesomeIcon icon={ faArrowLeft } className='button__icon' style={{ fontSize: 16 }}/>Back 
                         </Link>
                     }

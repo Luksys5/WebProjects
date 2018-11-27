@@ -2,19 +2,19 @@ import * as React from 'react';
 import { reduxForm, FieldArray, InjectedFormProps } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { validateData } from '../validations';
 import { FormButton, LipidsDataContent } from './components';
 import { setLipidsMolWData, setLipidsMolWInfoAndData,
-    copyLipidsMolWData, clearLipidsMolWData, saveProject, stringifyResults } from '../actions';
+    copyLipidsMolWData, clearLipidsMolWData, saveProject, stringifyResults, setMolWFormStep } from '../actions';
 import { LipidsMolWDataFields, LipidsMolWInfoFields } from '../fields';
 import { ILipidData } from '../models';
 import LipidsMolWResult from './components/LipidsMolWResult';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 const LipidsMolWeightData = (props: InjectedFormProps | any): JSX.Element => {
     const { 
         cookies, molWInfo, results, copiedLipid, dirty, canUseCookies,
-        handleSubmit, copyLipidsMolWData, clearLipidsMolWData 
+        handleSubmit, copyLipidsMolWData, clearLipidsMolWData
     } = props;
     
     return (
@@ -41,7 +41,7 @@ const LipidsMolWeightData = (props: InjectedFormProps | any): JSX.Element => {
                 resultComponent={ (index: number) => index === 0 && <LipidsMolWResult  results={results} />}
                 copyLipidVolData={ copyLipidsMolWData }
                 clearLipidsVolData={ clearLipidsMolWData }
-                goToPreviousPage={ handleSubmit((values, dispatch) => setLipidsMolWData(values, 0, null)(dispatch)) }
+                prevPagePath={ '/molecularWeight/0' } 
                 handleSubmit={handleSubmit}
                 stringifyResults={
                     (values: ILipidData) => stringifyResults(LipidsMolWInfoFields, LipidsMolWDataFields, molWInfo, values, 1)
@@ -63,13 +63,14 @@ const mapStateToProps = (state, ownProps) => ({
     copiedLipid: state.lipidsMolWeight.copiedMolWData,
     results: state.lipidsMolWeight.lipidsMolWResults,
     canUseCookies: ownProps.canUseCookies,
-    cookies: ownProps.cookies
+    cookies: ownProps.cookies,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
         setLipidsMolWData,
         copyLipidsMolWData,
         clearLipidsMolWData,
+        setMolWFormStep
     }, dispatch
 )
 

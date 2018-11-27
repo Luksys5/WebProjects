@@ -1,13 +1,16 @@
 
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { validateValues } from '../validations';
 import { LipidsMolWInfoFields } from '../fields';
 import { ProjectGeneralInfo } from './components';
+import { fillLipidsMolWInfoAndData as fillByExample } from '../actions';
 
 const LipidsVolumeInfoForm = reduxForm({
     form: 'lipidsMolWInfo',
-    validate: (values) => validateValues(values, LipidsMolWInfoFields)
+    validate: (values) => validateValues(values, LipidsMolWInfoFields),
+    enableReinitialize: true
 })(ProjectGeneralInfo);
 
 const mapStateToProps = state => ({
@@ -19,6 +22,10 @@ const mapStateToProps = state => ({
     exampleText: 'Create project with 13 lipids(more detail in next step) and vesicle from to diameter'
 });
 
-const mapDispatchToProps = _dispatch => ({});
+const mapDispatchToProps = dispatch => bindActionCreators({
+        fillByExample
+    }, dispatch
+);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(LipidsVolumeInfoForm);

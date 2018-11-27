@@ -1,8 +1,8 @@
-import { setLipidsVolInfo, setLipidsVolData, setLipidsVolInfoAndData,
+import { setLipidsVolInfo, setLipidsVolData, setLipidsVolInfoAndData, fillLipidsVolInfoAndData,
     copyLipidsVolData, setVolFormStep, clearLipidsVolData
 } from './lipidsVolumeActions';
 
-import { setLipidsMolWInfo, setLipidsMolWData, setLipidsMolWInfoAndData,
+import { setLipidsMolWInfo, setLipidsMolWData, setLipidsMolWInfoAndData, fillLipidsMolWInfoAndData,
     copyLipidsMolWData, setMolWFormStep, clearLipidsMolWData
 } from './lipidsMolWeightActions';
 
@@ -13,12 +13,14 @@ export {
     setLipidsVolInfo,
     setLipidsVolData,
     setLipidsVolInfoAndData,
+    fillLipidsVolInfoAndData,
     setVolFormStep,
     copyLipidsVolData,
     clearLipidsVolData,
     setLipidsMolWInfo,
     setLipidsMolWData,
     setLipidsMolWInfoAndData,
+    fillLipidsMolWInfoAndData,
     setMolWFormStep,
     copyLipidsMolWData,
     clearLipidsMolWData,

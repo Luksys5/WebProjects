@@ -16,7 +16,7 @@ export let linkElement = null;
 const LipidsVolumeData = (props: InjectedFormProps | any) => {
     const {
         cookies, volumeInfo, results, copiedLipid, canUseCookies, dirty,
-        handleSubmit, copyLipidsVolData, clearLipidsVolData, setVolFormStep 
+        handleSubmit, copyLipidsVolData, clearLipidsVolData
     } = props;
 
     return (
@@ -57,9 +57,7 @@ const LipidsVolumeData = (props: InjectedFormProps | any) => {
                 }
                 copyLipidVolData={ copyLipidsVolData }
                 clearLipidsVolData={ clearLipidsVolData }
-                goToPreviousPage={ () => {
-                    setVolFormStep(0);
-                } }
+                prevPagePath={ '/lipidsVolume/0' } 
                 handleSubmit={handleSubmit}
                 stringifyResults={
                     (values: ILipidData) => stringifyResults(LipidsVolInfoFields, LipidsVolDataFields, volumeInfo, values, 0)

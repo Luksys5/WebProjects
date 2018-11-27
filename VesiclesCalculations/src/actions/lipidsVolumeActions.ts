@@ -2,7 +2,7 @@ import { SET_LIPID_VOLUME_INFO, SET_VOLUME_FORM_STEP,
     COPY_LIPID_VOLUME_DATA, SET_LIPID_VOLUME_DATA, CLEAR_LIPIDS_VOL_DATA, SET_LIPID_VOLUME_RESULTS,
     SET_LOADING, SET_ERROR
 } from './types';
-import { LipidsVolInfo, LipidVolData, ILipidData } from '../models';
+import { LipidsVolInfo, LipidVolData, ILipidData, ProjectTypes } from '../models';
 import { calculateLipidsVolume } from '../services/gcf';
     
 export const setLipidsVolInfo = (lipidsVolInfo: LipidsVolInfo) => dispatch => {
@@ -79,6 +79,48 @@ export const setLipidsVolInfoAndData = (volumeInfo: LipidsVolInfo, volumeData: I
             payload: { lipids: volumeData.lipids.map(lipid => {}) }
         })
     }
+}
+
+export const fillLipidsVolInfoAndData = () => dispatch => {
+    dispatch({
+        type: SET_LIPID_VOLUME_INFO,
+        payload: {
+            title: 'Example',
+            finalMass: '74',
+            finalVolume: '150',
+            lipidsCount: 3,
+            type: ProjectTypes.LipidVolume,
+            filled: true,
+            modifiedDate: new Date().toLocaleString()
+        },
+        step: 0
+    });
+
+    dispatch({
+        type: SET_LIPID_VOLUME_DATA,
+        payload: { lipids: [
+            {
+               name: 'first lipid',
+               percentage: '17',
+               concentration: '0.32',
+               molWeight: '0.1'
+            },
+            {
+               name: 'second lipid',
+               percentage: '37',
+               concentration: '0.69',
+               molWeight: '0.32'
+            },
+            {
+               name: 'third lipid',
+               percentage: '46',
+               concentration: '0.22',
+               molWeight: '0.2'
+            }
+        ]},
+        step: 0
+    });
+
 }
 
 export const copyLipidsVolData = (lipidsVolData: LipidVolData) => dispatch => {

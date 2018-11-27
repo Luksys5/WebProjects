@@ -3,11 +3,11 @@ import { Field, GenericField } from 'redux-form';
 import { FormField, FormButton } from '.';
 import { IField } from '../../models/subModels/IField';
 import { map } from 'lodash';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faPen } from '@fortawesome/free-solid-svg-icons';
 
 const FieldCustom = Field as new() => GenericField<any>;
 export const ProjectGeneralInfo = (props) => {
-    const { handleSubmit, header } = props;
+    const { handleSubmit, header, fillByExample } = props;
     return (
     <form id='lipids-vol-info-form' className='form' onSubmit={ handleSubmit }>
         <div className='form__example'>
@@ -19,6 +19,9 @@ export const ProjectGeneralInfo = (props) => {
             <p className='example__text'>
                 { props.exampleText }
             </p>
+            <div>
+                { FormButton('button', 'Fill Data by Example', faPen, '', fillByExample) }
+            </div>
         </div>
         <div>
             <h2 className='form__header'>{ header }</h2>

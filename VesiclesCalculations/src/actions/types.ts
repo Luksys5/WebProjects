@@ -1,5 +1,5 @@
-export const SET_VOLUME_FORM_STEP: string = 'SET_FORM_STEP';
-export const SET_MOL_W_FORM_STEP: string = 'SET_FORM_STEP';
+export const SET_VOLUME_FORM_STEP: string = 'SET_VOL_FORM_STEP';
+export const SET_MOL_W_FORM_STEP: string = 'SET_MOL_W_FORM_STEP';
 
 export const SET_LIPID_VOLUME_INFO: string = 'SET_LIPID_VOLUME_INFO';
 export const SET_LIPID_VOLUME_DATA: string = 'SET_LIPID_VOLUME_DATA';

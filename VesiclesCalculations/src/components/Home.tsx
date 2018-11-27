@@ -7,7 +7,7 @@ const Home = () => {
             <div className='home__text'>
                 <div className='body'>
                     <h2>About</h2>
-                    <p>
+                    <p className='body__about'>
                         Our main mission is to save researchers time by making calculations for
                         liposome preparation and their properties more convenient.
                     </p>
@@ -26,7 +26,7 @@ const Home = () => {
                         </li>
                     </ol>
 
-                    <h2>Tutorial</h2>
+                    { /*<h2>Tutorial</h2>
                         { React.createElement('iframe', {
                             className: 'youtube-frame',
                             width: "480",
@@ -38,6 +38,7 @@ const Home = () => {
                             modestbranding: "1",
                         },
                         ) }
+                    */ }
                 </div>
             </div>
         </div>

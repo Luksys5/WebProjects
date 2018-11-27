@@ -1,7 +1,7 @@
 import { SET_LIPID_MOL_W_INFO, SET_MOL_W_FORM_STEP,
     COPY_LIPID_MOL_W_DATA, SET_LIPID_MOL_W_DATA, CLEAR_LIPIDS_MOL_W_DATA, SET_LOADING, SET_LIPID_MOL_W_RESULTS, SET_ERROR 
 } from './types';
-import { LipidsMolWInfo, LipidMolWData, ILipidData, LipidsMolWResults, ILipidMolWResult } from '../models';
+import { LipidsMolWInfo, LipidMolWData, ILipidData, LipidsMolWResults, ILipidMolWResult, ProjectTypes } from '../models';
 import { calculateLipidsMolWeight } from '../services/gcf';
     
 export const setLipidsMolWInfo = (lipidsMolWInfo: LipidsMolWInfo) => dispatch => {
@@ -69,6 +69,51 @@ export const setLipidsMolWInfoAndData = (molWInfo: LipidsMolWInfo, molWData: ILi
     dispatch({
         type: SET_LIPID_MOL_W_DATA,
         payload: molWData,
+        step: 0
+    })
+}
+
+export const fillLipidsMolWInfoAndData = () => dispatch => {
+    dispatch({
+        type: SET_LIPID_MOL_W_INFO,
+        payload: {
+            title: 'Example',
+            diameterStart: '74',
+            diameterEnd: '150',
+            step: '3',
+            lipidsCount: 3,
+            type: ProjectTypes.LipidMolWeight,
+            filled: true,
+            modifiedDate: new Date().toLocaleString()
+        },
+        step: 0
+    });
+
+    dispatch({
+        type: SET_LIPID_MOL_W_DATA,
+        payload: { lipids: [
+            {
+               name: 'first lipid',
+               percentage: '17',
+               molWeight: '0.1',
+               height: '5',
+               area: '20'
+            },
+            {
+               name: 'second lipid',
+               percentage: '37',
+               molWeight: '0.32',
+               height: '7',
+               area: '23'
+            },
+            {
+               name: 'third lipid',
+               percentage: '46',
+               molWeight: '0.2',
+               height: '3',
+               area: '13'
+            }
+        ]},
         step: 0
     })
 }
