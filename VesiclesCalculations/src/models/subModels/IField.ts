@@ -1,6 +1,7 @@
 export interface IField {
-    name: string;
     type: string;
+    name: string;
+    unitClassName: string;
     label: string;
     helpText: string;
     units?: any;

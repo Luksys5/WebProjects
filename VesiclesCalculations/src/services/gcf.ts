@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-import * as jQuery from 'jquery';
-
-export const calculateLipidsVolume = async (volumeInfo, volumeData): Promise<any> => {
-    return new Promise<any>((resolve, reject) => {
-        jQuery.ajax({
-            url: 'https://europe-west1-mylocalworldmap.cloudfunctions.net/calculate-lipidsVolume',
-            method: 'POST',
-            data: JSON.stringify({ volumeInfo, volumeData }),
-            dataType: 'json',
-            contentType: 'application/json',
-            success: (result) => {
-                console.log(result);
-                resolve(result);
-            },
-            error: (jqXHR, message, status) => {
-                reject(message);
-            }
-        })
-=======
 import { ICalcResult } from '../models/subModels/ICalcResult';
 
 interface IHeader {
@@ -113,7 +93,6 @@ export const sendDataToEmail = async(data: string, email: string): Promise<any> 
                 }
             }, reject
         );
->>>>>>> 56840ff... VCC. Released production version v1.0.0
     })
 
 }

@@ -1,31 +1,28 @@
-import { setLipidsVolInfo, setLipidsVolData,
+import { setLipidsVolInfo, setLipidsVolData, setLipidsVolInfoAndData, fillLipidsVolInfoAndData,
     copyLipidsVolData, setVolFormStep, clearLipidsVolData
 } from './lipidsVolumeActions';
 
-import { setLipidsMolWInfo, setLipidsMolWData,
+import { setLipidsMolWInfo, setLipidsMolWData, setLipidsMolWInfoAndData, fillLipidsMolWInfoAndData,
     copyLipidsMolWData, setMolWFormStep, clearLipidsMolWData
 } from './lipidsMolWeightActions';
 
-<<<<<<< HEAD
-=======
 
 import { saveProject, stringifyResults, sendDataToEmail, setDialogEmailForm, setStringifiedResults, setDialog, setError, setInfo, closeInfo, closeError } from './globalActions';
 
->>>>>>> 56840ff... VCC. Released production version v1.0.0
 export {
     setLipidsVolInfo,
     setLipidsVolData,
+    setLipidsVolInfoAndData,
+    fillLipidsVolInfoAndData,
     setVolFormStep,
     copyLipidsVolData,
     clearLipidsVolData,
     setLipidsMolWInfo,
     setLipidsMolWData,
+    setLipidsMolWInfoAndData,
+    fillLipidsMolWInfoAndData,
     setMolWFormStep,
     copyLipidsMolWData,
-<<<<<<< HEAD
-    clearLipidsMolWData
-}
-=======
     clearLipidsMolWData,
     saveProject,
     stringifyResults,
@@ -38,4 +35,3 @@ export {
     closeError,
     closeInfo,
 };
->>>>>>> 56840ff... VCC. Released production version v1.0.0

@@ -1,76 +1,121 @@
 import * as React from 'react';
 import { FormButton } from '.';
-<<<<<<< HEAD
-import { FaRecycle, FaPlusSquare } from 'react-icons/fa'
-=======
 // @ts-ignore
->>>>>>> 56840ff... VCC. Released production version v1.0.0
 import { FieldArrayFieldsProps, FieldArrayMetaProps } from 'redux-form';
-import { LipidVolData } from '../../models';
+import { LipidVolData, LipidsVolResults, LipidsVolInfo } from '../../models';
 import { LipidData} from './LipidData'
-<<<<<<< HEAD
-import { LipidResult } from './LipidResult';
-import * as _ from 'lodash';
-=======
 import { Link } from 'react-router-dom';
 import { setDialogEmailForm, setStringifiedResults, setError  } from '../../actions';
 import { faRecycle, faPlusSquare, faDownload, faEnvelope, faCalculator, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
->>>>>>> 56840ff... VCC. Released production version v1.0.0
 
 interface LipidsArrayProps {
+    prevPagePath: string;
     fields: FieldArrayFieldsProps<any>;
     formFields: any;
     meta: FieldArrayMetaProps;
     lipidData: LipidVolData[];
     copiedLipid: LipidVolData;
+    results: LipidsVolResults;
+    saveProjectBtn: JSX.Element;
+    solutionResults: JSX.Element;
+    resultComponent: (index: number) => JSX.Element
     copyLipidVolData: (lipidsVolData: LipidVolData) => void;
     clearLipidsVolData: () => void;
+    stringifyResults: (values: any) => string;
+    handleSubmit: (method: any) => void;
     [x: string]: any;
 }
 
-export const removeLipidData = (props, index) => {
-    props.fields.remove(index);
+interface LipidsArrayState {
+    stringifiedResults: string;
 }
 
-export const copyLipidData = (props, index) => {
-    props.copyLipidVolData(props.fields.get(index)) 
-}
+export class LipidsData extends React.Component<LipidsArrayProps, LipidsArrayState> {
+    private _listElement : any = null;
+    private _linkElement: any = null;
+    private _elementsCount: number = 0;
 
-export const pasteLipidData = (props, index) => {
-    props.fields.insert(index, props.copiedLipid);
-    props.fields.remove(index + 1);
-}
+    constructor(props) {
+        super(props);
+        this._elementsCount = props.fields.length;
 
-<<<<<<< HEAD
-type RenderLipidsType = ({}: LipidsArrayProps) => JSX.Element;
-export const LipidsData: RenderLipidsType = (props: LipidsArrayProps): JSX.Element => (
-    <ul className='lipids-vol-data'>
-        { props.fields.map((member: string, index: number) => (
-            <li key={index} className='lipid-element'>
-                { LipidData(member, index, props.formFields,
-                    () => removeLipidData(props, index),
-                    () => copyLipidData(props, index),
-                    () => pasteLipidData(props, index)
-                )}
-                {
-                    LipidResult({}, index)
-                }
-            </li>
-        ))}
-        <div className='lipid-actions'>
-            { FormButton('button', 'Add Lipid', FaPlusSquare, '', () => {
-                props.fields.push({});
-            }) } 
-            { FormButton('button', 'Clear Data and Results', FaRecycle, '', () => {
-                props.fields.removeAll();
-                props.clearLipidsVolData()
-            }) } 
-            <span className='form__error'>{ props.meta.submitFailed ? props.meta.error : '' }</span>
-        </div>
-    </ul>
-)
-=======
+        this.state = {
+            stringifiedResults: null
+        }
+    }
+
+    componentDidUpdate() {
+        if(!!this._listElement) {
+            const childNodes: any[] = this._listElement.childNodes;
+            let childCount: number = 0;
+            childNodes.forEach(el => el.className == 'lipid-element' ? childCount++ : null);
+
+            if(this._elementsCount < childCount) {
+                this._listElement.scrollIntoView(false);
+                this._elementsCount = childCount;
+            }
+        }
+    }
+
+    private _removeLipidData = (index) => {
+        const { fields } = this.props;
+        fields.remove(index);
+        this._elementsCount -= 1;
+    }
+
+    private _copyLipidData = (index) => {
+        const { fields, copyLipidVolData } = this.props; 
+        copyLipidVolData(fields.get(index)) 
+    }
+
+    private _pasteLipidData = (index) => {
+        const { fields, copiedLipid } = this.props; 
+        fields.insert(index, copiedLipid);
+        fields.remove(index + 1);
+    }
+
+    private _cloneLipidData = (index) => {
+        const { fields } = this.props;
+        fields.push(fields.get(index))   
+    }
+
+    private _encodeURIComponent = (encoder: any, uri: string) => {
+        return 'data:text/plain;charset=utf-8,' + encoder.encodeURIComponent(uri);
+    }
+
+    private _stringifyAndDownload(values: LipidsVolInfo) {
+        const stringifiedResults = this.props.stringifyResults(values);
+        const encodedResults = this._encodeURIComponent(window, stringifiedResults);
+
+        // set link href value and manually download results
+        this._linkElement.href = encodedResults;
+        this._linkElement.click();
+    }
+    
+    public render() {
+        const { fields, formFields, results, resultComponent, solutionResults, meta,
+            saveProjectBtn, clearLipidsVolData, prevPagePath, handleSubmit
+        } = this.props;
+
+        return (
+            <ul className='lipids-vol-data' ref={ (el) => this._listElement = el }>
+                { fields.map((member: string, index: number) => (
+                    <li key={index} className='lipid-element'>
+                        { LipidData(member, index, formFields,
+                            () => this._removeLipidData(index),
+                            () => this._copyLipidData(index),
+                            () => this._pasteLipidData(index),
+                            () => this._cloneLipidData(index) 
+                        )}
+                        {
+                            resultComponent(index)
+                        }
+                    </li>
+                ))}
+                    
+                { solutionResults }
+
                 <div className='lipid-actions'>
                     <div className='row-end'>
                         {
@@ -85,7 +130,7 @@ export const LipidsData: RenderLipidsType = (props: LipidsArrayProps): JSX.Eleme
                         } 
                     </div>
                     {   
-                        <Link to='/lipidsVolume/0' className='row-end button-with-icon' onClick={ goToPreviousPage } >
+                        <Link to={ prevPagePath } className='row-end button-with-icon'>
                             <FontAwesomeIcon icon={ faArrowLeft } className='button__icon' style={{ fontSize: 16 }}/>Back 
                         </Link>
                     }
@@ -128,4 +173,3 @@ export const LipidsData: RenderLipidsType = (props: LipidsArrayProps): JSX.Eleme
         )
     }
 }
->>>>>>> 56840ff... VCC. Released production version v1.0.0

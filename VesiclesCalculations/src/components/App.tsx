@@ -15,12 +15,16 @@ import { faCheck, faBan, faExclamationCircle, faTimesCircle, faInfoCircle } from
 import Projects from './Projects';
 
 interface AppProps {
-  lipidsVolInfo: LipidsVolInfo;
+  cookies: Cookies;
+  history: any;
   location: any;
   dialog: IDialog; 
   error: string;
   info: string;
   loading: boolean;
+  loadingText: string;
+  molWInfoFormFilled: boolean;
+  volInfoFormFilled: boolean;
   setLipidsVolInfo: (lipidsVolInfo: LipidsVolInfo) => void;
   setLipidsMolWInfo: (lipidsVolInfo: LipidsMolWInfo) => void;
   setDialog: (header: string, content: JSX.Element[], buttons: any[], info: JSX.Element, overlay: boolean) => void;
@@ -30,8 +34,6 @@ interface AppProps {
 
 interface AppState {
   canUseCookies: boolean;
-  showFullMenu: boolean;
-  showMenuText: boolean;
 }
 
 const cookiesHeader = 'Cookie Policy';
@@ -100,35 +102,42 @@ const LoadableLipidsVolInfoForm = Loadable({
 
 
 class App extends React.Component<AppProps, AppState> {
-  private _menuUpdate: boolean = true;
 
   constructor(props) {
     super(props);
 
     const canUseCookies: boolean = !!props.cookies.get('VCC-canUse');
-    this.state = { canUseCookies, showFullMenu: false, showMenuText: false };
-    
-    cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
-    cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
-    props.setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, !canUseCookies);
+    this.state = { canUseCookies };
   }
 
   public componentDidMount() {
-    const { location } = this.props;
+    const { location, setDialog } = this.props;
+    const { canUseCookies } = this.state;
     location.pathname.match('/') 
+    
+    cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
+    cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
+    setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, !canUseCookies);
   }
 
-class App extends React.Component<AppProps, {}> {
   public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.log(error);
   }
-  
-  private _supportByPayPal(): void {
-    window.open('https://www.paypal.me/vescalc', '_blank');
+
+  componentDidUpdate() {
+    const node: any = ReactDOM.findDOMNode(this);
+    node.scrollTop = 0;
   }
 
-  private _shareFb(): void {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${siteUrl(true)}`, '_blank');
+  private _submitVolumeInfo(values: LipidsVolInfo): void {
+    const { history, setLipidsVolInfo } = this.props;
+
+    values.filled = true;
+    values.type = ProjectTypes.LipidVolume;
+    values.modifiedDate = new Date().toLocaleString();
+    setLipidsVolInfo(values);
+
+    history.push('/lipidsVolume/1');
   }
 
   private _submitMolWeightInfo(values: LipidsMolWInfo): void {
@@ -141,7 +150,7 @@ class App extends React.Component<AppProps, {}> {
    
     history.push('/molecularWeight/1');
   }
-  
+
   private _getSectionName(sectionName, fillHeight): string {
     if (sectionName.match(RoutePaths.Home)) {
       fillHeight.className = 'fill-height'
@@ -156,16 +165,25 @@ class App extends React.Component<AppProps, {}> {
     } 
   }
 
-  private _shareGPlus(): void {
-    window.open(`https://plus.google.com/share?url=${siteUrl(true)}`, '_blank');
+  private _allowCookieUsage(): void {
+    const { dialog, setDialog, cookies} = this.props;
+    
+    cookies.set('VCC-canUse', true);
+    this.setState({ canUseCookies: true });
+
+    dialog.overlay = false;
+    setDialog(dialog.header, dialog.content, dialog.buttons, dialog.info, dialog.overlay);
   }
 
-  private _shareTwitter(): void {
-    window.open(`https://twitter.com/intent/tweet?text=Calculate%20Your%20Vesicles%20Content%20And%20More&url=${siteUrl(false)}`, '_blank');
-  }
-
-  private _submitVolumeInfo(values: any): void {
-    this.props.setLipidsVolInfo(values);
+  private _disallowCookieUsage(): void {
+    const { cookies, dialog, setDialog} = this.props;
+    const { canUseCookies } = this.state;
+    
+    canUseCookies && cookies.remove('VCC-canUse');
+    this.setState({ canUseCookies: false });
+    
+    dialog.overlay = false;
+    setDialog(dialog.header, dialog.content, dialog.buttons, dialog.info, dialog.overlay);
   }
 
   private _setCookies(): void {
@@ -175,28 +193,22 @@ class App extends React.Component<AppProps, {}> {
     setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, true);
   }
 
-  private _getSectionName(sectionName): string {
-    switch(sectionName) {
-      case RoutePaths.Home:
-        return "Vesicles Content Calculations"
-      case RoutePaths.LipidsVolume:
-        return "Calculate Lipids Volume"
-      case RoutePaths.MolecularWeight:
-        return "Calculate Molecular Weight"
-      default:
-        return "Vesicles Content Calculations"
-    } 
-
-  }
-
   public render(): JSX.Element {
-    const currentPath = this.props.location.pathname;
-    const header: string = this._getSectionName(currentPath);
+    const { loading, loadingText, error, info, location, cookies, dialog, closeError, closeInfo } = this.props;
+    const { canUseCookies } = this.state;
+
+    let fillHeight = { className: ''}
+    const header: string = this._getSectionName(location.pathname, fillHeight);
+    const shadedContainer = loading || dialog.overlay ? 'shaded' : '';
 
     const { loading } = this.props;
     
     return (
-      <div className='app-container flex-row'>
+      <div className={`app-container ${shadedContainer}`}>
+        {
+          dialog.overlay && <OverlayDialog {...dialog}
+            acceptAction={ this._allowCookieUsage.bind(this) } declineAction={ this._disallowCookieUsage.bind(this) } />
+        }
         {
           loading && Loading(loadingText) 
         }
@@ -205,29 +217,30 @@ class App extends React.Component<AppProps, {}> {
           { info && Message('info-message', info, faInfoCircle, faTimesCircle, closeInfo) }
         </div>
 
-        <div className='column__left' onMouseEnter={ this._showMenu.bind(this) } onMouseLeave={ this._hideMenu.bind(this) }>
+        <div className='column__left' >
           <div className='row__middle'>
             {
               map(SidebarBtns, (field: ISidebarButton, name: string) => 
                 <SidebarButton
                   key={ name }
-                  linkTarget={ field.path }
+                  linkTarget={ field.path + field.step }
                   label={ name }
-                  active={ field.path === currentPath }
+                  active={ location.pathname.match(field.path) != null }
                 >
-                  <FontAwesomeIcon className={ `sidebar-button__icon ${ showMenuText ? '' : 'extended'}`  } icon={field.icon} />
+                  <FontAwesomeIcon className={ 'sidebar-button__icon' } icon={field.icon} />
                 </SidebarButton>
               )
             }
           </div>
         </div>
 
-        <div className='flex-column column__right'>
-          <div className='row__middle'>
-            <header>
-              <div>
-                <h1>{ header }</h1>
-              </div>
+        <div className={ 'column__right' }>
+        { 
+          <div className={ `row__middle ${fillHeight.className}` }>
+            <header className='app-header'>
+                <div>
+                  <h1>{ header }</h1>
+                </div>
             </header>
             {
               <Switch location={ location }>
@@ -251,6 +264,7 @@ class App extends React.Component<AppProps, {}> {
               </Switch>
             }
           </div>
+        }
         </div>
         <div className='share-site-bar'>
           {
@@ -259,7 +273,7 @@ class App extends React.Component<AppProps, {}> {
             )  
           }
         </div>
-        <Footer />
+        { Footer(this._setCookies.bind(this)) }
       </div>
     );
   }
@@ -313,4 +327,9 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   }, dispatch
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(App); 
+const composedApp: any = compose(
+  withCookies,
+  connect(mapStateToProps, mapDispatchToProps)
+)(App);
+
+export default composedApp;

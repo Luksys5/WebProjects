@@ -10,19 +10,21 @@ interface SidebarButtonProps {
 export class SidebarButton extends React.Component<SidebarButtonProps, {}> {
   public render(): JSX.Element {
     const { linkTarget, label, active } = this.props;
-    return (
-      <button className={ 'sidebar__button ' + (active ? 'active' : '') }>
-        { active ? (
-          <a className='sidebar-button__link'>
-              <span>{ label }</span>
-          </a>
-        ) : (
-          <Link className='sidebar-button__link' to={ linkTarget } >
-            <span>{ label }</span>
-          </Link>
-        )}
+    
+    if(active) {
+      return (
+        <a className={ 'sidebar__button ' + (active ? 'active' : '') }>
+          { this.props.children }
+          <span>{ label }</span>
+        </a>
+      );
+    } else {
+      return (
+      <Link className={ 'sidebar__button ' + (active ? 'active' : '') } to={ linkTarget } >
         { this.props.children }
-      </button>
-    );
+        <span>{ label }</span>
+      </Link>
+      );
+    }
   }
 }

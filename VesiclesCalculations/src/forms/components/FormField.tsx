@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ShareButton } from '../../components/subComponents';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
-export const FormField = ({ input, label, type, helpText, units, meta: { touched, error, warning }}): JSX.Element => (
+export const FormField = ({ input, unitClassName, label, type, helpText, units, meta: { touched, error, warning }}): JSX.Element => (
     <div className='field'>
         <label className='field__name'>
             { label }
@@ -21,8 +21,8 @@ export const FormField = ({ input, label, type, helpText, units, meta: { touched
             }
         </label>
         <div className={`field__input-block type-${type} ${!!error && touched && 'error'}`}>
-            <input className='field__input' {...input } placeholder={ label } type={ type } />
-            { units && <div className='field_units'><span>{ units }</span></div> }
+            <input className={ `field__input ${ !unitClassName && 'no-units' }` } {...input } placeholder={ label } type={ type } />
+            { units && <div className={`field_units ${unitClassName}`}><span>{ units }</span></div> }
         </div>
         { touched && ((!!error && <p className='field__error'>{ error }</p>)) }
         { touched && ((!!warning && <p className='field__warning'>{ warning }</p>)) }

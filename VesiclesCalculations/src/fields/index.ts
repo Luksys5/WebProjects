@@ -5,6 +5,8 @@ import LipidsMolWInfoFields from './lipidsMolWInfo';
 import LipidsMolWDataFields from './lipidsMolWData';
 import LipidsMolWResultFields from './lipidsMolWResults';
 import SidebarBtns from './sidebarBtns';
+import ShareBtns from './shareBtns';
+import EmailFields from './email';
 
 export {
     LipidsVolInfoFields,
@@ -12,12 +14,8 @@ export {
     LipidsVolResultFields, 
     LipidsMolWInfoFields,
     LipidsMolWDataFields,
-<<<<<<< HEAD
-    SidebarBtns
-=======
     LipidsMolWResultFields, 
     SidebarBtns,
     ShareBtns,
     EmailFields
->>>>>>> 56840ff... VCC. Released production version v1.0.0
 }

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { createElement } from 'react';
 import { sendDataToEmail as sendEmail } from '../services/gcf';
 import { SET_ERROR, SET_INFO, SET_DIALOG, SET_STRINGIFIED_RESULTS, SET_LOADING } from "./types";
@@ -154,4 +152,3 @@ export const closeInfo = () => dispatch => {
         info: null
     })
 }
->>>>>>> 56840ff... VCC. Released production version v1.0.0
