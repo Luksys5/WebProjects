@@ -108,15 +108,16 @@ class App extends React.Component<AppProps, AppState> {
 
     const canUseCookies: boolean = !!props.cookies.get('VCC-canUse');
     this.state = { canUseCookies };
-    
-    cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
-    cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
-    props.setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, !canUseCookies);
   }
 
   public componentDidMount() {
-    const { location } = this.props;
+    const { location, setDialog } = this.props;
+    const { canUseCookies } = this.state;
     location.pathname.match('/') 
+    
+    cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
+    cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
+    setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, !canUseCookies);
   }
 
   public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {

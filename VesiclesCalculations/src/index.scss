@@ -171,6 +171,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         width: 95%;
         height: 100%;
     }
+
     .row__middle {
         width: 100%;
     }
@@ -203,8 +204,9 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
             span {
                 display: block;
                 padding: 8px 0 8px 0;
-                font-weight: 500;
+                font-weight: 600;
                 font-size: 14px;
+                font-family: Georgia, 'Times New Raoman', Times, serif; 
             }
         }
     }
@@ -220,7 +222,7 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         background-color: #3C3A3A;
 
         span { 
-            font-weight: 600;
+            font-weight: 700;
         }
     }
 
@@ -233,6 +235,15 @@ html, body, #vesiclesCalcs-root, #vesiclesCalcs-root {
         height: 100%;
         overflow: auto;
 
+        .app-header {
+            color: $textTheme;
+            font-weight: 500;
+
+            & div > h1 {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+        }
 
         .route-wrapper {
             .fade-enter {
