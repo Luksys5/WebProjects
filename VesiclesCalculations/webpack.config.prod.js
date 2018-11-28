@@ -66,12 +66,6 @@ module.exports = {
         sideEffects: true,
         usedExports: true,
         concatenateModules: true,
-        splitChunks: {
-          hidePathInfo: true,
-          minSize: 30000,
-          maxAsyncRequests: 5,
-          maxInitialRequests: 3,
-        },
         noEmitOnErrors: true,
         checkWasmTypes: true,
         minimize: true,
@@ -85,11 +79,9 @@ module.exports = {
             chunkFilename: '[id].css'
         }),
         new BundleAnalyzerPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         require('rollup-plugin-replace')({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
         require('rollup-plugin-commonjs')(),
-        require('rollup-plugin-uglify')(),
     ]
 }
