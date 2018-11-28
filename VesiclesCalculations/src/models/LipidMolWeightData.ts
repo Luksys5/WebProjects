@@ -1,9 +1,9 @@
 export default class LipidMolWeightData {
     name: string;
-    percentage: number;
-    concentration: number;
-    molWeight: number;
-    averageArea: number;
+    percentage: string;
+    molWeight: string;
+    height: string
+    area: string;
 
     constructor() {
         this.name = '';

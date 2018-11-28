@@ -8,9 +8,15 @@ import {
 } from '../actions/types';
 
 const initialState = {
+<<<<<<< HEAD
     lipidsMolWInfo: { title: 'SolutionNr1' },
     lipidsMolWData: { lipids: [{ name: 'test' }] },
     lipidsMolWResults: { lipids: [{}], lipidsMass: 100, lipidsVolume: 15, calculated: true },
+=======
+    lipidsMolWInfo: { filled: false },
+    lipidsMolWData: { lipids: [] },
+    lipidsMolWResults: { data: [], calculated: false },
+>>>>>>> 56840ff... VCC. Released production version v1.0.0
     copiedMolWData: {},
     step: 0 
 }

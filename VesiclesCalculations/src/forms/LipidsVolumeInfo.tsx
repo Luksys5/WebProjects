@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { validateValues } from '../validations';
 import { LipidsVolInfoFields } from '../fields';
 import { ProjectGeneralInfo } from './components';
-import * as _ from 'lodash';
 
 const LipidsVolumeInfoForm = reduxForm({
     form: 'lipidsVolumeInfo',

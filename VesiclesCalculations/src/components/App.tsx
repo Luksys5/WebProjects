@@ -1,31 +1,122 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as Loadable from 'react-loadable'
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { FaThumbsUp, FaGooglePlusG, FaTwitter, 
-  FaFacebook, FaCcPaypal 
-} from 'react-icons/fa';
-import { Home } from './Home';
-import { Footer, ShareButton, SidebarButton } from './subComponents';
-import { LipidsVolInfoForm, LipidsVolDataForm, LipidsMolWInfoForm, LipidsMolWDataForm } from '../forms';
-import { LipidsVolInfo, ISidebarButton, RoutePaths, LipidsMolWInfo } from '../models';
-import { SidebarBtns } from '../fields';
-import { setLipidsVolInfo, setLipidsMolWInfo } from '../actions';
-import * as _ from 'lodash';
+import { withCookies, Cookies} from 'react-cookie';
+import { map } from 'lodash';
+import { Footer, ShareButton, SidebarButton, OverlayDialog, Message, Loading } from './subComponents';
+import { LipidsVolInfo, ISidebarButton, IDialog, IShareButton, LipidsMolWInfo, RoutePaths, ProjectTypes } from '../models';
+import { SidebarBtns, ShareBtns } from '../fields';
+import { setLipidsVolInfo, setLipidsMolWInfo, closeError, setDialog, closeInfo } from '../actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faBan, faExclamationCircle, faTimesCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import Projects from './Projects';
 
 interface AppProps {
   lipidsVolInfo: LipidsVolInfo;
   location: any;
-  volumeFormStep: number;
-  molWFormStep: number;
+  dialog: IDialog; 
+  error: string;
+  info: string;
   loading: boolean;
   setLipidsVolInfo: (lipidsVolInfo: LipidsVolInfo) => void;
   setLipidsMolWInfo: (lipidsVolInfo: LipidsMolWInfo) => void;
+  setDialog: (header: string, content: JSX.Element[], buttons: any[], info: JSX.Element, overlay: boolean) => void;
+  closeError: () => void;
+  closeInfo: () => void;
 }
 
-const siteUrl = (encode: boolean): string => {
-  const url: string = window.location.origin;
-  return encode ? url.replace(':', '%3A').replace(/\//g, '%2F') : url;
-};
+interface AppState {
+  canUseCookies: boolean;
+  showFullMenu: boolean;
+  showMenuText: boolean;
+}
+
+const cookiesHeader = 'Cookie Policy';
+const cookiesContent = [
+  'Our website uses cookies. We use them for saving your projects. ',
+  'You can either Allow or Disallow cookies usage.\n Just remember that you can change cookie settings anytime in website footer link'
+].map((content, index) => <p key={ index }>{ content }</p>);
+
+const cookiesInfo = React.createElement('a', { href: 'https://en.wikipedia.org/wiki/HTTP_cookie', target: '_blank' }, 'More Info about Cookies here');
+const cookiesButtons = [
+  { type: 'button', value: 'Allow', iconComponent: <FontAwesomeIcon icon={faCheck} />, onClick: null },
+  { type: 'button', value: 'Disallow', iconComponent: <FontAwesomeIcon icon={faBan} />, onClick: null },
+];
+
+const WhileLoading = (props) => {
+  if(props.error) {
+      return <div className='messages-container'>
+        {
+          Message('error-message', 
+            React.createElement('span', null, 'Error occurred while loading component please try ', 
+              React.createElement('a', { onClick: props.retry }, 'Again')),
+            faExclamationCircle) 
+        }
+       </div>
+  } else if(props.pastDelay) {
+    return Loading('Loading');
+  } else {
+    return null;
+  }
+}
+
+const LoadableLipidsMolWInfoForm = Loadable({
+  loader: () => import('../forms/LipidsMolWeightInfo'),
+  modules: ['LipidsMolWeightInfo'],
+  // @ts-ignore
+  webpack: () => [require.resolveWeak('../forms/LipidsMolWeightInfo')],
+  loading: WhileLoading,
+  delay: 500
+});
+
+const LoadableHome = Loadable({
+  loader: () => import('./Home'),
+  loading: WhileLoading
+});
+
+const LoadableLipidsMolWDataForm = Loadable({
+  loader: () => import('../forms/LipidsMolWeightData'),
+  loading: WhileLoading,
+  delay: 500
+})
+
+
+const LoadableLipidsVolDataForm = Loadable({
+  loader: () => import('../forms/LipidsVolumeData'),
+  loading: WhileLoading,
+  delay: 500
+});
+
+
+const LoadableLipidsVolInfoForm = Loadable({
+  loader: () => import('../forms/LipidsVolumeInfo'),
+  loading: WhileLoading,
+  delay: 500
+})
+
+
+
+class App extends React.Component<AppProps, AppState> {
+  private _menuUpdate: boolean = true;
+
+  constructor(props) {
+    super(props);
+
+    const canUseCookies: boolean = !!props.cookies.get('VCC-canUse');
+    this.state = { canUseCookies, showFullMenu: false, showMenuText: false };
+    
+    cookiesButtons[0].onClick = this._allowCookieUsage.bind(this);
+    cookiesButtons[1].onClick = this._disallowCookieUsage.bind(this);
+    props.setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, !canUseCookies);
+  }
+
+  public componentDidMount() {
+    const { location } = this.props;
+    location.pathname.match('/') 
+  }
 
 class App extends React.Component<AppProps, {}> {
   public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
@@ -40,8 +131,29 @@ class App extends React.Component<AppProps, {}> {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${siteUrl(true)}`, '_blank');
   }
 
-  private _likeFb(): void {
-    window.open(`https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FVesCalc&amp;send=false&amp;layout=button_count&amp;width=125&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21`, '_blank');
+  private _submitMolWeightInfo(values: LipidsMolWInfo): void {
+    const { history, setLipidsMolWInfo } = this.props;
+    
+    values.filled = true;
+    values.type = ProjectTypes.LipidMolWeight;
+    values.modifiedDate = new Date().toLocaleString();
+    setLipidsMolWInfo(values);
+   
+    history.push('/molecularWeight/1');
+  }
+  
+  private _getSectionName(sectionName, fillHeight): string {
+    if (sectionName.match(RoutePaths.Home)) {
+      fillHeight.className = 'fill-height'
+      return "Vesicles Content Calculations"
+    } else if (sectionName.match(RoutePaths.LipidsVolume)) {
+      return "Calculate Lipids Volume"
+    } else if (sectionName.match(RoutePaths.MolecularWeight)) {
+      return "Calculate Molecular Weight"
+    } else {
+      fillHeight.className = 'fill-height'
+      return "Vesicles Content Calculations"
+    } 
   }
 
   private _shareGPlus(): void {
@@ -56,9 +168,11 @@ class App extends React.Component<AppProps, {}> {
     this.props.setLipidsVolInfo(values);
   }
 
-  private _submitMolWeightInfo(values: any): void {
-    this.props.setLipidsMolWInfo(values);
+  private _setCookies(): void {
+    window.scrollTo(0, 0);
+    const { setDialog} = this.props;
     
+    setDialog(cookiesHeader, cookiesContent, cookiesButtons, cookiesInfo, true);
   }
 
   private _getSectionName(sectionName): string {
@@ -84,25 +198,24 @@ class App extends React.Component<AppProps, {}> {
     return (
       <div className='app-container flex-row'>
         {
-          loading && 
-          <div className='ring-container'>
-            <div className="lds-ring">
-              <div></div><div></div><div></div><div></div>
-              <p className='saving'>Calculating<span>.</span><span>.</span><span>.</span></p>
-            </div>
-          </div>
+          loading && Loading(loadingText) 
         }
-        <div className='flex-column column__left'>
+        <div className='messages-container'>
+          { error && Message('error-message', error, faExclamationCircle, faTimesCircle, closeError) }
+          { info && Message('info-message', info, faInfoCircle, faTimesCircle, closeInfo) }
+        </div>
+
+        <div className='column__left' onMouseEnter={ this._showMenu.bind(this) } onMouseLeave={ this._hideMenu.bind(this) }>
           <div className='row__middle'>
             {
-              _.map(SidebarBtns, (field: ISidebarButton, name: string) => 
+              map(SidebarBtns, (field: ISidebarButton, name: string) => 
                 <SidebarButton
                   key={ name }
                   linkTarget={ field.path }
                   label={ name }
                   active={ field.path === currentPath }
                 >
-                  <field.icon className='sidebar-button__icon'/>
+                  <FontAwesomeIcon className={ `sidebar-button__icon ${ showMenuText ? '' : 'extended'}`  } icon={field.icon} />
                 </SidebarButton>
               )
             }
@@ -116,27 +229,35 @@ class App extends React.Component<AppProps, {}> {
                 <h1>{ header }</h1>
               </div>
             </header>
-            { 
-              this._renderSectionComponent(currentPath)
+            {
+              <Switch location={ location }>
+                <Route exact path='/home' component={ LoadableHome }/>
+                <Route exact path='/lipidsVolume/:step?' render={ ({ match }) => {
+                  if(match.params.step == "1" && this.props.volInfoFormFilled) {
+                    return <LoadableLipidsVolDataForm canUseCookies={ canUseCookies } cookies={ cookies } />;
+                  } else {
+                    return <LoadableLipidsVolInfoForm onSubmit={ (values: any) => this._submitVolumeInfo(values) } />;
+                  }
+                }} />
+                <Route exact path='/molecularWeight/:step?' render={ ({ match }) => {
+                  if(match.params.step == "1" && this.props.molWInfoFormFilled) {
+                    return <LoadableLipidsMolWDataForm canUseCookies={ canUseCookies } cookies={ cookies } />
+                  } else {
+                    return <LoadableLipidsMolWInfoForm onSubmit={ (values: any) => this._submitMolWeightInfo(values) } />
+                  }
+                }} />
+                <Route exact path='/projects' render={ () => <Projects cookies={cookies} canUseCookies={ canUseCookies }/> }/>
+                <Redirect from='/' to='/home' />
+              </Switch>
             }
           </div>
         </div>
         <div className='share-site-bar'>
-          <ShareButton id='PayPal-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaCcPaypal } tooltipText='Support our site via PayPal!'
-            iconColor='#8AD4DF' iconSize={32} iconClick={ this._supportByPayPal } />
-          <ShareButton id='FbShare-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaFacebook } tooltipText='Share our site in FaceBook!'
-            iconColor='#4267B2' iconSize={32} iconClick={ this._shareFb } />
-          <ShareButton id='FbLike-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaThumbsUp } tooltipText='Like our site in FaceBook!'
-            iconColor='#4267B2' iconSize={32} iconClick={ this._likeFb } />
-          <ShareButton id='GoogleShare-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaGooglePlusG } tooltipText='Share our site in Google+!'
-            iconColor='#DD5245' iconSize={32} iconClick={ this._shareGPlus } />
-          <ShareButton id='Twitter-btn' className='share-btn' tooltipClassName='tooltip'
-            iconComponent={ FaTwitter } tooltipText='Share our site in Twitter!'
-            iconColor='#1DA1F2' iconSize={32} iconClick={ this._shareTwitter } />
+          {
+            map(ShareBtns, (field: IShareButton, index) => 
+              <ShareButton key={index} { ...field } />
+            )  
+          }
         </div>
         <Footer />
       </div>
@@ -174,18 +295,22 @@ class App extends React.Component<AppProps, {}> {
 }
 
 const mapStateToProps = state => ({
-  lipidsVolInfo: state.lipidsVolume.lipidsVolInfo,
-  volumeFormStep: state.lipidsVolume.step,
-  molWFormStep: state.lipidsMolWeight.step,
-  loading: state.globals.loading
+  volInfoFormFilled: state.lipidsVolume.lipidsVolInfo.filled,
+  molWInfoFormFilled: state.lipidsMolWeight.lipidsMolWInfo.filled,
+  dialog: state.globals.dialog,
+  loading: state.globals.loading,
+  loadingText: state.globals.loadingText,
+  error: state.globals.error,
+  info: state.globals.info
 });
 
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators({
-      setLipidsVolInfo,
-      setLipidsMolWInfo,
-    }, dispatch
-  )
-});
+const mapDispatchToProps = dispatch => bindActionCreators({
+    setLipidsVolInfo,
+    setLipidsMolWInfo,
+    setDialog,
+    closeError,
+    closeInfo
+  }, dispatch
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App); 

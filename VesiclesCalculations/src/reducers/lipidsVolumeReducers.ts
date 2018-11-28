@@ -8,9 +8,15 @@ import {
 } from '../actions/types';
 
 const initialState = {
+<<<<<<< HEAD
     lipidsVolInfo: { title: 'SolutionNr1' },
     lipidsVolData: { lipids: [{ name: 'test', percentage: '100', concentration: '100', molWeight: '100' }] },
     lipidsVolResults: { lipids: [{}], lipidsMass: 100, lipidsVolume: 15, calculated: true },
+=======
+    lipidsVolInfo: { filled: true },
+    lipidsVolData: { lipids: [] },
+    lipidsVolResults: { lipids: [], calculated: false },
+>>>>>>> 56840ff... VCC. Released production version v1.0.0
     copiedVolData: {},
     step: 1
 }

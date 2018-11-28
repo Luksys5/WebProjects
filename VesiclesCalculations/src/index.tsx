@@ -6,8 +6,9 @@ import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-import './index.scss';
-require('../assets/favicon.ico');
+require('./index.scss');
+// @ts-ignore
+import(/* webpackMode: "eager" */ '../assets/favicon.ico');
 
 const AppComponent = (): any => {
     return(
@@ -27,6 +28,5 @@ const AppComponent = (): any => {
         )
     );
 }
-
 
 export default hot(module)(AppComponent());
