@@ -201,8 +201,6 @@ class App extends React.Component<AppProps, AppState> {
     const header: string = this._getSectionName(location.pathname, fillHeight);
     const shadedContainer = loading || dialog.overlay ? 'shaded' : '';
 
-    const { loading } = this.props;
-    
     return (
       <div className={`app-container ${shadedContainer}`}>
         {
@@ -276,35 +274,6 @@ class App extends React.Component<AppProps, AppState> {
         { Footer(this._setCookies.bind(this)) }
       </div>
     );
-  }
-
-  private _renderSectionComponent(currentPath: string): JSX.Element {
-    const { volumeFormStep, molWFormStep } = this.props;
-
-    switch(currentPath) {
-      case RoutePaths.Home:
-        return <Home />;
-      case RoutePaths.LipidsVolume:
-        switch(volumeFormStep) {
-          case 0:
-            return <LipidsVolInfoForm onSubmit={ (values: any) => this._submitVolumeInfo(values) }/>
-          case 1:
-            return <LipidsVolDataForm />
-          default:
-            return <Home />;
-        }
-      case RoutePaths.MolecularWeight:
-        switch(molWFormStep) {
-          case 0:
-            return <LipidsMolWInfoForm onSubmit={ (values: any) => this._submitMolWeightInfo(values) }/>
-          case 1:
-            return <LipidsMolWDataForm />
-          default:
-            return <Home />;
-        }
-      default:
-        return <Home />
-    } 
   }
 }
 
