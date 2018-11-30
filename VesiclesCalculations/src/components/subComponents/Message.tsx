@@ -1,18 +1,17 @@
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const Message = (containerClassName: string, msgText: any, messageIcon?: any, closeIcon?: any, onClose?: () => void) => {
+export const Message = (containerClassName: string, msgText: any, messageIcon?: string, closeIcon?: string, onClose?: () => void) => {
     return (
     <div className={containerClassName}>
         <div className='message__icon'>
-            <FontAwesomeIcon icon={messageIcon} />
+            <i className={ messageIcon } />
         </div>
         <div className='message__text'>
             { msgText }
         </div>
         { onClose &&
             <div className='message__close' onClick={ onClose }>
-                <FontAwesomeIcon icon={closeIcon} />
+                <i className={ closeIcon } />
             </div>
         }
     </div>

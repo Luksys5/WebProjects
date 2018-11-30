@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Cookies } from 'react-cookie';
 import { map } from 'lodash';
-import { faSave, faExternalLinkAlt, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { setLipidsVolInfoAndData } from '../actions';
 import { LipidsVolInfoFields, LipidsMolWInfoFields } from '../fields';
 import { LipidsVolInfo, LipidsMolWInfo, ProjectTypes, IField, ILipidData, LipidVolData, LipidMolWData } from '../models';
 import { FormField, FormButton} from '../forms/components';
 import { setError } from '../actions/globalActions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProjectsProps {
     cookies: Cookies;
@@ -293,10 +291,10 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                                 ) 
                             }
                             <Link className='item__link' to={ this._getProjectLink(project.type) } onClick={ () => this._loadProjectToState(project, index) }>
-                                <FontAwesomeIcon icon={ faExternalLinkAlt } />
+                                <i className='fas fa-external-link-alt' />
                             </Link>
                             <div onClick={ this._removeProject.bind(this, index) }>
-                                <FontAwesomeIcon icon={ faTimesCircle } className='remove__icon' />
+                                <i className='fas fa-times-circle remove__icon' />
                             </div>
                         </div>
                     )
@@ -305,7 +303,7 @@ class Projects extends React.Component<IProjectsProps, IProjectState> {
                 <input type='file' accept='.csv, .txt, text/plain' multiple={false}
                     ref={ (el) => this._addProjectInput = el } style={{ display: 'none'}} onChange={ this._readFromFile.bind(this) }
                 />
-                { FormButton('button', 'Load Project From File', faSave, '', () => this._addProjectInput.click() ) }
+                { FormButton('button', 'Load Project From File', 'fas fa-save', '', () => this._addProjectInput.click() ) }
 
             </div>
             <div className='project__form'>

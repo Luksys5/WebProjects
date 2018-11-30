@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ShareButton } from '../../components/subComponents';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 export const FormField = ({ input, unitClassName, label, type, helpText, units, meta: { touched, error, warning }}): JSX.Element => (
     <div className='field'>
@@ -10,7 +9,7 @@ export const FormField = ({ input, unitClassName, label, type, helpText, units, 
                 <ShareButton
                     id={ null } 
                     className='field__help'
-                    iconComponent={ faQuestionCircle }
+                    iconClassName={ 'fas fa-question-circle' }
                     tooltipClassName='help__tooltip'
                     tooltipText={ helpText } 
                     iconColor='black'

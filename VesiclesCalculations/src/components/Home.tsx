@@ -25,20 +25,6 @@ const Home = () => {
                             Calculate number of lipids per liposome of any composition and size
                         </li>
                     </ol>
-
-                    { /*<h2>Tutorial</h2>
-                        { React.createElement('iframe', {
-                            className: 'youtube-frame',
-                            width: "480",
-                            height: "240",
-                            src: 'https://www.youtube.com/embed/FdCk6K1UeOc',
-                            allow: "autoplay; encrypted-media",
-                            frameBorder: "0",
-                            rel: "0",
-                            modestbranding: "1",
-                        },
-                        ) }
-                    */ }
                 </div>
             </div>
         </div>

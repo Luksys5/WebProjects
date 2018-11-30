@@ -9,7 +9,6 @@ import { LipidsVolInfoFields, LipidsVolDataFields } from '../fields';
 import { ILipidData } from '../models';
 import { LipidVolResult } from './components/LipidVolResult';
 import { stringifyResults } from '../actions/globalActions';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 export let linkElement = null;
 
@@ -34,7 +33,7 @@ const LipidsVolumeData = (props: InjectedFormProps | any) => {
                 resultComponent={ LipidVolResult(results) }
                 saveProjectBtn={
                     dirty && canUseCookies &&
-                    FormButton('submit', 'Save', faSave, 'row-end', handleSubmit(
+                    FormButton('submit', 'Save', 'fas fa-save', 'row-end', handleSubmit(
                         (values, dispatch) => {
                             setLipidsVolInfoAndData(volumeInfo, values, false)(dispatch);
                             canUseCookies && saveProject(cookies, volumeInfo, values, 'VCC-L')(dispatch);
