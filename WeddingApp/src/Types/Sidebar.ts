@@ -1,5 +1,6 @@
-export interface IMenuItem {
+export interface ISidebarItem {
     name: string;
     title: string;
     class: string;
+    path: string;
 }

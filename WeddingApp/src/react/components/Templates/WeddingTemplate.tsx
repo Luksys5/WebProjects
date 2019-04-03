@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { PageMenu } from '../Organisms/PageMenu';
-import { ContentPage } from '../../../assets/styles/Pages/ContentPage';
+import { PageSidebar } from '../Organisms/PageSidebar';
+import { ContentPage } from '../Pages/ContentPage';
+import { TextContainer } from '../Organisms/TextContainer';
 
 export const WeddingTemplate: React.SFC = (props: any) => {
     return (
@@ -11,9 +12,9 @@ export const WeddingTemplate: React.SFC = (props: any) => {
             </h4>
         </header>
         <div className='t-wedding-template__container'>
-            <PageMenu />
+            <PageSidebar />
             <ContentPage title='About'>
-                { props.children }
+              <TextContainer title="test" />
             </ContentPage>
         </div>
     </div>

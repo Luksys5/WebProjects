@@ -31,9 +31,11 @@ html, body, #root, .wedding-page-app {
     height: 100%;
 }
 
+@import "./01_settings/colors";
+@import "./01_settings/variables";
 
 // Organisms
-@import "./Organisms/pagemenu";
+@import "./Organisms/pagesidebar";
 
 // Pages
 @import "./Pages/ContentPage.scss";
