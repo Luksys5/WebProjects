@@ -3,4 +3,11 @@ export interface ISidebarItem {
     title: string;
     class: string;
     path: string;
+    type: string;
+}
+
+
+export enum SidebarTypesEnum {
+  Link = "Link",
+  Navigation = "Nav"
 }

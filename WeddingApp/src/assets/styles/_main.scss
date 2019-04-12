@@ -29,17 +29,23 @@ html {
 
 html, body, #root, .wedding-page-app {
     height: 100%;
+    overflow: hidden;
 }
 
 @import "./01_settings/colors";
 @import "./01_settings/variables";
 
-// Organisms
-@import "./Organisms/pagesidebar";
+// molecules
+@import "./20_molecules/contactblock";
+
+// 30_organisms
+@import "./30_organisms/pagesidebar";
+@import "./30_organisms/contentpage";
+@import "./30_organisms/contentparagraphs";
+@import "./30_organisms/footer";
 
 // Pages
-@import "./Pages/ContentPage.scss";
-@import "./Pages/about";
+@import "./40_pages/about";
 
 // Templates
-@import "./Templates/weddingtemplate";
+@import "./50_templates/weddingtemplate";

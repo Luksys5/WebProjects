@@ -1,34 +1,26 @@
+import { SidebarTypesEnum } from "../Types/Sidebar";
+
 export default ([
     {
         name: 'about',
         title: 'About',
         class: 'o-page-sidebar__item',
-        path: '/about'
+        path: '/about',
+        type: SidebarTypesEnum.Link
     },
     {
         name: 'festival',
         title: 'Festival',
         class: 'o-page-sidebar__item',
-        path: '/festival'
+        path: '/festival',
+        type: SidebarTypesEnum.Link
  
     },
     {
         name: 'ceremony',
         title: 'Ceremony',
         class: 'o-page-sidebar__item',
-        path: '/ceremony'
- 
-    },
-    {
-        name: 'about',
-        title: 'About',
-        class: 'o-page-sidebar__item',
-        path: '/about'
-    },
-    {
-        name: 'contacts',
-        title: 'Contacts',
-        class: 'o-page-sidebar__item',
-        path: '/contacts'
+        path: '/ceremony',
+        type: SidebarTypesEnum.Link
     },
 ])
