@@ -6,8 +6,6 @@ import { LipidVolData, LipidsVolResults, LipidsVolInfo } from '../../models';
 import { LipidData} from './LipidData'
 import { Link } from 'react-router-dom';
 import { setDialogEmailForm, setStringifiedResults, setError  } from '../../actions';
-import { faRecycle, faPlusSquare, faDownload, faEnvelope, faCalculator, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface LipidsArrayProps {
     prevPagePath: string;
@@ -119,10 +117,10 @@ export class LipidsData extends React.Component<LipidsArrayProps, LipidsArraySta
                 <div className='lipid-actions'>
                     <div className='row-end'>
                         {
-                            FormButton('button', 'Add Lipid', faPlusSquare, 'block', () => fields.push({})) 
+                            FormButton('button', 'Add Lipid', 'fas fa-plus-circle', 'block', () => fields.push({})) 
                         } 
                         {
-                            FormButton('button', 'Clear Data', faRecycle, 'block', () => {
+                            FormButton('button', 'Clear Data', 'fas fa-recycle', 'block', () => {
                                 fields.removeAll();
                                 clearLipidsVolData();
                                 this._elementsCount = 0;
@@ -131,20 +129,20 @@ export class LipidsData extends React.Component<LipidsArrayProps, LipidsArraySta
                     </div>
                     {   
                         <Link to={ prevPagePath } className='row-end button-with-icon'>
-                            <FontAwesomeIcon icon={ faArrowLeft } className='button__icon' style={{ fontSize: 16 }}/>Back 
+                            <i className={`button__icon fas fa-arrow-left`} style={{ fontSize: 16 }}/>Back 
                         </Link>
                     }
                     <div className='form__error row-end'>
                         <span>{ meta.submitFailed ? meta.error : '' }</span>
                     </div>
-                    { FormButton('submit', 'Calculate', faCalculator, 'row-end') }
+                    { FormButton('submit', 'Calculate', 'fas fa-calculator', 'row-end') }
                     {
                          !!results && results.calculated &&
                         <div>
                             { FormButton(
                                 'button',
                                 'Download',
-                                faDownload,
+                                'fas fa-download',
                                 'block',
                                 handleSubmit(this._stringifyAndDownload.bind(this)),
                                 <a ref={(el) => this._linkElement = el }
@@ -154,7 +152,7 @@ export class LipidsData extends React.Component<LipidsArrayProps, LipidsArraySta
                                     style={{ display: 'none' }}
                                 />
                             ) }
-                            { FormButton('button', 'Send To Email', faEnvelope, 'block',
+                            { FormButton('button', 'Send To Email', 'fas fa-envelope', 'block',
                                 handleSubmit((values, dispatch) => {
                                     try {
                                         const results: string = this.props.stringifyResults(values);

@@ -1,0 +1,21 @@
+.m-contact-block {
+  display: flex;
+  margin: 20px;
+
+  & > div {
+    margin: 5px;
+  }
+
+  &__icon {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    width: 16px;
+    height: 100%;    
+  }
+
+  &__text {
+    width: 180px;
+    text-align: left;
+  }
+}

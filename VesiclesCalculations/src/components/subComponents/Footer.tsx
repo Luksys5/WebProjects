@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
-export type footerType = (setCookies: () => void) => JSX.Element;
-export const Footer: footerType = (setCookies: () => void): JSX.Element => {
+export type footerType = (setCookies: () => void, callHelp: () => void) => JSX.Element;
+export const Footer: footerType = (setCookies: () => void, callHelp: () => void): JSX.Element => {
     return (
         <footer className='footer'>
             <ul>
@@ -18,7 +17,7 @@ export const Footer: footerType = (setCookies: () => void): JSX.Element => {
                     <div className='left'><a href='https://www.paypal.me/vescalc' target='_blank' >Support Us</a></div>
                 </li>
                 <li>
-                    <Link to='/home' className='left'>Help</Link>
+                    <div className='left' onClick={ callHelp }><a href='#'>Help</a></div>
                 </li>
                 <li>
                     <div className='left'><a href='#' onClick={ setCookies }>Cookies</a></div>

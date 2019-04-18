@@ -2,7 +2,6 @@ import * as React from 'react';
 import { reduxForm, FieldArray, InjectedFormProps } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { validateData } from '../validations';
 import { FormButton, LipidsDataContent } from './components';
 import { setLipidsMolWData, setLipidsMolWInfoAndData,
@@ -31,7 +30,7 @@ const LipidsMolWeightData = (props: InjectedFormProps | any): JSX.Element => {
                 copiedLipid={ copiedLipid }
                 saveProjectBtn={
                     dirty && canUseCookies &&
-                    FormButton('submit', 'Save', faSave, 'row-end', handleSubmit(
+                    FormButton('submit', 'Save', 'fas fa-save', 'row-end', handleSubmit(
                         (values, dispatch) => {
                             setLipidsMolWInfoAndData(molWInfo, values)(dispatch);
                             saveProject(cookies, molWInfo, values, 'VCC-L')(dispatch);

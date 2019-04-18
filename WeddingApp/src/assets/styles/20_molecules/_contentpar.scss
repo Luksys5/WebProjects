@@ -1,0 +1,32 @@
+.m-content-par {
+  margin: 15px;
+
+  &__title {
+    font-family: 'Pinyon Script';
+    text-align: left;
+    font-weight: 600;
+    font-size: 32px;
+    margin:5px;
+    color: gray;
+  }
+
+  &__content {
+    font-family: "HuangYou";
+    text-align: left;
+    margin-left: 10px;
+  }
+
+
+  &__link {
+    text-decoration: none;
+    color: white;
+  }
+
+}
+
+.m-content-par__content::first-letter {
+  font-weight: bold;
+  font-size: 2em;
+  font-family: 'Pinyon Script';
+  margin-right: 5px;
+}

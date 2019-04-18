@@ -3,7 +3,6 @@ import { Field, GenericField } from 'redux-form';
 import { FormField, FormButton } from '.';
 import { IField } from '../../models/subModels/IField';
 import { map } from 'lodash';
-import { faArrowRight, faPen } from '@fortawesome/free-solid-svg-icons';
 
 const FieldCustom = Field as new() => GenericField<any>;
 export const ProjectGeneralInfo = (props) => {
@@ -20,7 +19,7 @@ export const ProjectGeneralInfo = (props) => {
                 { props.exampleText }
             </p>
             <div>
-                { FormButton('button', 'Fill Data by Example', faPen, '', fillByExample) }
+                { FormButton('button', 'Fill Data by Example', 'fas fa-pen', '', fillByExample) }
             </div>
         </div>
         <div>
@@ -40,7 +39,7 @@ export const ProjectGeneralInfo = (props) => {
                     />
                 ))}
                 <div className='field'>
-                    { FormButton('submit', 'Next', faArrowRight) } 
+                    { FormButton('submit', 'Next', 'fas fa-arrow-right') } 
                 </div>
             </div>
         </div>

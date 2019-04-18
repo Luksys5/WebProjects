@@ -3,7 +3,6 @@ import { IField } from '../../models';
 import { Field, GenericField } from 'redux-form';
 import { FormField, FormButton } from '.';
 import { map } from 'lodash';
-import { faCopy, faClone, faPaste } from '@fortawesome/free-solid-svg-icons';
 
 const FieldCustom = Field as new() => GenericField<any>;
 export const LipidData = (data, index, fields, removeLipidData, copyLipidData, pasteLipidData, cloneLipidData) : JSX.Element => {
@@ -25,9 +24,9 @@ export const LipidData = (data, index, fields, removeLipidData, copyLipidData, p
         )) }
 
         <div className='lipid-btn-container'>
-            { FormButton('button', 'Copy Data', faCopy, 'lipid__button', copyLipidData) }
-            { FormButton('button', 'Paste Data', faPaste, 'lipid__button', pasteLipidData) }
-            { FormButton('button', 'Clone', faClone, 'lipid__button', cloneLipidData) }
+            { FormButton('button', 'Copy Data', 'fas fa-copy', 'lipid__button', copyLipidData) }
+            { FormButton('button', 'Paste Data', 'fas fa-paste', 'lipid__button', pasteLipidData) }
+            { FormButton('button', 'Clone', 'fas fa-clone', 'lipid__button', cloneLipidData) }
         </div>
     </div>
     );
