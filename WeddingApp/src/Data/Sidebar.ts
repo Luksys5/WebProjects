@@ -3,14 +3,14 @@ import { SidebarTypesEnum } from "../Types/Sidebar";
 export default ([
     {
         name: 'about',
-        title: 'About',
+        title: 'APIE',
         class: 'o-page-sidebar__item',
         path: '/about',
         type: SidebarTypesEnum.Link
     },
     {
         name: 'festival',
-        title: 'Festival',
+        title: 'FESTIVALIS',
         class: 'o-page-sidebar__item',
         path: '/festival',
         type: SidebarTypesEnum.Link
@@ -18,9 +18,16 @@ export default ([
     },
     {
         name: 'ceremony',
-        title: 'Ceremony',
+        title: 'CEREMONIJA',
         class: 'o-page-sidebar__item',
         path: '/ceremony',
+        type: SidebarTypesEnum.Link
+    },
+    {
+        name: 'registry',
+        title: 'REGISTRACIJA',
+        class: 'o-page-sidebar__item',
+        path: '/registry',
         type: SidebarTypesEnum.Link
     },
 ])

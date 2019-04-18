@@ -16,13 +16,15 @@ html {
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
         ),
-        url(../images/MemeReview.jpg);
+        url(../images/pageImg.png);
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale')";
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
     
     z-index: 0;
 }
@@ -32,17 +34,44 @@ html, body, #root, .wedding-page-app {
     overflow: hidden;
 }
 
+@font-face {
+  font-family: 'Pinyon Script';
+  src: url('../fonts/PinyonScript-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HuangYou';
+  src: url('../fonts/ZCOOLQingKeHuangYou-Regular.ttf') format('truetype');
+}
+
+
+
+h1, h2, h3, h4 {
+  font-family: 'Pinyon Script'
+}
+
 @import "./01_settings/colors";
 @import "./01_settings/variables";
 
+h3 {
+  font-size: $header-fontsize--xlarge;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: $header-fontsize--large;
+}
+
 // molecules
 @import "./20_molecules/contactblock";
+@import "./20_molecules/contentpar";
 
 // 30_organisms
 @import "./30_organisms/pagesidebar";
 @import "./30_organisms/contentpage";
 @import "./30_organisms/contentparagraphs";
 @import "./30_organisms/footer";
+@import "./30_organisms/registrationpage";
 
 // Pages
 @import "./40_pages/about";

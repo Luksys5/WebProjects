@@ -1,0 +1,47 @@
+.o-content-page {
+  position: relative;
+  margin-top: 20px;
+  
+  min-height: 75vh;
+  max-width: 110vh;
+  min-width: 90vh;
+  z-index: 1;
+  
+  margin-left:auto;
+  margin-right: auto;
+
+  & > div, & > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 0; right: 0; bottom: 0; left: 0;
+  }
+
+  &__source {
+    filter: opacity(0.9);
+  }
+
+  & > div.o-content-page__frame {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 1;
+    // background-color: #F2C14E;
+
+    .o-content-page__frame__header {
+      padding: map-get($spacings, 3);
+      margin: map-get($spacings, 1);
+      color: $color-header;
+      box-shadow: 0px 1px 0px 0px gray;
+
+
+      h4 {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
+
+}

@@ -7,14 +7,13 @@ export const WeddingTemplate: React.SFC = (props: any) => {
     return (
       <div className='t-wedding-template'>
           <header className='t-wedding-template__header'>
-              <h4>
-                  Meme Review Page
-              </h4>
-          </header>
-          <div className='t-wedding-template__container'>
+              <h3>
+                  Vytautes ir Mindaugo Vestuves
+                  <div className='t-wedding-template__header__date'>2019-07-10</div>
+              </h3>
               <PageSidebar />
-              {props.children}
-          </div>
+          </header>
+          {props.children}
           <>
             <Footer />
           </>
