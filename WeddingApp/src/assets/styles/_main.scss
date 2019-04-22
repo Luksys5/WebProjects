@@ -16,7 +16,7 @@ html {
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
         ),
-        url(../images/pageImg.png);
+        url(../images/pageImgResized.jpg);
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale')";
     -webkit-background-size: cover;
@@ -39,12 +39,6 @@ html, body, #root, .wedding-page-app {
   src: url('../fonts/PinyonScript-Regular.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: 'HuangYou';
-  src: url('../fonts/ZCOOLQingKeHuangYou-Regular.ttf') format('truetype');
-}
-
-
 
 h1, h2, h3, h4 {
   font-family: 'Pinyon Script'
@@ -62,12 +56,16 @@ h4 {
   font-size: $header-fontsize--large;
 }
 
+// atoms
+@import "./10_atoms/paragraphtitle";
+
 // molecules
 @import "./20_molecules/contactblock";
 @import "./20_molecules/contentpar";
+@import "./20_molecules/mapcontainer";
 
 // 30_organisms
-@import "./30_organisms/pagesidebar";
+@import "./30_organisms/pagenavigation";
 @import "./30_organisms/contentpage";
 @import "./30_organisms/contentparagraphs";
 @import "./30_organisms/footer";

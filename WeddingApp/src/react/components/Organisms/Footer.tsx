@@ -4,9 +4,9 @@ import ContactBlocks from "../../../Data/ContactBlocks";
 import { IContactBlock } from '../../../Types/ContactBlock';
 import { ContactBlock } from '../Molecules/ContactBlock';
 
-export const Footer = () => {
+export const Footer: React.StatelessComponent = () => {
   return (
-    <div className='o-footer'>
+    <div id='footer' className='o-footer'>
       {
         map(ContactBlocks, (contactBlock: IContactBlock, index: number) => (
           <ContactBlock key={index} icon={contactBlock.icon} text={contactBlock.text} value={contactBlock.value} />

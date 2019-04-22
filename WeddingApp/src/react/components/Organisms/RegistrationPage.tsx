@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const RegistrationPage = () => {
+export const RegistrationPage: React.FunctionComponent = () => {
   return (
     <div className='o-registration-page'>
-      Currently working
+      Detales papildysime vėliau
     </div>
 
   );

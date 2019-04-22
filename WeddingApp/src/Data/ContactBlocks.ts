@@ -4,11 +4,11 @@ export default ([
   {
     icon: FaPhone,
     text: "Kontaktinis telefonas",
-    value: "-"
+    value: "+37062224162"
   },
   {
     icon: FaEnvelope,
     text: "Kontaktinis paštas",
-    value: "-"
+    value: "vytaute.tutkute@gmail.com"
   }
 ])

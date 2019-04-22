@@ -7,7 +7,7 @@ export interface ContentParagraphsProps {
   paragraphs: IContainerText[];
 }
 
-export const ContentParagraphs: React.SFC<ContentParagraphsProps> = (props) => (
+export const ContentParagraphs: React.StatelessComponent<ContentParagraphsProps> = (props) => (
     <div className='o-content-paragraphs'>
         { map(
             props.paragraphs,

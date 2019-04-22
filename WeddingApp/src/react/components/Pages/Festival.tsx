@@ -4,6 +4,6 @@ export interface FestivalProps {
 
 }
 
-export const Festival: React.SFC<FestivalProps> = () => {
+export const Festival: React.StatelessComponent<FestivalProps> = () => {
     return <div>BEST</div>;
 }

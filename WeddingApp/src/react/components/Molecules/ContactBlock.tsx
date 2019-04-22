@@ -7,7 +7,7 @@ export interface ContactBlockProps {
   value: string;
 }
 
-export const ContactBlock: React.SFC<ContactBlockProps> = (props) => {
+export const ContactBlock: React.StatelessComponent<ContactBlockProps> = (props) => {
   const { icon, text, value } = props;
   return (
     <div className='m-contact-block'>

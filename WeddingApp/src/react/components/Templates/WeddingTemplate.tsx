@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PageSidebar } from '../Organisms/PageSidebar';
+import { PageNavigation } from '../Organisms/PageNavigation';
 import { Footer } from '../Organisms/Footer';
 
 export const WeddingTemplate: React.SFC = (props: any) => {
@@ -9,9 +9,9 @@ export const WeddingTemplate: React.SFC = (props: any) => {
           <header className='t-wedding-template__header'>
               <h3>
                   Vytautes ir Mindaugo Vestuves
-                  <div className='t-wedding-template__header__date'>2019-07-10</div>
+                  <div className='t-wedding-template__header__date'>2019-07-06</div>
               </h3>
-              <PageSidebar />
+              <PageNavigation />
           </header>
           {props.children}
           <>

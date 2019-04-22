@@ -7,7 +7,7 @@ export interface ContentPageProps {
   content: IContainerText[];
 }
 
-export const ContentPage: React.SFC<ContentPageProps> = (props) => {
+export const ContentPage: React.StatelessComponent<ContentPageProps> = (props) => {
     const { title, content } = props;
     return (
         <div className='o-content-page'>
