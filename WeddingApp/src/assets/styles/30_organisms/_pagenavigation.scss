@@ -1,0 +1,37 @@
+.o-page-sidebar {
+    width: 100%;
+    height: auto;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    justify-content: space-evenly;
+
+    &__item {
+        margin-top: auto;
+        margin-bottom: auto;
+
+        color: $color-nav-item;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: 500;
+        font-size: 24px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    &__item.navigation-btn {
+      background: none;
+      border: none;
+    }
+
+    &__item.navigation-btn:focus {
+      outline: 0; 
+    }
+
+    &__item.active {
+      color: $color-nav-item--active;
+      border-bottom: 2px solid $color-nav-item--active;
+      margin-top: 2px;
+    }
+}

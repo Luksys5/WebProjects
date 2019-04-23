@@ -1,0 +1,32 @@
+{
+  "name": "weddingpage",
+  "version": "1.0.0",
+  "description": "page with info about wedding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LT",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-lazyload": "^2.5.0",
+    "react-router": "^5.0.0",
+    "babel-polyfill": "^6.0.0",
+    "yarn": "^1.13.0"
+  },
+  "devDependencies": {
+    "babel": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-core": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-react": "^6.0.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "ts-loader": "^2.0.1",
+    "typescript": "^2.1.4",
+    "webpack": "^2.2.1"
+  }
+}

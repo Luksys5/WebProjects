@@ -1,0 +1,26 @@
+.a-paragraph-title {
+  position: relative;
+  margin: 10px;
+  font-family: 'Pinyon Script';
+  text-align: center;
+  font-weight: 600;
+  font-size: 32px;
+  color: $color-header;
+  height: 42px;
+  
+  & > div {
+    display: inline-block;
+    margin: 5px;
+    position: absolute;
+  }
+
+  &__title {
+    left: 42px;
+  }
+
+  &__icon {
+    left: 0;
+  }
+
+
+}
