@@ -11,7 +11,7 @@
   margin-left:auto;
   margin-right: auto;
 
-  & > div, & > img {
+  & > div.o-content-page__frame, & > img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -23,11 +23,9 @@
     filter: opacity(0.9);
   }
 
-  & > div.o-content-page__frame {
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
+  &__frame {
+    width: 100%;
+    height: 100%;
     z-index: 1;
     // background-color: #F2C14E;
 

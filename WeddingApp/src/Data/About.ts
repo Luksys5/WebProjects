@@ -1,22 +1,60 @@
 export default ([
   {
-    title: "Apie mus",
-    content: "Kas dar nežino, mes susipažinome internete, tiksliau – mobilioje aplikacijoje (taip, taip – „Tinder“)",
+    title: 'Jaunoji apie Jaunaji',
+    content: "\
+      Mindaugas – Jaunikis, kilęs iš Žemaitijos, Kretingos. \
+      Turi brolį, visiškai nepanašų į save. Galėsite įsitikinti patys ;). Studijavęs Šiauliuose ir Klaipėdoje. \
+      Mokėsi istoriją, turi net keletą diplomų. Kažkada svajojo būti istoriku. \
+      Gerai, kad tokiu ir netapo :) nes atrado save kitose srityse, kurios, tiesą sakant, man labiau imponuoja \
+      Jaunikis nuo teorijos perėjo prie praktikos ir su uniforma bei šautuvu treniravosi ginti tėvynę. \
+      Nelabai įsivaizduoju, ką jie ten dar daro, bet lovą kloti išmoksta nepriekaištingai. \
+      Mindaugo aistra –  futbolas, mėgsta tiek žaisti, tiek žiūrėti. Pastaruoju atveju aš turiu keletą valandų ramybės ir laiko sau :)\
+    ",
     class: ""
   },
   {
-    content: "Pirmas pasimatymas turėjo įvykti 2016 m. lapkričio 13 d., \
-      tačiau Jaunosios šviesus intelektas pakišo koją ir teko pasimatymą perkelti dieną vėliau. \
-       Oficialiai švenčiame pažinties dieną 14 dieną. \
-      Nuo pirmojo kavos puodelio pokalbis buvo vykęs, taigi buvo ir antras, ir trečias pasimatymas.",
+    content: "Trumpiau tariant Mindaugas yra charizmatiškas ir įdomus žmogus, su kuriuo gera būti kartu ir niekada nebūna nuobodu."
+  },
+  {
+    title: "Jaunasis apie Jaunaja",
+    content: "Vytautė – Jaunoji, kilusi iš Anykščių. Turi du jaunesnius brolius, bet dauguma galvoja, kad ji jaunėlė sesutė :) \
+    Nuo mažų dienų visi sakydavo, kad ji yra tėčio Vytauto kopija. Panašumu, tiksliau fenomenu, \
+    taipogi galėsite įsitikinti patys.",
+    class: ""
+  },
+  {
+      content: "Vytautė nuo vaikystės mėgsta šokti, yra baigusi muzikos mokyklą, tiesa dainuojant išgirsi retai. \
+      Laisvalaikiu ypač mėgsta sportuoti, užsiimti joga ir tiesiog vaikščioti po mūsų mylimą Vilnių. \
+      Vytautės priklausomybė ir atsipalaidavimo būdas – maisto gamyba ir maisto ragavimas (šitas mano irgi :) ), \
+      turbūt todėl ir kelionės pirmiausia siejasi su tais kraštais, kur galima paragauti kažką naujo, netikėto ir skanaus. \
+      Studijavo sociologiją ir teisę ir šiuo metu kaip ir daugelis mūsų dirba mėgstamą darbą ne pagal specialybę.",
+      class: ""
+  },
+  {
+    content: "Vytautė yra geriausių savybių rinkinukas, be kurio mano gyvenimas nebūtų toks gražus."
+  },
+  {
+    title: "Apie mus",
+    content: "Kas dar nežino, mes kaip ir daugelis mūsų kartos žmonių susipažinome internete, tiksliau – mobilioje aplikacijoje (taip, taip – „Tinder“)",
+    class: ""
+  },
+  {
+    content: "\
+      Pirmasis mudviejų pasimatymas turėjo įvykti 2016 m. lapkričio 13 d., \
+      tačiau Jaunosios topografijos žinios pakišo koją ir teko pasimatymą pavėlinti. \
+      Tad oficiali pažinties diena lapkričio 14. Nuo pirmojo kavos puodelio pokalbis buvo vykęs, \
+      taigi buvo ir antras, ir trečias pasimatymas. Sakoma, kad geriausia santykius tikrinti kelionėje, \
+      taigi jau kovo mėn. vykome pirmajam išbandymui į Maljorką, nors jau prieš tai abu žinojome, kad viskas bus gerai. \
+      Po kelionės supratome, kad keliausime dar daug kur ir tai sėkmingai darome! \
+      Namie netgi turime didelį žemėlapį, kur žymime vietas, aplankytas kartu. Įsimintiniausia kelionė? \
+      2018 m. rugsėjo mėn. į Švedijos sostinę Stokholmą – leidžiame jums spėti kodėl :)",
     class: "",
   },
   {
-    content: "Sakoma, kad geriausia santykius tikrinti kelionėje, taigi jau kovo mėn. \
-      vykome pirmajam išbandymui į maljorką. po šios kelionės supratome, \
-      kad keliausime dar daug kur ir šias svajones vykdome! namie netgi turime žemėlapį, kur žymime vietas, \
-      aplankytas kartu. įsimintiniausia kelionė? 2018 m. rugsėjo mėn. į švedijos sostinę stokholmą – \
-      leidžiame jums spėti kodėl", 
+    content: "\
+      Dabar, trečiaisiais bendravimo metais, \
+      dar mėgaujamės buvimu kartu: mėgstame ilgus pasivaikščiojimus, kartu sportuoti, keliauti, skanų maistą ir gerą kavą. \
+      Savaitgalius neretai leidžiame Anykščiuose, todėl ir vestuves švęsti nutarėme ten.",
     class: "",
   },
   {
@@ -24,24 +62,5 @@ export default ([
       mėgstame ilgus pasivaikščiojimus, kartu sportuoti, keliauti, ragauti skanų maistą ir gerą kavą. \
       Savaitgalius neretai leidžiame Anykščiuose, todėl ir vestuves švęsti nutarėme ten.",
     class: "",
-  },
-  {
-    title: 'Apie ji',
-    content: "\
-      Mindaugas – Jaunikis, kilęs iš Žemaitijos, Kretingos. \
-      Turi brolį. Mokėsi istoriją, turi net keletą diplomų. \
-      Jaunojo didžiausias pomėgis – futbolas, mėgsta tiek žaisti, tiek žiūrėti. \
-      Antras pomėgis – knygos, dar –kelionės ir sportas. \
-      Mindaugas sako, kad jo stiprus charakteris užgrūdintas Karo akademijoje ir kariuomenėje, kaip ir, beje, sugebėjimas tobulai kloti lovą",
-    class: ""
-  },
-  {
-    title: "Apie ją",
-    content: "Vytautė – Jaunoji, kilusi iš Anykščių. Turi 2 brolius. Mokėsi sociologiją ir teisę.",
-    class: ""
-  },
-  {
-      content: "Nuo vaikystės mėgsta šokti, yra baigusi dainavimo specialybę muzikos mokykloje, o šiandien laisvalaikiu mėgsta sportuoti, užsiimti joga. Jaunosios priklausomybė ir atsipalaidavimo būdas – maisto gamyba ir maisto ragavimas, turbūt todėl ir kelionės pirmiausia siejasi su tais kraštais, kur galima paragauti kažką naujo, netikėto ir skanaus. ",
-      class: ""
   },
 ])

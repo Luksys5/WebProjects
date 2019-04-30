@@ -14,7 +14,7 @@ export const ParagraphTitle: React.StatelessComponent<ParagraphTitleProps> = ({i
   return (
     <div className='a-paragraph-title'>
       {icon && <div className='a-paragraph-title__icon'>{React.createElement(icon)}</div>}
-      {title && <div className='a-paragraph-title__title'>{title}</div>}
+      {title && <div className={`a-paragraph-title__title ${icon ? '' : 'a-paragraph-title__title--without-icon'}`}>{title}</div>}
     </div>
   )
 

@@ -1,6 +1,8 @@
 .a-paragraph-title {
   position: relative;
-  margin: 10px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 10px;
   font-family: 'Pinyon Script';
   text-align: center;
   font-weight: 600;
@@ -16,6 +18,10 @@
 
   &__title {
     left: 42px;
+  }
+  
+  &__title--without-icon {
+    left: 0;
   }
 
   &__icon {
