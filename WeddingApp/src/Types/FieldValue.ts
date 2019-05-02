@@ -1,5 +1,8 @@
 export interface FieldValue {
-  name: string;
-  title: string;
-  value: string;
+  [key: string]: {
+    name: string;
+    error: string;
+    title: string;
+    value: string;
+  }
 }

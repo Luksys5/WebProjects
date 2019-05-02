@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map, InfoWindow, MarkerProps, Marker, GoogleApiWrapper, GoogleApiOptions, MapProps } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper, MapProps } from 'google-maps-react';
 
 export const LatLng = {
   lat: 54.682564,
@@ -12,9 +12,7 @@ const MapContainer: React.StatelessComponent<MapProps> = (props) => {
   return (
     <div className='m-map-container'>
       <Map google={google} zoom={14} initialCenter={{...LatLng}}>
- 
         <Marker title=" baznycia test" mapCenter={ new google.maps.LatLng(LatLng.lat, LatLng.lng, true) } />
- 
       </Map>
     </div>
   );

@@ -3,25 +3,15 @@ export default ([
       name: 'joinWedding',
       type: 'checkbox',
       className: 'a-checkbox',
-      title: 'Ar planuojate dalyvauti mūsų Vestuvėse?',
+      title: 'Ar dalyvausite mūsų Vestuvėse?',
       placeHolder: 'Taip/Ne',
-      value: ''
-  },
-  {
-      name: 'memberSize',
-      type: 'text',
-      className: 'a-checkbox',
-      title: 'Būsite vienas ar su antra puse/vaikais?',
-      placeHolder: 'Būsiu vienas/dviese/...',
-      value: ''
   },
   {
       name: 'overnightSleep',
       type: 'checkbox',
       className: 'a-checkbox',
-      title: 'Ar planuojate likti nakvynei? Ar liksite nakvoti',
+      title: 'Ar liksite nakvynei?',
       placeHolder: 'Taip/ne',
-      value: ''
   },
   {
       name: 'transportationToFeast', 
@@ -29,7 +19,6 @@ export default ([
       className: 'a-checkbox',
       title: 'Ar Jums reikalingas transportas nuvykimui į Šventės vietą po Ceremonijos bažnyčioje? ', 
       placeHolder: 'Taip/Ne', 
-      value: ''
   },
   {
       name: 'transportationFromFeast',
@@ -37,7 +26,13 @@ export default ([
       className: 'a-checkbox',
       title: 'Ar Jums reikalingas transportas grįžimui į Vilnių 2019 m. liepos 7 d.?', 
       placeHolder: 'Taip/Ne',
-      value: ''
+  },
+  {
+      name: 'memberSize',
+      type: 'text',
+      className: 'a-checkbox',
+      title: 'Parašykite po apačią kiek žmonių atvyks kartu su jumis',
+      placeHolder: 'Nei vieno, vienas, du...',
   },
 ]);
 

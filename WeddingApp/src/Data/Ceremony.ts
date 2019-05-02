@@ -1,4 +1,4 @@
-import { FaPlaceOfWorship, FaClock } from 'react-icons/fa';
+import { FaPlaceOfWorship, FaClock, FaHandHoldingHeart } from 'react-icons/fa';
 
 export default ([
     {
@@ -25,6 +25,7 @@ export default ([
     },
     {
       title: "Geles bei dovanos",
+      icon: FaHandHoldingHeart,
       content: "\
         Žinome, kad gėlės yra sveikinimų dalis, tačiau jos – nors ir gražus, bet labai laikinas dalykas. \
         Mūsų Šventės data sutampa su Lietuvos Valstybės diena, ta proga siūlome prisidėti prie mūsų \

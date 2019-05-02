@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RegistrationFormFields, { RegFieldNamesEnum } from '../../../Data/RegistrationForm';
 import { IRegField } from '../../../Types/RegField';
-import { RegistrationField } from '../Molecules/RegistrationField';
+import { InputField } from '../Atoms/InputField/InputField';
 
 export interface RegistrationPageProps {
   title: string;
@@ -17,11 +17,12 @@ export const RegistrationPage: React.StatelessComponent<RegistrationPageProps> =
               <h3>{title}</h3>
           </header>
           {
-            // RegistrationFormFields.map((field: IRegField, index) => (
-            //   <RegistrationField {...field} />
-            // ))
+            RegistrationFormFields.map((field: IRegField, index: number) => (
+              <InputField key={index} {...field} />
+            ))
           }
-          { 'Dar pildomas'}
+          <button type='button'>Siūsti</button>
+          <div>Pasikeitus nuomonei</div>
         </div>
       </div>
       

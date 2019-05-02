@@ -4,18 +4,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { WeddingTemplate } from './components/Templates/WeddingTemplate';
 import { Switch, Route, Redirect } from 'react-router';
 import { ContentPage } from './components/Organisms/ContentPage';
+import { RegistrationPage } from './components/Organisms/RegistrationPage';
 import AboutParagraphs from '../Data/About';
 import FestivalParagraphs from '../Data/Festival';
 import CeremonyParagraphs from '../Data/Ceremony';
-import { RegistrationPage } from './components/Organisms/RegistrationPage';
+import { FieldValue } from '../Types/FieldValue';
 
 export const RegistrationFormContext = React.createContext({
-  values: {},
-  setValues: (value: any) => {}
+  values: {} as FieldValue,
+  setValues: (value: FieldValue) => {}
 });
 
 export const App = () => {
-  const [values, setValues] = useState({}); 
+  const [values, setValues] = useState(); 
   return (
   <RegistrationFormContext.Provider value={{values, setValues}}>
     <BrowserRouter>

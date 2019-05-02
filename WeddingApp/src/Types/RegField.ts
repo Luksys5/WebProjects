@@ -4,5 +4,4 @@ export interface IRegField {
   className: string;
   title: string;
   placeHolder: string;
-  value?: string | undefined;
 }
