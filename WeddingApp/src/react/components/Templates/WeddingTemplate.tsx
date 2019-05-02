@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PageNavigation } from '../Organisms/PageNavigation';
 import { Footer } from '../Organisms/Footer';
 
+
 export const WeddingTemplate: React.SFC = (props: any) => {
 
     return (

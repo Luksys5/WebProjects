@@ -1,30 +1,28 @@
 import React, { useState } from 'react';
-import RegistrationFormFields from '../../../Data/RegistrationForm';
+import RegistrationFormFields, { RegFieldNamesEnum } from '../../../Data/RegistrationForm';
+import { IRegField } from '../../../Types/RegField';
+import { RegistrationField } from '../Molecules/RegistrationField';
 
-export const RegistrationPage: React.FunctionComponent = () => {
-  const [formValues, setFormValues] = useState(new Array(RegistrationFormFields.length).fill(''));
+export interface RegistrationPageProps {
+  title: string;
+}
 
-  const updateValue = (index: number, event: any) => {
-    const updatedValues = formValues.slice(0);
-    updatedValues[index] = event.target.value;
-    setFormValues(updatedValues);
-    console.log(updatedValues);
-
-  }
+export const RegistrationPage: React.StatelessComponent<RegistrationPageProps> = ({title}) => {
 
   return (
     <div className='o-registration-page'>
       <div className='o-content-page'>
-        {
-          RegistrationFormFields.map((field, index) => (
-            <div key={index} className='o-registration-page__field'>
-              <input type={field.type} name={field.name} className={field.class} onChange={(event) => updateValue(index, event)} />
-              {field.title}
-              
-            </div>
-            
-          ))
-        }
+        <div className='o-content-page__frame'>
+          <header className='o-content-page__frame__header'>
+              <h3>{title}</h3>
+          </header>
+          {
+            // RegistrationFormFields.map((field: IRegField, index) => (
+            //   <RegistrationField {...field} />
+            // ))
+          }
+          { 'Dar pildomas'}
+        </div>
       </div>
       
     </div>
