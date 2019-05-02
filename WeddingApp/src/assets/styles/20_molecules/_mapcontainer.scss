@@ -2,7 +2,7 @@
 .m-map-container {
   position: relative;
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: map-get($spacings,  6);
+  margin-bottom: map-get($spacings,  6);
   height: 500px;
 }

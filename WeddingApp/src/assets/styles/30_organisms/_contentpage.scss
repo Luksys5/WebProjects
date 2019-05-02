@@ -1,7 +1,7 @@
 .o-content-page {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
   position: relative;
-  margin-top: 20px;
+  margin-top: map-get($spacings,  6);
   
   min-height: 75vh;
   max-width: 110vh;
@@ -30,16 +30,19 @@
     // background-color: #F2C14E;
 
     .o-content-page__frame__header {
-      padding: map-get($spacings, 3);
-      margin: map-get($spacings, 1);
-      color: $color-header;
+      padding: map-get($spacings, 5);
+      margin: map-get($spacings, 2);
+      color: $color-font;
       box-shadow: 0px 1px 0px 0px gray;
-      font-family: 'Courier New', Courier, monospace;
 
 
       h4 {
         margin-top: auto;
         margin-bottom: auto;
+      }
+      h3 {
+        font-family: 'Adine Kirnberg', 'Courier New', Courier, monospace;
+        font-size: $xxlarge-fontsize;
       }
     }
   }

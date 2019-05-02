@@ -15,8 +15,8 @@ html {
         linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-        ),
-        url(../images/pageImgResized.jpg);
+        );
+        // url(../images/pageImgResized.jpg);
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale')";
     -webkit-background-size: cover;
@@ -39,6 +39,17 @@ html, body, #root, .wedding-page-app {
   src: url('../fonts/PinyonScript-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Adine Kirnberg';
+  src: url('../fonts/AdineKirnberg.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Adine Kirnberg Alt';
+  src: url('../fonts/AdineKirnberg-Alternate.ttf') format('truetype');
+}
+
+
 
 h1, h2, h3, h4 {
   font-family: 'Pinyon Script'
@@ -59,6 +70,8 @@ h4 {
 // atoms
 @import "./10_atoms/paragraphtitle";
 @import "10_atoms/differenttexts";
+@import "10_atoms/fields/checkboxfield";
+@import "10_atoms/fields/textfield";
 
 // molecules
 @import "./20_molecules/contactblock";

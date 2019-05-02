@@ -1,9 +1,9 @@
 .m-contact-block {
   display: flex;
-  margin: 20px;
+  margin: map-get($spacings,  6);
 
   & > div {
-    margin: 5px;
+    margin: map-get($spacings,  2);
   }
 
   &__icon {

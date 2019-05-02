@@ -1,14 +1,15 @@
 .m-content-par {
-  padding-top: 10px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 10px;
+  padding-top: $base-spacing;
+  padding-left: map-get($spacings, 9);
+  padding-right: map-get($spacings, 9);
+  padding-bottom: $base-spacing;
 
 
   &__content {
     font-family: 'Courier New', Courier, monospace;
     text-align: left;
-    margin-left: 10px;
+    margin-left: $base-spacing;
+    font-size: $base-fontsize;
   }
 
 
@@ -22,6 +23,6 @@
 .m-content-par__content::first-letter {
   font-weight: bold;
   font-size: 2em;
-  font-family: 'Pinyon Script';
-  margin-right: 5px;
+  font-family: 'Adine Kirnberg', 'Adine Kirnberg Alt';
+  margin-right: map-get($spacings, 2);
 }

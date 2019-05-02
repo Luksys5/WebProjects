@@ -1,6 +1,6 @@
 
 .o-content-paragraphs {
-  margin-top: 20px;
+  margin-top: map-get($spacings,  6);
   font-family: 'Courier New', Courier, monospace;
   font-weight: 400;
   height: 80%;

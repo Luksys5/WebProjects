@@ -8,15 +8,15 @@
 
     &__header {
         position: relative;
-        height: 140px;
+        height: 160px;
         width: 100%;
         background-color: white;
         
         > h3 {
             width: 100%;
             min-height: 48px;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: $base-spacing;
+            padding-bottom: $base-spacing;
             color: $color-header;
             position: relative;
 
@@ -24,7 +24,7 @@
         
         &__date {
           
-          font-size: 16px;
+          font-size: $base-fontsize;
           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
         }

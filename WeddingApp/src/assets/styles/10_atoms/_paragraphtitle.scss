@@ -1,23 +1,25 @@
 .a-paragraph-title {
   position: relative;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  font-family: 'Pinyon Script';
-  text-align: center;
-  font-weight: 600;
-  font-size: 32px;
+  margin-top: $base-spacing;
+  margin-left: map-get($spacings,  2);
+  margin-bottom: $base-spacing;
+  font-family: 'Adine Kirnberg', 'Courier New', Courier, monospace;
+  font-size: $xxlarge-fontsize;
   color: $color-header;
-  height: 42px;
+  height: 50px;
   
   & > div {
     display: inline-block;
-    margin: 5px;
+    margin: map-get($spacings,  2);
     position: absolute;
   }
 
   &__title {
+    line-height: 38px;
     left: 42px;
+    font-weight: 600;
+    font-size: $xxlarge-fontsize;
+    color: $color-font;
   }
   
   &__title--without-icon {
@@ -26,6 +28,7 @@
 
   &__icon {
     left: 0;
+    font-size: 38px;
   }
 
 

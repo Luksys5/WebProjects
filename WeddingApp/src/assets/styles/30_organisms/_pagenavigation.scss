@@ -1,20 +1,21 @@
 .o-page-sidebar {
     width: 100%;
     height: auto;
-    margin: 5px;
+    margin: map-get($spacings,  4);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: $base-spacing;
     justify-content: space-evenly;
 
     &__item {
         margin-top: auto;
         margin-bottom: auto;
+        padding-bottom: 10px;
 
         color: $color-nav-item;
         font-family: 'Times New Roman', Times, serif;
         font-weight: 500;
-        font-size: 24px;
+        font-size: $header-fontsize;
         cursor: pointer;
         text-decoration: none;
         font-weight: 500;

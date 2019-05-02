@@ -1,0 +1,59 @@
+.a-checkbox-field {
+  text-align: left;
+  width: 90%;
+  margin: map-get($spacings, 6);
+  display: flex;
+    
+    &__value {
+      display: inline-block;
+      min-width: map-get($spacings, 7);
+      min-height: map-get($spacings, 7);
+      width: map-get($spacings, 7);
+      height: map-get($spacings, 7);
+      border-radius: map-get($spacings, 7);
+      box-shadow: 0 0 3pt 2pt $color-checkbox;
+      margin: map-get($spacings, 2);
+      margin-top: auto;
+      margin-bottom: auto;
+      cursor: pointer;
+    }
+
+    &__value.error {
+      box-shadow: 0 0 3pt 2pt darkred;
+    }
+    
+    &__value.error:hover, &__value.active.error {
+      background-color: darkred;
+    }
+
+    &__value:hover, .active {
+      background-color: $color-checkbox;
+    }
+
+    &__title {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: $header-fontsize;
+      font-weight: 500;
+      text-align: left;
+      margin: map-get($spacings, 2);
+      margin-left: $base-spacing;
+      
+    }
+
+
+    &__checkbox.active {
+
+    }
+    
+    &__placeholder {
+      display: inline-block;
+      font-size: $base-fontsize;
+      // width: 250px;
+    }
+    
+
+    &__error {
+      
+    }
+
+}

@@ -1,7 +1,8 @@
 $small-fontsize: 12px !default;
-$base-fontsize: 16px !default;
+$base-fontsize: 18px !default;
 $large-fontsize: 24px !default;
 $xlarge-fontsize: 32px !default;
+$xxlarge-fontsize: 64px !default;
 
 $header-fontsize: 24px;
 $header-fontsize--large: 32px;
@@ -19,4 +20,5 @@ $spacings: (
   6: $base-spacing * 2,
   7: $base-spacing * 2.5,
   8: $base-spacing * 3,
+  9: $base-spacing * 4
 )
