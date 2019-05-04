@@ -1,4 +1,4 @@
-import { NavItemTypesEnum } from "../Types/Navigation";
+import { NavItemTypesEnum } from "../types/Navigation";
 
 export default ([
     {

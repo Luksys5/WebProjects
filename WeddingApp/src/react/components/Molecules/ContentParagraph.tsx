@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { IContainerText } from '../../../Types/ContainerTexts';
+import { IContainerText } from '../../../types/ContainerTexts';
 import { ParagraphTitle } from '../Atoms/ParagraphTitle';
 
 export interface ContentParagraphProps extends IContainerText {
@@ -9,11 +9,11 @@ export interface ContentParagraphProps extends IContainerText {
 
 export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> = (props) => {
   const MapContainer = lazy(() => import(/* webpackChunkName: 'ReactMaps' */'./MapContainer'));
-  const {index, title, icon, content, contentEnding, contentEndingClass, link, map} = props;
+  const {index, title, icon, iconProps, content, contentEnding, contentEndingClass, link, map, boldFirstWord} = props;
   return (
     <div key={index} className='m-content-par'>
-      <ParagraphTitle title={title} icon={icon} />
-      <p className='m-content-par__content'>
+      <ParagraphTitle title={title} icon={icon} iconProps={iconProps} />
+      <p className={`m-content-par__content ${boldFirstWord ? 'bold-first-word' : ''}`}>
         {content}
         {
           contentEnding &&

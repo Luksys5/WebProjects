@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContainerText } from '../../../Types/ContainerTexts';
+import { IContainerText } from '../../../types/ContainerTexts';
 import map from 'lodash/map';
 import { ContentParagraph } from '../Molecules/ContentParagraph';
 

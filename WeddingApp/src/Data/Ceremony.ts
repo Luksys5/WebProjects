@@ -4,6 +4,9 @@ export default ([
     {
       title: 'Vieta',
       icon: FaPlaceOfWorship,
+      iconProps: {
+        color: "#634030"
+      },
       content: "Ceremonijos vieta – Lietuvos kariuomenės Šv. Ignoto bažnyčia", 
       map: {
         apiKey: 'AIzaSyAKRXuVfaPQp_csiVerD4Xs1O89kpIBH7Y',
@@ -12,6 +15,9 @@ export default ([
     {
       title: "Laikas",
       icon: FaClock,
+      iconProps: {
+        color: "#fff"
+      },
       content: "Ceremonijos laikas – 2019 m. Liepos 6 d. 14:00 val. \
         Vėluoti į ceremoniją privilegiją turi Jaunoji, todėl svečių ",
       contentEnding: "prašome susirinkti anksčiau.",
@@ -26,6 +32,9 @@ export default ([
     {
       title: "Geles bei dovanos",
       icon: FaHandHoldingHeart,
+      iconProps: {
+        color: "#FF5154"
+      },
       content: "\
         Žinome, kad gėlės yra sveikinimų dalis, tačiau jos – nors ir gražus, bet labai laikinas dalykas. \
         Mūsų Šventės data sutampa su Lietuvos Valstybės diena, ta proga siūlome prisidėti prie mūsų \

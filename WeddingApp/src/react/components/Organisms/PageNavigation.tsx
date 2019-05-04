@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { map } from 'lodash';
-import Navigation from '../../../Data/Navigation';
+import Navigation from '../../../data/Navigation';
 import { NavLink } from 'react-router-dom';
-import { INavigationItem, NavItemTypesEnum } from '../../../Types/Navigation';
+import { INavigationItem, NavItemTypesEnum } from '../../../types/Navigation';
 
 export const PageNavigation: React.StatelessComponent = () => {
   return (

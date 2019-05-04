@@ -1,4 +1,4 @@
-export const FindKey = () => {
+export const Authenticate = () => {
 
 }
 

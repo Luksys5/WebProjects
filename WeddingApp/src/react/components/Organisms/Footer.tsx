@@ -1,7 +1,7 @@
 import React from 'react';
 import map from "lodash/map";
-import ContactBlocks from "../../../Data/ContactBlocks";
-import { IContactBlock } from '../../../Types/ContactBlock';
+import ContactBlocks from "../../../data/ContactBlocks";
+import { IContactBlock } from '../../../types/ContactBlock';
 import { ContactBlock } from '../Molecules/ContactBlock';
 
 export const Footer: React.StatelessComponent = () => {

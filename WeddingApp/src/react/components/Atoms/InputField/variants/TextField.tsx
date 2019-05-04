@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import { FieldProps } from '.';
 
-export const TextField: React.StatelessComponent<FieldProps> = ({name, className, title, placeHolder, error, value, onChange}) => {
+export const TextField: React.StatelessComponent<FieldProps> = ({name, title, placeHolder, error, value, onChange}) => {
   const inputReference: any = useRef();
 
   const onBlur = () => {

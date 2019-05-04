@@ -4,6 +4,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import "./assets/styles/_main.scss";
 import App from './react/App';
+import './polyfills';
 
 ReactDOM.render(
   <App />,

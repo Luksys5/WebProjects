@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone } from 'react-icons/fa/index';
+import { FaEnvelope, FaPhone } from 'react-icons/fa';
 
 export default ([
   {

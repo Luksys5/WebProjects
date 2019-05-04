@@ -1,6 +1,6 @@
 import { CheckboxField } from "./CheckboxField";
 import { TextField } from "./TextField";
-import { IRegField } from "../../../../../Types/RegField";
+import { IRegField } from "../../../../../types/RegField";
 
 export interface FieldProps extends IRegField {
   value: any;
