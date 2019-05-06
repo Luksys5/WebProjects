@@ -7,7 +7,7 @@ import { FieldVariants } from './variants';
 
 export const InputField: React.FunctionComponent<IRegField> = (props) => {
   const { type, name } = props; 
-  const { values, setValues } = useContext(RegistrationFormContext);
+  const { state: { values }, dispatch } = useContext(RegistrationFormContext);
   if(!type) {
     return null;
   }
@@ -18,7 +18,7 @@ export const InputField: React.FunctionComponent<IRegField> = (props) => {
       values,
       {[name]: { name: name, title: title, value: updateValue }}
     );
-    setValues(updatedValues);
+    dispatch({type: 'setValues', payload: updatedValues});
   }
 
   return React.createElement(

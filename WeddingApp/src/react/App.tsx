@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { WeddingTemplate } from './components/Templates/WeddingTemplate';
@@ -9,23 +9,35 @@ import AboutParagraphs from '../data/About';
 import FestivalParagraphs from '../data/Festival';
 import CeremonyParagraphs from '../data/Ceremony';
 import { FieldValue } from '../types/FieldValue';
-import { Authentication } from './components/Molecules/Authentication';
-import { isAuthenticated } from './Authentication';
+import { isAuthenticated, getRegistrationToken } from './Authentication';
 import { RegistrationFields } from './components/Molecules/RegistrationFields';
+import Authentication from './components/Molecules/Authentication';
+import { IContextState } from '../types/ContextState';
 
 export const RegistrationFormContext = React.createContext({
-  values: {} as FieldValue,
-  setValues: (value: FieldValue) => {}
+  state: {} as IContextState,
+  dispatch: ({}) => {}
 });
 
-export const AuthenticateRegistration = (): JSX.Element => {
-  return isAuthenticated() ? <RegistrationFields /> : <Authentication />; 
-}
-
 export const App = () => {
-  const [values, setValues] = useState(); 
+  const initialState: IContextState = { values: {} as FieldValue, token: '' };  
+  const reducer = (state: any, action: any) => {
+    switch(action.type) {
+      case 'setValues':
+        return Object.assign({}, state, { values: action.payload });
+      case 'setToken':
+        return Object.assign({}, state, { token: action.payload });
+      default: break;
+    }
+  }
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const AuthenticateRegistration = (): JSX.Element => {
+    return state.token ? <RegistrationFields /> : <Authentication />; 
+  }
+
   return (
-  <RegistrationFormContext.Provider value={{values, setValues}}>
+  <RegistrationFormContext.Provider value={{state, dispatch}}>
     <BrowserRouter>
       <WeddingTemplate>
         <Switch>

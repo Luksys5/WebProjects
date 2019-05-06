@@ -21,7 +21,7 @@ export const TextField: React.StatelessComponent<FieldProps> = ({name, title, pl
       />
       {
         error && 
-        <div className='a-text-field__error'>Pra6omes uzpildyti sita lauka</div>
+        <div className='a-text-field__error'>{error}</div>
       }
     </div>
   );
