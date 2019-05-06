@@ -38,7 +38,7 @@ const Authentication: React.StatelessComponent<RouteComponentProps> = ({ history
         value=''
       />
 
-      <Button title='test' buttonProps={{name: 'authentication-button', onClick: authenticate}} />
+      <Button title='Tikrinti kodą' buttonProps={{name: 'authentication-button', onClick: authenticate}} />
     </React.Fragment>
   );
 }

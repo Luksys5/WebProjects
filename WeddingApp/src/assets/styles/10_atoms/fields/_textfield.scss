@@ -5,7 +5,7 @@
     
     &__title {
       font-family: 'Courier New', Courier, monospace;
-      font-size: $header-fontsize;
+      font-size: $base-fontsize;
       font-weight: 500;
       text-align: left;
       margin: map-get($spacings, 2);
@@ -14,16 +14,25 @@
 
     &__value {
       background-color: white;
-      height: 50px;
+      height: 35px;
       width: 80%;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 2pt 1pt lightgray;
       margin: map-get($spacings, 2);
       padding: map-get($spacings, 2);
-      font-size: $header-fontsize;
+
+      font-size: $base-fontsize;
     }
 
     &__value.error {
-      border: 1px solid darkred;
+      box-shadow: 0 0 2pt 1pt darkred;
+    }
 
+    &__value:focus {
+      outline: 0;
+      box-shadow: 0 0 2pt 1pt lightblue;
+      
     }
 
 

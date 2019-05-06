@@ -14,7 +14,7 @@ export const TextField: React.StatelessComponent<FieldProps> = ({name, title, pl
       <input
         ref={inputReference}
         type='text'
-        className={`a-text-field__value error ${error ? 'error' : ''}`}
+        className={`a-text-field__value ${error ? 'error' : ''}`}
         defaultValue={value}
         placeholder={placeHolder}
         onBlur={onBlur}

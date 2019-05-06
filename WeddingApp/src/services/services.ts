@@ -1,12 +1,12 @@
 import { IAuthenticationResult } from "../types/Result";
 
 const ServiceURL = "https://us-central1-mylocalworldmap.cloudfunctions.net/"; 
-const settings = {
+const defaultSettings = {
   method: "POST",
 }
 
-export const Authenticate = async (code: string) => {
-  return await fetch(`${ServiceURL}validateKey?key=${code}`, settings)
+export const CallGCFunction = async(url: string, settings: any = defaultSettings) => {
+  return fetch(url , settings)
     .then(resp => {
       if(!resp.ok) {
         throw Error(resp.statusText);
@@ -19,6 +19,10 @@ export const Authenticate = async (code: string) => {
       }
       return result.participant;
     })
+}
+
+export const Authenticate = async (code: string) => {
+  return CallGCFunction(`${ServiceURL}validateKey?key=${code}`);
 }
 
 export const SendConfirmationLetter = () => {

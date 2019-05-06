@@ -1,0 +1,22 @@
+.a-button {
+  display: block;
+  width: 200px;
+  height: 35px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: $base-fontsize;
+  background-color: #5171A5;
+  border: 2px solid #5171A5;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: map-get($spacings, 7);
+  cursor: pointer;
+}
+
+.a-button:hover {
+  background-color: #607DAD;
+  color: lightgrey;
+}
+
+.a-button:focus {
+  outline: 0;
+}

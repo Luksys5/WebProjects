@@ -6,12 +6,13 @@
     
     &__value {
       display: inline-block;
-      min-width: map-get($spacings, 7);
-      min-height: map-get($spacings, 7);
-      width: map-get($spacings, 7);
-      height: map-get($spacings, 7);
-      border-radius: map-get($spacings, 7);
-      box-shadow: 0 0 3pt 2pt $color-checkbox;
+      min-width: map-get($spacings, 5);
+      min-height: map-get($spacings, 5);
+      width: map-get($spacings, 5);
+      height: map-get($spacings, 5);
+      border-radius: map-get($spacings, 2);
+      border: 1px solid $color-checkbox--active;
+      background-color: #C8D9D8;
       margin: map-get($spacings, 2);
       margin-top: auto;
       margin-bottom: auto;
@@ -26,13 +27,17 @@
       background-color: darkred;
     }
 
-    &__value:hover, .active {
+    &__value:hover {
+      background-color: $color-checkbox--active;
+    }
+
+    &__value.active {
       background-color: $color-checkbox;
     }
 
     &__title {
       font-family: 'Courier New', Courier, monospace;
-      font-size: $header-fontsize;
+      font-size: $base-fontsize;
       font-weight: 500;
       text-align: left;
       margin: map-get($spacings, 2);

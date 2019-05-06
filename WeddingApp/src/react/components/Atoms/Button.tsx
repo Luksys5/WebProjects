@@ -6,5 +6,9 @@ export interface ButtonProps {
 }
 
 export const Button: React.StatelessComponent<ButtonProps> = ({title, buttonProps}) => {
-  return (<button {...buttonProps}>{title}</button>);
+  return (
+    <button className='a-button' {...buttonProps}>
+      {title}
+    </button>
+  );
 }

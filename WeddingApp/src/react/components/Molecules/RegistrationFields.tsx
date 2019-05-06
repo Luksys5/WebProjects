@@ -2,6 +2,7 @@ import React from 'react';
 import RegistrationFormFields from '../../../data/RegistrationForm';
 import { IRegField } from '../../../types/RegField';
 import { InputField } from '../Atoms/InputField/InputField';
+import { Button } from '../Atoms/Button';
 
 export const RegistrationFields = () => {
   return (
@@ -11,7 +12,7 @@ export const RegistrationFields = () => {
           <InputField key={index} {...field} />
         ))
       }
-      <button type='button'>Siūsti</button>
+      <Button title='Tikrinti kodą' buttonProps={{name: 'authentication-button' }} />
       <div>Pasikeitus nuomonei</div>
     </React.Fragment>
   ); 
