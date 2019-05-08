@@ -13,6 +13,7 @@ import { isAuthenticated, getRegistrationToken } from './Authentication';
 import { RegistrationFields } from './components/Molecules/RegistrationFields';
 import Authentication from './components/Molecules/Authentication';
 import { IContextState } from '../types/ContextState';
+import Festival from '../data/Festival';
 
 export const RegistrationFormContext = React.createContext({
   state: {} as IContextState,
@@ -44,7 +45,7 @@ export const App = () => {
           <Route path="/about" component={() => <ContentPage content={AboutParagraphs} title="Apie" />} />
           <Route path="/festival" component={() => <ContentPage content={FestivalParagraphs} title="Festivalis" />} />
           <Route path="/ceremony" component={() => <ContentPage content={CeremonyParagraphs} title="Ceremonija" />} />
-          <Route path="/registry" component={() => <RegistrationPage title="Švente ir Registracija">{ AuthenticateRegistration() }</RegistrationPage> } />
+          <Route path="/registry" component={() => <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">{ AuthenticateRegistration() }</RegistrationPage> } />
           <Route path="/" render={() => <Redirect to='/about' />} />
         </Switch>
       </WeddingTemplate>

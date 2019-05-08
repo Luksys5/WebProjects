@@ -4,7 +4,7 @@ export interface IContainerText {
   title?: string | undefined;
   icon?: IconType | undefined;
   iconProps?: any;
-  class?: string | undefined;
+  className?: string | undefined;
   content: string;
   contentEnding? : string | undefined;
   contentEndingClass? : string | undefined;
@@ -18,6 +18,9 @@ export interface IMap {
 }
 
 export interface ILinkProps {
+  textBefore?: string;
+  textBeforeClass?: string;
+  navItem?: boolean;
   text: string;
   href: string;
 }

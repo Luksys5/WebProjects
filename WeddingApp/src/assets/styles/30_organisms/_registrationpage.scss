@@ -5,4 +5,23 @@
   margin-top: auto;
   margin-bottom: auto;
 
+  & > div > header:nth-child(8) {
+    border-top: 1px solid gray;
+  }
+
+  .m-submit-info {
+    display: flex;
+    justify-content: center;
+
+    .a-button, .a-additional-info {
+      display: inline-block;
+      font-size: large;
+      margin: 10px;
+    }
+
+    .a-additional-info {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
 }
