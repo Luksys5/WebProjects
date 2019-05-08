@@ -1,9 +1,13 @@
 import { IconType } from "react-icons/lib/iconBase";
 
-export interface IContainerText {
+export interface IContainerData {
   title?: string | undefined;
   icon?: IconType | undefined;
   iconProps?: any;
+  paragraphs: IParagraphText[];
+}
+
+export interface IParagraphText {
   class?: string | undefined;
   content: string;
   contentEnding? : string | undefined;

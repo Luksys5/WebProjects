@@ -3,6 +3,8 @@ import RegistrationFormFields from '../../../data/RegistrationForm';
 import { IRegField } from '../../../types/RegField';
 import { InputField } from '../Atoms/InputField/InputField';
 import { Button } from '../Atoms/Button';
+import { ContentParagraphs } from '../Organisms/ContentParagraphs';
+import Festival from '../../../data/Festival';
 
 export const RegistrationFields = () => {
   return (
@@ -12,8 +14,8 @@ export const RegistrationFields = () => {
           <InputField key={index} {...field} />
         ))
       }
-      <Button title='Tikrinti kodą' buttonProps={{name: 'authentication-button' }} />
-      <div>Pasikeitus nuomonei</div>
+      <Button title='Siūsti užpildytą informaciją' buttonProps={{name: 'authentication-button' }} />
+      <ContentParagraphs paragraphs={Festival} />
     </React.Fragment>
   ); 
 }

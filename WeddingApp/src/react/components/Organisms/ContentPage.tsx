@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IContainerText } from '../../../types/ContainerTexts';
+import { IContainerData } from '../../../types/ContainerData';
 import { ContentParagraphs } from './ContentParagraphs';
 
 export interface ContentPageProps {
   title: string;
-  content: IContainerText[];
+  content: IContainerData[];
 }
 
 export const ContentPage: React.StatelessComponent<ContentPageProps> = (props) => {

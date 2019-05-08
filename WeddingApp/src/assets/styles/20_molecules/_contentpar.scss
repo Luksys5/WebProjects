@@ -10,6 +10,11 @@
     text-align: left;
     margin-left: $base-spacing;
     font-size: $base-fontsize;
+
+    & > p {
+      text-align: left;
+      margin-top: 15px;
+    }
   }
 
   &__link {

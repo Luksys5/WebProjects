@@ -3,7 +3,7 @@
   margin-top: $base-spacing;
   margin-left: map-get($spacings,  2);
   margin-bottom: $base-spacing;
-  font-family: 'Adine Kirnberg', 'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: $xxlarge-fontsize;
   color: $color-header;
   height: 50px;
@@ -18,7 +18,7 @@
     line-height: 38px;
     left: 42px;
     font-weight: 600;
-    font-size: $xxlarge-fontsize;
+    font-size: $xlarge-fontsize;
     color: $color-font;
   }
   

@@ -16,7 +16,7 @@ import { IContextState } from '../types/ContextState';
 
 export const RegistrationFormContext = React.createContext({
   state: {} as IContextState,
-  dispatch: ({}) => {}
+  dispatch: ({}: any) => {}
 });
 
 export const App = () => {

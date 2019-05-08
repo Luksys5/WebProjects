@@ -1,19 +1,11 @@
 import React, { lazy, Suspense } from 'react'
-import { IContainerText } from '../../../types/ContainerTexts';
-import { ParagraphTitle } from '../Atoms/ParagraphTitle';
+import { IParagraphText } from '../../../types/ContainerData';
+export const MapContainer = lazy(() => import(/* webpackChunkName: 'ReactMaps' */'./MapContainer'));
 
-export interface ContentParagraphProps extends IContainerText {
-  index: number;
-}
-
-
-export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> = (props) => {
-  const MapContainer = lazy(() => import(/* webpackChunkName: 'ReactMaps' */'./MapContainer'));
-  const {index, title, icon, iconProps, content, contentEnding, contentEndingClass, link, map, boldFirstWord} = props;
+export const ContentParagraph: React.StatelessComponent<IParagraphText> = ({ content, contentEnding, contentEndingClass, map, link }) => {
   return (
-    <div key={index} className='m-content-par'>
-      <ParagraphTitle title={title} icon={icon} iconProps={iconProps} />
-      <p className={`m-content-par__content ${boldFirstWord ? 'bold-first-word' : ''}`}>
+    <React.Fragment>
+      <p>
         {content}
         {
           contentEnding &&
@@ -30,6 +22,6 @@ export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> =
           <MapContainer />
         </Suspense> 
       }
-    </div>
+    </React.Fragment>
   );
 }
