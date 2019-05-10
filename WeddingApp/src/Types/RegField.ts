@@ -1,5 +1,5 @@
 export interface IRegField {
-  name: string;
+  name: 'joinWedding' | 'memberSize' | 'overnightSleep' | 'transportationToFeast' | 'transportationFromFeast' | 'specialFoodNeeds' | 'memberSize' | 'authenticationInput';
   type?: string;
   className?: string;
   title: string;

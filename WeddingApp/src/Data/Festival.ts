@@ -44,7 +44,7 @@ vietą bei kitą dieną parvešiantis iš jos atgal į sostinę."
     class: ""
   },
   {
-    title: "APRANGA & DOVANOS",
+    title: "Apranga & Dovanos",
     content: "Mūsų Šventės aprangos kodas: ",
     contentEnding: 'ŠVENTINĖ su lietuviška atributika.',
     contentEndingClass: 'a-important'

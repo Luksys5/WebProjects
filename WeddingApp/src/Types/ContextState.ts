@@ -1,6 +1,8 @@
-import { FieldValue } from "./FieldValue";
+import { FieldValues } from "./FieldValues";
 
 export interface IContextState {
-  values: FieldValue;
+  values: FieldValues;
   token: string;
+  error: '';
+  info: '';
 }

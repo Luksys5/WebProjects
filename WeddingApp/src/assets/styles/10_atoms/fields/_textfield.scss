@@ -21,6 +21,7 @@
       box-shadow: 0 0 2pt 1pt lightgray;
       margin: map-get($spacings, 2);
       padding: map-get($spacings, 2);
+      cursor: text;
 
       font-size: $base-fontsize;
     }

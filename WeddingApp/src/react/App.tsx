@@ -8,33 +8,57 @@ import { RegistrationPage } from './components/Organisms/RegistrationPage';
 import AboutParagraphs from '../data/About';
 import FestivalParagraphs from '../data/Festival';
 import CeremonyParagraphs from '../data/Ceremony';
-import { FieldValue } from '../types/FieldValue';
+import { FieldValues } from '../types/FieldValues';
 import { isAuthenticated, getRegistrationToken } from './Authentication';
 import { RegistrationFields } from './components/Molecules/RegistrationFields';
 import Authentication from './components/Molecules/Authentication';
 import { IContextState } from '../types/ContextState';
 import Festival from '../data/Festival';
+import { UpdateCookieProperty } from './UpdatePropertyCookie';
 
 export const RegistrationFormContext = React.createContext({
   state: {} as IContextState,
   dispatch: ({}) => {}
 });
 
+export enum ActionTypesEnum {
+  setValues = "setValues",
+  setToken = "setToken",
+  setError = "setError",
+  setInfo = "setInfo"
+}
+
+export enum CookieNamesEnum {
+  RegistrationToken = 'registrationToken',
+  FieldValues = 'FieldValues',
+}
+
 export const App = () => {
-  const initialState: IContextState = { values: {} as FieldValue, token: '' };  
+  const initialState: IContextState = { values: {} as FieldValues, token: '', error: '', info: '' };  
   const reducer = (state: any, action: any) => {
     switch(action.type) {
-      case 'setValues':
-        return Object.assign({}, state, { values: action.payload });
-      case 'setToken':
+      case ActionTypesEnum.setValues:
+        const updatedValues = Object.assign({}, state, { values: action.payload });
+        UpdateCookieProperty(CookieNamesEnum.FieldValues, updatedValues.values)
+        return updatedValues;
+      case ActionTypesEnum.setToken:
+        UpdateCookieProperty(CookieNamesEnum.RegistrationToken, action.payload);
         return Object.assign({}, state, { token: action.payload });
+      case ActionTypesEnum.setError:
+        return Object.assign({}, state, { error: action.payload });
+      case ActionTypesEnum.setInfo:
+        return Object.assign({}, state, { error: action.payload });
       default: break;
     }
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const AuthenticateRegistration = (): JSX.Element => {
-    return true || state.token ? <RegistrationFields /> : <Authentication />; 
+    return state.token || isAuthenticated() ? 
+      <React.Fragment>
+        <RegistrationFields /> 
+        <ContentPage additionalClassName='no-background' content={Festival} title="Švente" /> 
+      </React.Fragment> : <Authentication />; 
   }
 
   return (

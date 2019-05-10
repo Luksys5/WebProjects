@@ -18,10 +18,6 @@ export const RegistrationPage: React.StatelessComponent<RegistrationPageProps> =
               <h3>{formTitle}</h3>
           </header>
           { children }
-          <header className='o-content-page__header'>
-              <h3>{contentTitle}</h3>
-          </header>
-          <ContentParagraphs paragraphs={content} />
       </div>
       
     </div>

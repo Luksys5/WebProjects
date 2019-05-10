@@ -1,8 +1,9 @@
 import { IAuthenticationResult } from "../types/Result";
+import { FieldValues } from "../types/FieldValues";
 
 const ServiceURL = "https://us-central1-mylocalworldmap.cloudfunctions.net/"; 
-const defaultSettings = {
-  method: "POST",
+const defaultSettings: RequestInit = {
+  method: "POST"
 }
 
 export const CallGCFunction = async(url: string, settings: any = defaultSettings) => {
@@ -25,6 +26,15 @@ export const Authenticate = async (code: string) => {
   return CallGCFunction(`${ServiceURL}validateKey?key=${code}`);
 }
 
-export const SendConfirmationLetter = () => {
+export const SendConfirmationLetter = async (code: string, values: FieldValues) => {
+  const settings:RequestInit = {
+    ...defaultSettings,
+    body: JSON.stringify({
+      values: values,
+      token: code
+    })
+  };
+  debugger;
+  // return CallGCFunction(`${ServiceURL}validateKey?key=${code}`, settings);
   
 }
