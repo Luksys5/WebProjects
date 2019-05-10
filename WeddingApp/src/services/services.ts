@@ -35,6 +35,5 @@ export const SendConfirmationLetter = async (code: string, values: FieldValues) 
     })
   };
   debugger;
-  // return CallGCFunction(`${ServiceURL}validateKey?key=${code}`, settings);
-  
+  return CallGCFunction(`${ServiceURL}sendParticipationLetter`, settings);
 }

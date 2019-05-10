@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: $base-spacing;
-   justify-content: space-evenly;
+    justify-content: space-evenly;
 
     &__item {
         margin-top: auto;

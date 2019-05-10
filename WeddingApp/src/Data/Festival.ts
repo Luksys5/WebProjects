@@ -1,6 +1,12 @@
+import { FaLocationArrow } from "react-icons/fa";
+
 export default ([
   {
     title: 'Vieta',
+    icon: FaLocationArrow,
+    iconProps: {
+      color: "#634030"
+    },
     content: "Mums patinka Anykščiai! Todėl norime šį nuostabų kraštą parodyti ir jums!",
     class: "",
   },

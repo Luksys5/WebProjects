@@ -1,12 +1,11 @@
 .o-content-page {
   background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
   position: relative;
-  margin-top: map-get($spacings,  8);
+  margin-top: 190px; 
   margin-bottom: map-get($map: $spacings, $key: 8);
+  padding: map-get($spacings, 6);
   
-  min-height: 75vh;
-  max-width: 110vh;
-  min-width: 90vh;
+  width: 70vw;
   z-index: 1;
   
   margin-left:auto;
@@ -14,7 +13,6 @@
 
   &__header {
     padding: map-get($spacings, 5);
-    margin: map-get($spacings, 2);
     color: black;
     border-bottom: 1px solid gray;
 

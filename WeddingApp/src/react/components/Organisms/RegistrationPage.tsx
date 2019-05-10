@@ -9,7 +9,7 @@ export interface RegistrationPageProps {
 }
 
 export const RegistrationPage: React.StatelessComponent<RegistrationPageProps> = (props) => {
-  const { formTitle, contentTitle, content, children } = props;
+  const { formTitle, children } = props;
 
   return (
     <div className='o-registration-page'>

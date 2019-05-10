@@ -1,33 +1,34 @@
 export default ([
   {
-    title: 'Jaunoji apie Jaunaji',
+    title: 'Jaunoji apie Jaunają',
     content: "\
-      Mindaugas – Jaunikis, kilęs iš Žemaitijos, Kretingos. \
-      Turi brolį, visiškai nepanašų į save. Galėsite įsitikinti patys ;). Studijavęs Šiauliuose ir Klaipėdoje. \
-      Mokėsi istoriją, turi net keletą diplomų. Kažkada svajojo būti istoriku. \
-      Gerai, kad tokiu ir netapo :) nes atrado save kitose srityse, kurios, tiesą sakant, man labiau imponuoja \
-      Jaunikis nuo teorijos perėjo prie praktikos ir su uniforma bei šautuvu treniravosi ginti tėvynę. \
-      Nelabai įsivaizduoju, ką jie ten dar daro, bet lovą kloti išmoksta nepriekaištingai. \
-      Mindaugo aistra –  futbolas, mėgsta tiek žaisti, tiek žiūrėti. Pastaruoju atveju aš turiu keletą valandų ramybės ir laiko sau :)\
+    Mindaugas – Jaunikis, kilęs iš Žemaitijos, jei tiksliau - Kretingos. Turi brolį, visiškai nepanašų į save. Galėsite\
+tuo įsitikinti patys ;) Studijavęs Šiauliuose ir Klaipėdoje. Mokėsi istoriją ir net kažkada svajojo būti istoriku. \
+Gerai, kad tokiu ir netapo nes atrado save kitose srityse, kurios, tiesą sakant, man labiau imponuoja. \
+Trumpiau tariant - jaunikis nuo teorijos perėjo prie praktikos ir su uniforma bei šautuvu treniravosi ginti \
+Lietuvą. Kaip žinia ne žodžiais, o darbais Tėvynę mylim. Tiesą sakant nelabai įsivaizduoju, ką jie ten dar daro, \
+bet lovą kloti išmoksta nepriekaištingai. Mindaugo aistra – futbolas, mėgsta tiek žaisti, tiek žiūrėti. \
+Pastaruoju atveju aš turiu keletą valandų ramybės ir laiko sau \
     ",
     class: ""
   },
   {
-    content: "Trumpiau tariant Mindaugas yra charizmatiškas ir įdomus žmogus, su kuriuo gera būti kartu ir niekada nebūna nuobodu."
+    content: "Mindaugas yra charizmatiškas ir įdomus žmogus, su kuriuo gera būti kartu ir niekada nebūna nuobodu."
   },
   {
     title: "Jaunasis apie Jaunaja",
-    content: "Vytautė – Jaunoji, kilusi iš Anykščių. Turi du jaunesnius brolius, bet dauguma galvoja, kad ji jaunėlė sesutė :) \
-    Nuo mažų dienų visi sakydavo, kad ji yra tėčio Vytauto kopija. Panašumu, tiksliau fenomenu, \
-    taipogi galėsite įsitikinti patys.",
+    content: "Vytautė – Jaunoji, kilusi iš Anykščių. Turi du jaunesnius brolius, bet dauguma galvoja, kad ji jaunėlė sesutė \
+ Nuo mažų dienų visi sakydavo, kad ji yra tėčio Vytauto kopija. Panašumu, tiksliau fenomenu, taipogi \
+galėsite įsitikinti patys.",
     class: ""
   },
   {
-      content: "Vytautė nuo vaikystės mėgsta šokti, yra baigusi muzikos mokyklą, tiesa dainuojant išgirsi retai. \
-      Laisvalaikiu ypač mėgsta sportuoti, užsiimti joga ir tiesiog vaikščioti po mūsų mylimą Vilnių. \
-      Vytautės priklausomybė ir atsipalaidavimo būdas – maisto gamyba ir maisto ragavimas (šitas mano irgi :) ), \
-      turbūt todėl ir kelionės pirmiausia siejasi su tais kraštais, kur galima paragauti kažką naujo, netikėto ir skanaus. \
-      Studijavo sociologiją ir teisę ir šiuo metu kaip ir daugelis mūsų dirba mėgstamą darbą ne pagal specialybę.",
+      content: "Vytautė nuo vaikystės mėgsta šokti, yra baigusi muzikos mokyklą, tiesa daugiausia dainuoja duše arba \
+automobilyje. Laisvalaikiu ypač mėgsta sportuoti, užsiimti joga ir tiesiog vaikščioti po mūsų mylimą Vilnių. \
+Vytautės priklausomybė ir atsipalaidavimo būdas – maisto gamyba ir maisto ragavimas (šitas mano irgi), \
+turbūt todėl ir mūsų kelionės pirmiausia siejasi su tais kraštais, kur galima paragauti kažką naujo, netikėto ir \
+skanaus. Studijavo sociologiją, teisę ir šiuo metu, kaip ir daugelis mūsų, dirba mėgstamą darbą ne pagal \
+specialybę.",
       class: ""
   },
   {

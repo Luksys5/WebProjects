@@ -22,7 +22,7 @@ export const RegistrationFields = () => {
       }
       <div className='m-submit-info'>
         <Button title='Pateikti užpildytą informacija' buttonProps={{name: 'authentication-button', onClick: joinWeddingFestival }} />
-        <div className='a-additional-info'>Persigalvojus visada galite nusiūsti naujai užpildytą formą</div>
+        <div className='a-additional-info'>Persigalvojus visada galite nusiūsti naujai užpildytą formą galite užpildyti/keisti iki birželio 1 d.</div>
       </div>
     </React.Fragment>
   ); 

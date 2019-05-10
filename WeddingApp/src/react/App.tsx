@@ -9,7 +9,7 @@ import AboutParagraphs from '../data/About';
 import FestivalParagraphs from '../data/Festival';
 import CeremonyParagraphs from '../data/Ceremony';
 import { FieldValues } from '../types/FieldValues';
-import { isAuthenticated, getRegistrationToken } from './Authentication';
+import { isAuthenticated, getRegistrationToken, getInitialValues } from './Authentication';
 import { RegistrationFields } from './components/Molecules/RegistrationFields';
 import Authentication from './components/Molecules/Authentication';
 import { IContextState } from '../types/ContextState';
@@ -18,7 +18,7 @@ import { UpdateCookieProperty } from './UpdatePropertyCookie';
 
 export const RegistrationFormContext = React.createContext({
   state: {} as IContextState,
-  dispatch: ({}) => {}
+  dispatch: ({}: any) => {}
 });
 
 export enum ActionTypesEnum {
@@ -34,7 +34,6 @@ export enum CookieNamesEnum {
 }
 
 export const App = () => {
-  const initialState: IContextState = { values: {} as FieldValues, token: '', error: '', info: '' };  
   const reducer = (state: any, action: any) => {
     switch(action.type) {
       case ActionTypesEnum.setValues:
@@ -51,14 +50,18 @@ export const App = () => {
       default: break;
     }
   }
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, getInitialValues());
 
   const AuthenticateRegistration = (): JSX.Element => {
     return state.token || isAuthenticated() ? 
-      <React.Fragment>
-        <RegistrationFields /> 
-        <ContentPage additionalClassName='no-background' content={Festival} title="Švente" /> 
-      </React.Fragment> : <Authentication />; 
+        <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">
+          <RegistrationFields /> 
+          <ContentPage additionalClassName='no-background' content={Festival} title="Švente" /> 
+        </RegistrationPage>
+        :
+        <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">
+          <Authentication /> 
+        </RegistrationPage>
   }
 
   return (
@@ -69,7 +72,7 @@ export const App = () => {
           <Route path="/about" component={() => <ContentPage content={AboutParagraphs} title="Apie" />} />
           <Route path="/festival" component={() => <ContentPage content={FestivalParagraphs} title="Festivalis" />} />
           <Route path="/ceremony" component={() => <ContentPage content={CeremonyParagraphs} title="Ceremonija" />} />
-          <Route path="/registry" component={() => <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">{ AuthenticateRegistration() }</RegistrationPage> } />
+          <Route path="/registry" component={() => AuthenticateRegistration() } />
           <Route path="/" render={() => <Redirect to='/about' />} />
         </Switch>
       </WeddingTemplate>

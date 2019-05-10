@@ -6,6 +6,12 @@ export default ([
       placeHolder: 'Taip/Ne',
   },
   {
+      name: 'memberSize',
+      type: 'text',
+      title: 'Žemiau įrašykite keliese planuojate atvykti',
+      placeHolder: 'vienas, du...',
+  },
+  {
       name: 'overnightSleep',
       type: 'checkbox',
       title: 'Ar liksite nakvynei?',
@@ -28,12 +34,6 @@ export default ([
     type: 'text',
     title: "Ar turite ypatingų pageidavimų maistui? Jei taip tai parašykite kokių",
     placeHolder: "Netoleravimas/alergijos..."
-  },
-  {
-      name: 'memberSize',
-      type: 'text',
-      title: 'Parašykite po apačią kiek žmonių atvyks kartu su jumis',
-      placeHolder: 'Nei vieno, vienas, du...',
   },
 ]);
 

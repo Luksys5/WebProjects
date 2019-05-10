@@ -36,12 +36,20 @@ export default ([
         color: "#FF5154"
       },
       content: "\
-        Žinome, kad gėlės yra sveikinimų dalis, tačiau jos – nors ir gražus, bet labai laikinas dalykas. \
-        Mūsų Šventės data sutampa su Lietuvos Valstybės diena, ta proga siūlome prisidėti prie mūsų \
-        šalies aplinkos puoselėjimo bei gražinimo ir galvojantiems apie gėlių dovanojimą, \
-        siūlome gražią alternatyvą – atsinešti lietuviško medžio/vaismedžio sodinuką, kurį \
-        mes pasodinsime garbingoje vietoje. Užaugę medžiai ir po daugelio meto primins šią ypatingą \
-        dieną ir kiekvieną jūsų, kurie buvote šalia."
+      Mūsų Šventės data sutampa su Lietuvos Valstybės diena, ta proga siūlome prisidėti prie mūsų krašto \
+aplinkos puoselėjimo bei gražinimo ir galvojantiems apie gėlių dovanojimą, siūlome gražią alternatyvą – \
+norėtume po vestuvių išsirinkti ir nusipirkti medžių ar vaismedžių sodinukų, kuriuos vėliau asmeniškai \
+pasodinsime mums svarbioje vietoje. Augantys medeliai primins šią ypatingą dieną ir kiekvieną jūsų, kurie \
+buvote šalia."
+    },
+    {
+      content: "Patogumo dėlei, kad nereiktų sodinukų ir medelių nešiotis su savimi, galite internetu \
+      išsirinkti kuponus šiuose medelynuose:",
+      link: { text: "Augalų centras", href: "https://www.augalucentras.lt/dovanu-kuponas-2" }
+    },
+    {
+      content: "",
+      link: { text: "Puošmedis", href: "https://www.puosmedis.lt/naujienos/pagaliau-turime-grazius-dovanu-kuponus/"}
     },
     {
       content: "P.S. Svečiams, gavusiems kvietimus į vakarinę dalį, prašome dovanas pasaugoti iki vakaro! \

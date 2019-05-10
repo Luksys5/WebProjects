@@ -13,11 +13,11 @@ html {
     background-image: 
         linear-gradient(
         rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.5)
+        rgba(0, 0, 0, 0.5),
         );
         // url(../images/pageImgResized.jpg);
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale');
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale')";
+    // filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale');
+    // -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/MemeReview.jpg', sizingMethod='scale')";
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -77,6 +77,7 @@ h4 {
 @import "./20_molecules/contactblock";
 @import "./20_molecules/contentpar";
 @import "./20_molecules/mapcontainer";
+@import "./20_molecules/message";
 
 // 30_organisms
 @import "./30_organisms/pagenavigation";
