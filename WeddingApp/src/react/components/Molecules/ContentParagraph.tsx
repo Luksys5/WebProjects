@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import { IContainerText } from '../../../types/ContainerTexts';
 import { ParagraphTitle } from '../Atoms/ParagraphTitle';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,18 @@ export interface ContentParagraphProps extends IContainerText {
 
 
 export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> = (props) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
+
+  if(!isMounted) {
+    return null;
+  }
+
   const MapContainer = lazy(() => import(/* webpackChunkName: 'ReactMaps' */'./MapContainer'));
   const {index, title, className, icon, iconProps, content, contentEnding, contentEndingClass, link, map, boldFirstWord} = props;
   return (
@@ -35,7 +47,7 @@ export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> =
       {
         map &&
         <Suspense fallback=''>
-          <MapContainer />
+          <MapContainer location={map.location} title={map.title} />
         </Suspense> 
       }
     </div>

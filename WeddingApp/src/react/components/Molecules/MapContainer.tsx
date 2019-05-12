@@ -1,18 +1,21 @@
 import React from 'react';
 import { Map, Marker, GoogleApiWrapper, MapProps } from 'google-maps-react';
 
-export const LatLng = {
-  lat: 54.682564,
-  lng: 25.281937
-};
+interface LocationProps {
+  title: string;
+  location: {
+    lat: number;
+    lng: number;
+  }
+}
 
-const MapContainer: React.StatelessComponent<MapProps> = (props) => {
+const MapContainer: React.StatelessComponent<MapProps & LocationProps> = (props) => {
 
-  const {google} = props;
+  const {google, title, location} = props;
   return (
     <div className='m-map-container'>
-      <Map google={google} zoom={14} initialCenter={{...LatLng}}>
-        <Marker title=" baznycia test" mapCenter={ new google.maps.LatLng(LatLng.lat, LatLng.lng, true) } />
+      <Map google={google} zoom={14} initialCenter={location}>
+        <Marker title={title} mapCenter={ new google.maps.LatLng(location.lat, location.lng, true) } />
       </Map>
     </div>
   );

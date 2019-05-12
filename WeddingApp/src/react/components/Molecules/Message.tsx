@@ -11,7 +11,7 @@ export interface MessageProps {
 
 export const Message: React.StatelessComponent<MessageProps> = ({icon, message, className, onClose}) => {
   return (
-    <div className={`m-message ${className}`}>
+    <div className={`m-message bounce ${className}`}>
       <div className='m-message__icon'>
         {React.createElement(icon)}
       </div>

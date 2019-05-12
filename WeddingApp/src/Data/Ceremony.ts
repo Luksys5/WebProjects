@@ -10,6 +10,11 @@ export default ([
       content: "Ceremonijos vieta – Lietuvos kariuomenės Šv. Ignoto bažnyčia", 
       map: {
         apiKey: 'AIzaSyAKRXuVfaPQp_csiVerD4Xs1O89kpIBH7Y',
+        title: "Bažnyčia",
+        location: {
+          lat: 54.682564,
+          lng: 25.281937
+        }
       }
     },
     {

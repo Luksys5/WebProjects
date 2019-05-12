@@ -15,7 +15,7 @@ export const CallGCFunction = async(url: string, settings: any = defaultSettings
       return resp.json();
     })
     .then((result: IAuthenticationResult) => {
-      if(!result.succeed) {
+      if(!result.success) {
         throw Error(result.error);
       }
       return result.participant;
@@ -34,6 +34,5 @@ export const SendConfirmationLetter = async (code: string, values: FieldValues) 
       token: code
     })
   };
-  debugger;
   return CallGCFunction(`${ServiceURL}sendParticipationLetter`, settings);
 }

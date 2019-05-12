@@ -1,7 +1,7 @@
 import { IParticipant } from "./Participant";
 
 export interface IAuthenticationResult {
-  succeed: boolean;
+  success: boolean;
   error?: string;
   participant: IParticipant; 
 }

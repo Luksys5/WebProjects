@@ -7,7 +7,7 @@ import { FieldVariants } from './variants';
 
 export const InputField: React.FunctionComponent<IRegField> = (props) => {
   const { type, name } = props; 
-  const { state: { values }, dispatch } = useContext(RegistrationFormContext);
+  const { state: {values}, dispatch } = useContext(RegistrationFormContext);
   if(!type) {
     return null;
   }

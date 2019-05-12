@@ -15,6 +15,8 @@ export interface IContainerText {
 
 export interface IMap {
   apiKey: string;
+  title: string;
+  location: { lat: number, lng: number };
 }
 
 export interface ILinkProps {

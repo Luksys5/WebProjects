@@ -1,21 +1,35 @@
 .m-contact-block {
-  display: flex;
-  margin: map-get($spacings,  6);
-
-  & > div {
-    margin: map-get($spacings,  2);
-  }
-
-  &__icon {
-    margin-top: auto;
-    margin-bottom: auto;
-
-    width: 16px;
-    height: 100%;    
-  }
+  margin: map-get($spacings,  2);
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
 
   &__text {
-    width: 180px;
-    text-align: left;
+    margin: auto;
+  }
+
+
+  &__contacts {
+    display: flex;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+      padding: 5px
+    }
+
+    &__icon {
+      margin-top: auto;
+      margin-bottom: auto;
+
+      width: 16px;
+      height: 100%;    
+    }
+
+    &__text {
+      width: 180px;
+      text-align: left;
+    }
   }
 }

@@ -1,8 +1,7 @@
 import React from 'react';
-import { IRegField } from '../../../../../types/RegField';
 import { FieldProps } from '.';
 
-export const CheckboxField: React.StatelessComponent<FieldProps> = ({name, className, title, placeHolder, error, value, onChange}) => {
+export const CheckboxField: React.StatelessComponent<FieldProps> = ({name, title, error, value, onChange}) => {
 
   return (
     <div className='a-checkbox-field'>

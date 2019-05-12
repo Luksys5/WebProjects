@@ -1,5 +1,4 @@
 import React, { useState, useReducer, useContext } from 'react';
-import Cookie from 'js-cookie';
 import { TextField } from '../Atoms/InputField/variants/TextField';
 import { Button } from '../Atoms/Button';
 import { Authenticate } from '../../../services/services';
@@ -10,18 +9,18 @@ import { IParticipant } from '../../../types/Participant';
 const Authentication: React.StatelessComponent<RouteComponentProps> = ({ history }) => {
   const [codeValue, setCodeValue] = useState('');
   const { dispatch }  = useContext(RegistrationFormContext);
-  const [error, setError] = useState('');
 
   const changeCodeValue = (name: string, title: string, value: string) => {
     setCodeValue(value);
   }
 
   const authenticate = async() => {
+    dispatch({type: ActionTypesEnum.setOverlay, payload: true});
     Authenticate(codeValue)
       .then((participant: IParticipant) => {
-        dispatch({type: ActionTypesEnum.setToken, payload: codeValue});
+        dispatch({type: ActionTypesEnum.setParticipant, payload: participant});
       })
-      .catch(error => setError("Kodas netinkamas, patikrinkite!"));
+      .catch((error: Error) => dispatch({type: ActionTypesEnum.setError, payload: error.message}));
   }
   
   return (
@@ -31,7 +30,7 @@ const Authentication: React.StatelessComponent<RouteComponentProps> = ({ history
         title={'Jei turite kodą identifikuokites'}
         onChange={changeCodeValue}
         placeHolder='Kodą rašykite čia'
-        error={error}
+        error=''
         value=''
       />
 

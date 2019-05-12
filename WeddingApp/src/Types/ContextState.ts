@@ -1,8 +1,10 @@
 import { FieldValues } from "./FieldValues";
+import { IParticipant } from "./Participant";
 
 export interface IContextState {
   values: FieldValues;
-  token: string;
+  participant: IParticipant | null;
   error: string;
   info: string;
+  overlay: boolean;
 }

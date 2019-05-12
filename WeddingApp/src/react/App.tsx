@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { WeddingTemplate } from './components/Templates/WeddingTemplate';
@@ -6,10 +6,10 @@ import { Switch, Route, Redirect } from 'react-router';
 import { ContentPage } from './components/Organisms/ContentPage';
 import { RegistrationPage } from './components/Organisms/RegistrationPage';
 import AboutParagraphs from '../data/About';
+import AboutCityParagraphs from '../data/AboutCity';
 import FestivalParagraphs from '../data/Festival';
 import CeremonyParagraphs from '../data/Ceremony';
-import { FieldValues } from '../types/FieldValues';
-import { isAuthenticated, getRegistrationToken, getInitialValues } from './Authentication';
+import { isAuthenticated, getInitialValues } from './Authentication';
 import { RegistrationFields } from './components/Molecules/RegistrationFields';
 import Authentication from './components/Molecules/Authentication';
 import { IContextState } from '../types/ContextState';
@@ -23,13 +23,14 @@ export const RegistrationFormContext = React.createContext({
 
 export enum ActionTypesEnum {
   setValues = "setValues",
-  setToken = "setToken",
+  setParticipant = "setParticipant",
   setError = "setError",
-  setInfo = "setInfo"
+  setInfo = "setInfo",
+  setOverlay = "setOverlay"
 }
 
 export enum CookieNamesEnum {
-  RegistrationToken = 'registrationToken',
+  RegistrationParticipant = 'registrationParticipant',
   FieldValues = 'FieldValues',
 }
 
@@ -37,23 +38,26 @@ export const App = () => {
   const reducer = (state: any, action: any) => {
     switch(action.type) {
       case ActionTypesEnum.setValues:
-        const updatedValues = Object.assign({}, state, { values: action.payload });
-        UpdateCookieProperty(CookieNamesEnum.FieldValues, updatedValues.values)
-        return updatedValues;
-      case ActionTypesEnum.setToken:
-        UpdateCookieProperty(CookieNamesEnum.RegistrationToken, action.payload);
-        return Object.assign({}, state, { token: action.payload });
+        const stateValues = Object.assign(state.values, action.payload);
+        const updatedState: IContextState = Object.assign({} , state, { values: stateValues });
+        UpdateCookieProperty(CookieNamesEnum.FieldValues, updatedState.values)
+        return updatedState;
+      case ActionTypesEnum.setParticipant:
+        UpdateCookieProperty(CookieNamesEnum.RegistrationParticipant, action.payload);
+        return Object.assign({}, state, { participant: action.payload, overlay: false });
       case ActionTypesEnum.setError:
-        return Object.assign({}, state, { error: action.payload });
+        return Object.assign({}, state, { error: action.payload, overlay: false });
       case ActionTypesEnum.setInfo:
-        return Object.assign({}, state, { error: action.payload });
+        return Object.assign({}, state, { info: action.payload, overlay: false });
+      case ActionTypesEnum.setOverlay:
+        return Object.assign({}, state, { overlay: action.payload });
       default: break;
     }
   }
   const [state, dispatch] = useReducer(reducer, getInitialValues());
 
   const AuthenticateRegistration = (): JSX.Element => {
-    return state.token || isAuthenticated() ? 
+    return state.participant || isAuthenticated() ? 
         <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">
           <RegistrationFields /> 
           <ContentPage additionalClassName='no-background' content={Festival} title="Švente" /> 
@@ -73,6 +77,7 @@ export const App = () => {
           <Route path="/festival" component={() => <ContentPage content={FestivalParagraphs} title="Festivalis" />} />
           <Route path="/ceremony" component={() => <ContentPage content={CeremonyParagraphs} title="Ceremonija" />} />
           <Route path="/registry" component={() => AuthenticateRegistration() } />
+          <Route path="/aboutCity" component={() => <ContentPage content={AboutCityParagraphs} title="Apie Anykščius" />} />
           <Route path="/" render={() => <Redirect to='/about' />} />
         </Switch>
       </WeddingTemplate>

@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
 import RegistrationFormFields from '../../../data/RegistrationForm';
-import { IRegField } from '../../../types/RegField';
 import { InputField } from '../Atoms/InputField/InputField';
 import { Button } from '../Atoms/Button';
-import { RegistrationFormContext } from '../../App';
+import { RegistrationFormContext, ActionTypesEnum } from '../../App';
 import { SendConfirmationLetter } from '../../../services/services';
 
 export const RegistrationFields = () => {
-  const {state: {values, token}} = useContext(RegistrationFormContext);
+  const {state: {values, participant}, dispatch} = useContext(RegistrationFormContext);
 
   const joinWeddingFestival = () => {
-    SendConfirmationLetter(token, values);
+    if (participant == null) {
+      return;
+    }
+    dispatch({type: ActionTypesEnum.setOverlay, payload: true});
+    SendConfirmationLetter(participant.key, values)
+      .then(result => dispatch({type: ActionTypesEnum.setInfo, payload: 'Vakarinės dalies dalyvavimo forma nusiūsta!'}))
+      .catch((error) => dispatch({type: ActionTypesEnum.setError, error}));
   }
 
   return (

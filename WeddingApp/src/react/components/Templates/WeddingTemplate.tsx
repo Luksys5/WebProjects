@@ -1,13 +1,14 @@
 import React, {useContext} from 'react';
 import { PageNavigation } from '../Organisms/PageNavigation';
-import { Footer } from '../Organisms/Footer';
 import { Message } from '../Molecules/Message';
 import { RegistrationFormContext, ActionTypesEnum } from '../../App';
 import {FaConciergeBell, FaExclamationCircle} from 'react-icons/fa';
+import { Footer } from '../Organisms/Footer';
+import { Overlay } from '../Molecules/Overlay';
 
 
 export const WeddingTemplate: React.SFC = (props: any) => {
-  const { state: {error, info}, dispatch} = useContext(RegistrationFormContext);
+  const { state: {error, info, overlay}, dispatch} = useContext(RegistrationFormContext);
 
   return (
     <div className='t-wedding-template'>
@@ -23,11 +24,15 @@ export const WeddingTemplate: React.SFC = (props: any) => {
       {
         info &&
         <Message
-          icon={FaConciergeBell}
+          icon={FaExclamationCircle}
           message={info}
           className='info-message'
           onClose={() => dispatch({type: ActionTypesEnum.setInfo, payload: ''})}
         />
+      }
+      {
+        overlay &&
+        <Overlay />
       }
       <header className='t-wedding-template__header'>
         <h3>
@@ -37,9 +42,7 @@ export const WeddingTemplate: React.SFC = (props: any) => {
         <PageNavigation />
       </header>
       {props.children}
-      <>
-        <Footer />
-      </>
+      <Footer />
     </div>
   );
 };

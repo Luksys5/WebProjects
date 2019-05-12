@@ -1,11 +1,18 @@
 import Cookies from 'js-cookie';
 import { CookieNamesEnum } from './App';
-import { string } from 'prop-types';
 import { IContextState } from '../types/ContextState';
 import { FieldValues } from '../types/FieldValues';
 
-export const getRegistrationToken = () => Cookies.get(CookieNamesEnum.RegistrationToken)
-export const isAuthenticated = () => !!getRegistrationToken();
+export const getRegistrationParticipant = () => Cookies.get(CookieNamesEnum.RegistrationParticipant)
+export const isAuthenticated = () => !!getRegistrationParticipant();
+
+export const parseRegistrationParticipant = () => {
+  const participant = getRegistrationParticipant();
+  if(participant) {
+    return JSON.parse(participant);
+  }
+  return null;
+}
 
 export const getFieldValues = (): FieldValues => {
   const stringifiedValues = Cookies.get(CookieNamesEnum.FieldValues);
@@ -14,7 +21,8 @@ export const getFieldValues = (): FieldValues => {
 
 export const getInitialValues = (): IContextState => ({
   values: getFieldValues(),
-  token: getRegistrationToken() || '',
+  participant: parseRegistrationParticipant(), 
   error: '',
-  info: ''
+  info: '',
+  overlay: false 
 });

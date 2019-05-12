@@ -1,4 +1,4 @@
-import { FaLocationArrow } from "react-icons/fa";
+import { FaLocationArrow, FaShuttleVan, FaBed, FaUserSecret, FaLightbulb } from "react-icons/fa";
 
 export default ([
   {
@@ -17,7 +17,15 @@ nuostabią aplinką ant Šventosios upės kranto.",
   },
   {
     content: "",
-    link: { textBefore: "Daugiau informacijos ", textBeforeClass: 'a-important', text: "Apie sodybą", href: "http://sodybakankorezis.lt/" } 
+    link: { textBefore: "Daugiau informacijos ", textBeforeClass: 'a-important', text: "Apie sodybą", href: "http://sodybakankorezis.lt/" },
+    map: {
+      apiKey: 'AIzaSyAKRXuVfaPQp_csiVerD4Xs1O89kpIBH7Y',
+      title: "Sodyba Konkorežis",
+      location: {
+        lat: 55.4737669,
+        lng: 25.0159612,
+      }
+    }
   },
   {
     content: "Tikime, kad mūsų VESTUVĖS bus ta šventė, kuri sujungs dvi šeimas, gimines ir draugus. Norime, kad ši diena\
@@ -31,11 +39,16 @@ būtų ne tik apie mus, todėl sieksime sukurti jaukią atmosferą visiems. Atvy
   },
   {
     title: "Transportas",
+    icon: FaShuttleVan,
+    iconProps: {
+      color: "#fff"
+    },
     content: "Svečiams parūpinome transportą – po ceremonijos Jūsų lauks autobusas, nuvešiantis į Šventės\
 vietą bei kitą dieną parvešiantis iš jos atgal į sostinę."
   },
   {
     title: "Nakvyne",
+    icon: FaBed,
     content: "Sodyboje bus paruoštos nakvynės vietos svečiams,"
   },
   {
@@ -51,6 +64,10 @@ vietą bei kitą dieną parvešiantis iš jos atgal į sostinę."
   },
   {
     title: "Apranga & Dovanos",
+    icon: FaUserSecret,
+    iconProps: {
+      color: "#000"
+    },
     content: "Mūsų Šventės aprangos kodas: ",
     contentEnding: 'ŠVENTINĖ su lietuviška atributika.',
     contentEndingClass: 'a-important'
@@ -73,11 +90,11 @@ priemonėmis nuo uodų bei šiltesniais rūbais."
   },
   {
     title: "Idejos dovanoms",
-    content: "",
+    icon: FaLightbulb,
+    iconProps: {
+      color: "#F8D968"
+    },
+    content: "Dovanų idėja – telpanti vokelyje",
     link: { textBefore: "Apie gėles ", text: "skaitykite čia", navItem: true, href: "ceremony"}
   },
-  {
-    content: "Dovanų idėja – telpanti vokelyje",
-    className: "a-align-center"
-  }
 ])

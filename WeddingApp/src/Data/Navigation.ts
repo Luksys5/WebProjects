@@ -23,6 +23,13 @@ export default ([
         type: NavItemTypesEnum.Navigation
     },
     {
+        name: 'aboutCity',
+        title: 'APIE ANYKŠČIUS',
+        class: 'o-page-sidebar__item',
+        path: '/aboutCity',
+        type: NavItemTypesEnum.Navigation
+    },
+    {
         name: 'contacts',
         title: 'KONTAKTAI',
         class: 'o-page-sidebar__item',
