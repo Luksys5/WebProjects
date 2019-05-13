@@ -1,7 +1,8 @@
 .a-checkbox-field {
   text-align: left;
   width: 90%;
-  margin: map-get($spacings, 6);
+  margin-top: map-get($spacings, 6);
+  margin-bottom: map-get($spacings, 6);
   display: flex;
     
     &__value {

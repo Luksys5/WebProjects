@@ -6,28 +6,21 @@
   font-family: 'Adine Kirnberg', 'Courier New', Courier, monospace;
   font-size: $xxlarge-fontsize;
   color: $color-header;
+  display: flex;
   height: 50px;
-  
-  & > div {
-    display: inline-block;
-    margin: map-get($spacings,  2);
-    position: absolute;
-  }
+  align-items: flex-start;
 
   &__title {
     line-height: 38px;
-    left: 42px;
     font-weight: 600;
     font-size: $xxlarge-fontsize;
     color: $color-font;
-  }
-  
-  &__title--without-icon {
-    left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+
   }
 
   &__icon {
-    left: 0;
     font-size: 38px;
   }
 }
@@ -36,10 +29,6 @@
   .a-paragraph-title {
     margin-left: map-get($spacings,  1);
     color: $color-font;
-    
-    & > div {
-      margin: map-get($spacings,  1);
-    }
 
     &__title {
       line-height: 24px;

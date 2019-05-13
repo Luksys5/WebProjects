@@ -1,8 +1,8 @@
 .m-content-par {
   padding-top: $base-spacing;
-  padding-left: map-get($spacings, 9);
-  padding-right: map-get($spacings, 9);
   padding-bottom: $base-spacing;
+  padding-left: 2vw;
+  padding-right: 2vw;
 
 
   &__content {

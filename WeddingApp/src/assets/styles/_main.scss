@@ -14,14 +14,14 @@ html {
         linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5),
-        ),
-        url(../images/pageImgResized.jpg);
+        );
+        // url(../images/pageImgResized.jpg);
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/pageImgResized.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/pageImgResized.jpg', sizingMethod='scale')";
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+      background-size: cover;
     background-attachment: fixed;
     background-position: center top;
     

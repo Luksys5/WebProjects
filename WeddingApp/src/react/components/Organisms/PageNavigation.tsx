@@ -4,7 +4,7 @@ import Navigation from '../../../data/Navigation';
 import { NavLink } from 'react-router-dom';
 import { INavigationItem, NavItemTypesEnum } from '../../../types/Navigation';
 
-export const PageNavigation: React.StatelessComponent = () => {
+export const PageNavigation: React.FunctionComponent = () => {
   return (
       <div className='o-page-sidebar'>
       {

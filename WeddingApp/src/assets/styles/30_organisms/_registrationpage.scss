@@ -9,6 +9,29 @@
     border-top: 1px solid gray;
   }
 
+  &__header {
+    padding: map-get($spacings, 5);
+    color: $color-font;
+    border-bottom: 1px solid gray;
+
+
+    h4 {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    h3 {
+      font-family: 'Adine Kirnberg', 'Courier New', Courier, monospace;
+      font-size: $xxlarge-fontsize;
+    }
+  }
+
+
+  &__info {
+    color: $color-font;
+    font-family: 'Times New Roman', Times, serif;
+
+  }
+
   .m-submit-info {
     display: flex;
     justify-content: center;

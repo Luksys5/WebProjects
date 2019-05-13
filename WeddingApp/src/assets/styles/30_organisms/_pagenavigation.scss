@@ -1,20 +1,19 @@
 .o-page-sidebar {
     width: 100%;
-    height: auto;
-    margin: map-get($spacings,  4);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: $base-spacing;
+    height: 50%;
+    padding-top: 5px;
+    display: flex;
     justify-content: space-evenly;
+
 
     &__item {
         margin-top: auto;
         margin-bottom: auto;
-        padding-bottom: 10px;
+        padding-bottom: map-get($map: $spacings, $key: 2);
+        padding-right: 5px;
 
         color: $color-nav-item;
         font-family: 'Times New Roman', Times, serif;
-        font-weight: 500;
         font-size: $header-fontsize;
         cursor: pointer;
         text-decoration: none;
@@ -41,14 +40,21 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .o-page-sidebar {
-    width: 90%;
-    grid-template-columns: 0.5fr .5fr .5fr .5fr .5fr;
-    grid-gap: map-get($spacings, 2);
+    width: 95%;
 
       &__item {
-          margin-top: auto;
+          width: 20vw;
+      }
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .o-page-sidebar {
+
+      &__item {
           font-size: $base-fontsize;
       }
 
@@ -59,8 +65,7 @@
   .o-page-sidebar {
 
       &__item {
-          margin: auto;
-          font-size: 12px;
+          font-size: 10px;
       }
 
   }

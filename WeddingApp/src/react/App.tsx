@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import { WeddingTemplate } from './components/Templates/WeddingTemplate';
+import WeddingTemplate from './components/Templates/WeddingTemplate';
 import { Switch, Route, Redirect } from 'react-router';
 import { ContentPage } from './components/Organisms/ContentPage';
 import { RegistrationPage } from './components/Organisms/RegistrationPage';
@@ -16,6 +16,7 @@ import Authentication from './components/Molecules/Authentication';
 import { IContextState } from '../types/ContextState';
 import Festival from '../data/Festival';
 import { UpdateCookieProperty } from './UpdatePropertyCookie';
+import { ContentParagraphs } from './components/Organisms/ContentParagraphs';
 
 export const RegistrationFormContext = React.createContext({
   state: {} as IContextState,
@@ -27,7 +28,8 @@ export enum ActionTypesEnum {
   setParticipant = "setParticipant",
   setError = "setError",
   setInfo = "setInfo",
-  setOverlay = "setOverlay"
+  setOverlay = "setOverlay",
+  setImagePath = "setImagePath"
 }
 
 export enum CookieNamesEnum {
@@ -60,8 +62,12 @@ export const App = () => {
   const AuthenticateRegistration = (): JSX.Element => {
     return state.participant || isAuthenticated() ? 
         <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">
+          <div className='o-registration-page__info'> Informaciją apie šventę pateikiame žemiau, o prieš tai prašome užpildyti registracijos formą</div>
           <RegistrationFields /> 
-          <ContentPage additionalClassName='no-background' content={Festival} title="Švente" /> 
+            <header className='o-registration-page__header'>
+                <h3>Švente</h3>
+            </header>
+            <ContentParagraphs paragraphs={Festival} />
         </RegistrationPage>
         :
         <RegistrationPage content={Festival} formTitle="Registracija" contentTitle="Švente">

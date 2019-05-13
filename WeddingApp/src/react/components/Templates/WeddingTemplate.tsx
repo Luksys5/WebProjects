@@ -1,17 +1,31 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { PageNavigation } from '../Organisms/PageNavigation';
 import { Message } from '../Molecules/Message';
 import { RegistrationFormContext, ActionTypesEnum } from '../../App';
 import {FaConciergeBell, FaExclamationCircle} from 'react-icons/fa';
-import { Footer } from '../Organisms/Footer';
 import { Overlay } from '../Molecules/Overlay';
+import Navigation from '../../../data/Navigation';
+import { withRouter, RouteComponentProps } from 'react-router';
+import { INavigationItem } from '../../../types/Navigation';
 
+interface WeddingTemplateProps {
+  children: any;
+}
 
-export const WeddingTemplate: React.SFC = (props: any) => {
+const WeddingTemplate: React.FunctionComponent<WeddingTemplateProps & RouteComponentProps> = (props) => {
   const { state: {error, info, overlay}, dispatch} = useContext(RegistrationFormContext);
+  const [imageClassName, setImageClassName] = useState('');
+
+  useEffect(() => {
+    const currentLocationNavigationItem: INavigationItem | undefined = Navigation.find(nav => new RegExp(nav.name+'$').test(location.pathname));
+    if(currentLocationNavigationItem) {
+      setImageClassName(currentLocationNavigationItem.name);
+    }
+  }, [location.pathname])
 
   return (
     <div className='t-wedding-template'>
+      <div className={`t-wedding-template__background-image ${imageClassName}`}></div>
       {
         error &&
         <Message
@@ -45,3 +59,5 @@ export const WeddingTemplate: React.SFC = (props: any) => {
     </div>
   );
 };
+
+export default withRouter(WeddingTemplate);

@@ -1,19 +1,14 @@
 .m-contacts-block {
   display: flex;
   flex-direction: row;
-  margin-top: map-get($spacings,  4);
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+
 
   .m-contact-block {
-
-    & > div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-grow: 1;
-      padding: map-get($spacings, 2);
-    }
-
+    text-align: center;
+    margin: 10px;
+    width: 100%;
+    
     &__icon {
       margin-top: auto;
       margin-bottom: auto;
@@ -22,8 +17,9 @@
     }
 
     &__text {
-      width: 180px;
-      text-align: left;
+      text-align: center;
+      padding: 5px;
+      word-break: break-all;
     }
   }
 }

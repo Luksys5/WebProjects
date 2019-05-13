@@ -25,7 +25,7 @@ export default ([
   },
   {
     content: "Šventės dieną planuojame praleisti be mobiliųjų, todėl prašome kreiptis į Šventės koordinatores",
-    compoenentClass: 'm-contacts-block',
+    componentClass: 'm-contacts-block',
     components: [
       {
         component: ContactBlock,

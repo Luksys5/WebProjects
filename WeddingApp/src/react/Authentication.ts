@@ -22,7 +22,8 @@ export const getFieldValues = (): FieldValues => {
 export const getInitialValues = (): IContextState => ({
   values: getFieldValues(),
   participant: parseRegistrationParticipant(), 
+  imagePath: '../../../assets/images/About.jpg',
   error: '',
   info: '',
-  overlay: false 
+  overlay: false,
 });
