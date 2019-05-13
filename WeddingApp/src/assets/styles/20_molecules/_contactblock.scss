@@ -1,22 +1,17 @@
-.m-contact-block {
-  margin: map-get($spacings,  2);
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
+.m-contacts-block {
+  display: flex;
+  flex-direction: row;
+  margin-top: map-get($spacings,  4);
+  justify-content: space-evenly;
 
-  &__text {
-    margin: auto;
-  }
-
-
-  &__contacts {
-    display: flex;
+  .m-contact-block {
 
     & > div {
       display: flex;
       flex-direction: column;
       align-items: center;
       flex-grow: 1;
-      padding: 5px
+      padding: map-get($spacings, 2);
     }
 
     &__icon {
@@ -24,7 +19,6 @@
       margin-bottom: auto;
 
       width: 16px;
-      height: 100%;    
     }
 
     &__text {

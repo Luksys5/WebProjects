@@ -9,6 +9,8 @@ export interface IContainerText {
   contentEnding? : string | undefined;
   contentEndingClass? : string | undefined;
   link?: ILinkProps; 
+  components?: {component: any, props: any}[];
+  componentClass?: string | undefined;
   map?: IMap | undefined;
   boldFirstWord?: boolean | undefined;
 }

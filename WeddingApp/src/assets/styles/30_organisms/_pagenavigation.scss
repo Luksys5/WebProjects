@@ -40,3 +40,28 @@
       box-shadow: 0 2px 0 0 rgba(217,160,25, 0.5);
     }
 }
+
+@media screen and (max-width: 768px) {
+  .o-page-sidebar {
+    width: 90%;
+    grid-template-columns: 0.5fr .5fr .5fr .5fr .5fr;
+    grid-gap: map-get($spacings, 2);
+
+      &__item {
+          margin-top: auto;
+          font-size: $base-fontsize;
+      }
+
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .o-page-sidebar {
+
+      &__item {
+          margin: auto;
+          font-size: 12px;
+      }
+
+  }
+}

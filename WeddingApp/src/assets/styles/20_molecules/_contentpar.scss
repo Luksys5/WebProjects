@@ -30,3 +30,23 @@
   font-family: 'Adine Kirnberg', 'Adine Kirnberg Alt';
   margin-right: map-get($spacings, 2);
 }
+
+@media screen and (max-width: 768px) {
+  .m-content-par {
+
+    &__content {
+      font-size: $small-fontsize;
+
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .m-content-par {
+
+    &__content {
+      font-size: $small-fontsize;
+
+    }
+  }
+}

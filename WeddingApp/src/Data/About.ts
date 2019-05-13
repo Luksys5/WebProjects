@@ -1,6 +1,6 @@
 export default ([
   {
-    title: 'Jaunoji apie Jaunają',
+    title: 'Jaunoji apie Jaunaji',
     content: "\
     Mindaugas – Jaunikis, kilęs iš Žemaitijos, jei tiksliau - Kretingos. Turi brolį, visiškai nepanašų į save. Galėsite\
 tuo įsitikinti patys ;) Studijavęs Šiauliuose ir Klaipėdoje. Mokėsi istoriją ir net kažkada svajojo būti istoriku. \

@@ -11,8 +11,7 @@
     &__header {
         position: fixed;
         top: 0;
-        min-height: 160px;
-        max-height: 190px;
+        height: 20vh;
         width: 100%;
         background-color: white;
         z-index: 2;
@@ -34,4 +33,38 @@
 
         }
    }
+}
+
+@media screen and (max-width: 768px) {
+  .t-wedding-template {
+
+      &__header {
+          top: 0;
+          height: 18vh;
+          
+          > h3 {
+            font-size: $xlarge-fontsize;
+          }
+          &__date {
+            font-size: $small-fontsize;
+          }
+      }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .t-wedding-template {
+
+      &__header {
+          top: 0;
+          height: 16vh;
+          
+          > h3 {
+            font-size: $header-fontsize;
+          }
+          &__date {
+            font-size: $small-fontsize;
+          }
+      }
+  }
 }

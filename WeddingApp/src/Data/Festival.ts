@@ -28,8 +28,8 @@ nuostabią aplinką ant Šventosios upės kranto.",
     }
   },
   {
-    content: "Tikime, kad mūsų VESTUVĖS bus ta šventė, kuri sujungs dvi šeimas, gimines ir draugus. Norime, kad ši diena\
-būtų ne tik apie mus, todėl sieksime sukurti jaukią atmosferą visiems. Atvykusius svečius pasitiks mūsų\
+    content: "Tikime, kad mūsų VESTUVĖS bus ta šventė, kuri sujungs dvi šeimas, gimines ir draugus. Norime, kad ši diena \
+būtų ne tik apie mus, todėl sieksime sukurti jaukią atmosferą visiems. Atvykusius svečius pasitiks mūsų \
 Šventės vedėjas Domantas, kuris žada gerą laiką, o visa kita - tebūnie jums siurprizas"
   },
   {
@@ -43,19 +43,18 @@ būtų ne tik apie mus, todėl sieksime sukurti jaukią atmosferą visiems. Atvy
     iconProps: {
       color: "#fff"
     },
-    content: "Svečiams parūpinome transportą – po ceremonijos Jūsų lauks autobusas, nuvešiantis į Šventės\
+    content: "Svečiams parūpinome transportą – po ceremonijos Jūsų lauks autobusas, nuvešiantis į Šventės \
 vietą bei kitą dieną parvešiantis iš jos atgal į sostinę."
   },
   {
     title: "Nakvyne",
     icon: FaBed,
-    content: "Sodyboje bus paruoštos nakvynės vietos svečiams,"
+    content: "Ja pasirūpinome mes, sodyboje (kurioje vyks šventė) paruošėme nakvynės vietas svečiams, \
+      TAČIAU: nepamirškite pildant dalyvavimo informaciją nurodyti arba tiesiog mums pranešti apie savo \
+      pageidavimą likti nakvynei. Norime būti tikri, kad nereikės miegoti miške ant samanų"
   },
   {
-    content: "TAČIAU:",
-    className: 'a-important',
-    contentEnding: "nepamirškite užpildyti dalyvio forma viršuje arba tiesiog mums pranešti apie savo planą likti nakvynei, norime būti tikri, \
-      kad nereikės miegoti miške ant samanų"
+    content: "PRANEŠTI APIE DALYVAVIMĄ prašome iki birželio 1 dienos (Pranešti galite užpildę ir dalyvavimo formą aukščiau)",
   },
   {
     content: "Atvykusius jus pasitiks ir Šventės pradžia rūpinsis mūsų Šventės vedėjas Domantas. \
@@ -74,9 +73,9 @@ vietą bei kitą dieną parvešiantis iš jos atgal į sostinę."
   },
   {
     title: "",
-    content: "Norėtume jus visus matyti pasipuošusius, nes turėsime net 2 fotografus! :). Pasirinkome Šventei Lietuvos\
-Valstybės dieną, todėl prašome svečius aprangoje turėti po mažą lietuvišką atributą (vėliavėlė švarko\
-atlape, Vyčio simbolis įsegtas į suknelės rankovę, lietuviška juostelė ant rankos – čia tik kelios idėjos,\
+    content: "Norėtume jus visus matyti pasipuošusius, nes turėsime net 2 fotografus! :). Pasirinkome Šventei Lietuvos \
+Valstybės dieną, todėl prašome svečius aprangoje turėti po mažą lietuvišką atributą (vėliavėlė švarko \
+atlape, Vyčio simbolis įsegtas į suknelės rankovę, lietuviška juostelė ant rankos – čia tik kelios idėjos, \
 žinome, kad jūs kūrybingi!)"
   },
   {

@@ -30,12 +30,10 @@ export default ([
     },
     {
       content: "Labai lauksime visų ir tikimės, kad galėsite prisijungti ir pamatyti, kaip vienas kitam tariame „TAIP“! \
-                Po ceremonijos kviečiame visus pabendrauti į šalia bažnyčios esantį ",
-      contentEnding: "Technikos bibliotekos kiemelį.",
-      contentEndingClass: 'a-important',
+                Po ceremonijos kviečiame visus pabendrauti į šalia bažnyčios esantį Technikos bibliotekos kiemelį.",
     },
     {
-      title: "Geles bei dovanos",
+      title: "Sveikinimai",
       icon: FaHandHoldingHeart,
       iconProps: {
         color: "#FF5154"
@@ -55,6 +53,10 @@ buvote šalia."
     {
       content: "",
       link: { text: "Puošmedis", href: "https://www.puosmedis.lt/naujienos/pagaliau-turime-grazius-dovanu-kuponus/"}
+    },
+    {
+      content: "Ir vis dėl to neįsivaizduojantiems vestuvių be gėlių, siūlome apsiriboti vienu vieninteliu gėlės (baltos ar \
+rožinės frezijos, rožės ar bijūno) žiedeliu."
     },
     {
       content: "P.S. Svečiams, gavusiems kvietimus į vakarinę dalį, prašome dovanas pasaugoti iki vakaro! \

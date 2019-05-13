@@ -33,6 +33,7 @@ export default ([
         name: 'contacts',
         title: 'KONTAKTAI',
         class: 'o-page-sidebar__item',
-        type: NavItemTypesEnum.Link
+        path: '/contacts',
+        type: NavItemTypesEnum.Navigation
     },
 ])

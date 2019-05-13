@@ -22,7 +22,10 @@ export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> =
   }
 
   const MapContainer = lazy(() => import(/* webpackChunkName: 'ReactMaps' */'./MapContainer'));
-  const {index, title, className, icon, iconProps, content, contentEnding, contentEndingClass, link, map, boldFirstWord} = props;
+  const {
+    index, title, className, icon, iconProps, content, contentEnding,
+    contentEndingClass, link, map, components, componentClass, boldFirstWord
+  } = props;
   return (
     <div key={index} className='m-content-par'>
       <ParagraphTitle title={title} icon={icon} iconProps={iconProps} />
@@ -44,12 +47,18 @@ export const ContentParagraph: React.StatelessComponent<ContentParagraphProps> =
           }
         </div>
       }
-      {
-        map &&
-        <Suspense fallback=''>
-          <MapContainer location={map.location} title={map.title} />
-        </Suspense> 
+
+      { map && 
+          <Suspense key={index} fallback=''>
+            <MapContainer title={map.title} location={map.location} />
+          </Suspense> 
       }
+      <div className={componentClass}>
+      {
+        components &&
+          components.map(({component, props}, index) => React.createElement(component, {...props, key: index}))
+      }
+      </div>
     </div>
   );
 }

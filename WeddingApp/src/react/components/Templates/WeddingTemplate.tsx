@@ -42,7 +42,6 @@ export const WeddingTemplate: React.SFC = (props: any) => {
         <PageNavigation />
       </header>
       {props.children}
-      <Footer />
     </div>
   );
 };

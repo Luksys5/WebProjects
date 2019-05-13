@@ -30,6 +30,22 @@
     left: 0;
     font-size: 38px;
   }
+}
 
+@media screen and (max-width: 560px) {
+  .a-paragraph-title {
+    margin-left: map-get($spacings,  1);
+    color: $color-font;
+    
+    & > div {
+      margin: map-get($spacings,  1);
+    }
 
+    &__title {
+      line-height: 24px;
+      left: 0px;
+      font-weight: 500;
+      font-size: $xlarge-fontsize;
+    }
+  }
 }

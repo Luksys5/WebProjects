@@ -8,6 +8,7 @@ import { RegistrationPage } from './components/Organisms/RegistrationPage';
 import AboutParagraphs from '../data/About';
 import AboutCityParagraphs from '../data/AboutCity';
 import FestivalParagraphs from '../data/Festival';
+import Contacts from '../data/Contacts';
 import CeremonyParagraphs from '../data/Ceremony';
 import { isAuthenticated, getInitialValues } from './Authentication';
 import { RegistrationFields } from './components/Molecules/RegistrationFields';
@@ -78,6 +79,7 @@ export const App = () => {
           <Route path="/ceremony" component={() => <ContentPage content={CeremonyParagraphs} title="Ceremonija" />} />
           <Route path="/registry" component={() => AuthenticateRegistration() } />
           <Route path="/aboutCity" component={() => <ContentPage content={AboutCityParagraphs} title="Apie Anykščius" />} />
+          <Route path="/contacts" component={() => <ContentPage content={Contacts} title="Kontaktai" />} />
           <Route path="/" render={() => <Redirect to='/about' />} />
         </Switch>
       </WeddingTemplate>

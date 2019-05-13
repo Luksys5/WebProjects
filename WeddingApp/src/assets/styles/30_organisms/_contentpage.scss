@@ -13,7 +13,7 @@
 
   &__header {
     padding: map-get($spacings, 5);
-    color: black;
+    color: $color-font;
     border-bottom: 1px solid gray;
 
 
@@ -30,4 +30,24 @@
 
 .o-content-page.no-background {
   background: none;
+}
+
+@media screen and (max-width: 768px) {
+  .m-content-par {
+
+    &__content {
+      font-size: $small-fontsize;
+
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .m-content-par {
+
+    &__content {
+      font-size: $small-fontsize;
+
+    }
+  }
 }

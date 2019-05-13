@@ -17,6 +17,7 @@ export const RegistrationPage: React.StatelessComponent<RegistrationPageProps> =
           <header className='o-content-page__header'>
               <h3>{formTitle}</h3>
           </header>
+          <div> Informaciją apie šventę pateikiame žemiau, o prieš tai prašome užpildyti registracijos formą</div>
           { children }
       </div>
       
