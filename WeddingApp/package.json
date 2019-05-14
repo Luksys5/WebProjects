@@ -8,6 +8,7 @@
     "core-js": "^3.0.1",
     "es6-promise-promise": "^1.0.0",
     "google-maps-react": "^2.0.2",
+    "ie-array-find-polyfill": "^1.1.0",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",

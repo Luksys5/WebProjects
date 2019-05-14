@@ -10,9 +10,11 @@
   }
 
   &__header {
+    margin-top: $base-spacing;
     padding: map-get($spacings, 5);
     color: $color-font;
     border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
 
 
     h4 {
