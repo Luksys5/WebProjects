@@ -1,0 +1,31 @@
+.p-about {
+
+    &--space-before {
+        margin-top: 450px;
+
+    }
+
+    &__hobbies {
+        .m-section__content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            .a-icon {
+                color: $color-theme-030;
+                display: block;
+                width: 32px;
+                height: 32px;
+
+                svg {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            .a-icon:hover {
+                color: $color-ui-010;
+            }
+        }
+    }
+}

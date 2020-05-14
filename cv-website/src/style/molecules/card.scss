@@ -1,0 +1,26 @@
+.m-card {
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  width: 80vw;
+  min-height: 90vh;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, .4) 4px 4px 7px 2px;
+
+  &__header {
+    margin-top: $l-spacing;
+    margin-bottom: $m-spacing;
+  }
+
+  &__content {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: $l-spacing;
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -1,0 +1,51 @@
+.m-expandable-item {
+    &__summary {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        color: $color-theme-030;
+        margin-bottom: $m-spacing;
+
+        .a-icon {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+
+            svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        
+        .a-icon:hover {
+            color: $color-ui-010;
+        }
+    }
+
+    &__valuable-info {
+        font-size: 18px;
+        color: lighten($color: $color-theme-030, $amount: 15%);
+    }
+
+    &__info {
+        margin-left: $xs-spacing;
+        font-size: 14px;
+        color: lighten($color: $color-theme-030, $amount: 50%);
+    }
+    
+    &__separator {
+        width: 150px;
+        height: 0.5px;
+        margin: $m-spacing + $s-spacing;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &__content {
+
+        margin-left: $s-spacing;
+    }
+}

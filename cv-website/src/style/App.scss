@@ -1,0 +1,59 @@
+@import "./bootstrap.css";
+@import "./variables.scss";
+@import "./fonts.scss";
+
+// atoms
+@import "./atoms/button.scss";
+@import "./atoms/logo.scss";
+@import "./atoms/background-image.scss";
+@import "./atoms/paragraph.scss";
+@import "./atoms/spinner.scss";
+
+// molecules
+@import "./molecules/card.scss";
+@import "./molecules/expandable-item.scss";
+@import "./molecules/game-link.scss";
+@import "./molecules/image.scss";
+@import "./molecules/panel.scss";
+@import "./molecules/section.scss";
+@import "./molecules/social-links.scss";
+
+// organisms
+@import "./organisms/games-carousel.scss";
+@import "./organisms/navigation.scss";
+
+// pages
+@import "./pages/about.scss";
+@import "./pages/experience.scss";
+@import "./pages/games.scss";
+@import "./pages/home.scss";
+
+// transitions
+@import "./transitions.scss";
+
+.h1, .h2, .h3, .h4 {
+  font-family: Roboto-light;
+  font-weight: 500;
+}
+
+#root, .App {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+.App {
+  position: relative;
+  overflow-y: visible;
+  box-sizing: content-box;
+  padding-right: 17px;
+}
+
+.bold {
+    font-family: Roboto-medium;
+}

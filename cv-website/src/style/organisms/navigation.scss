@@ -1,0 +1,37 @@
+.o-navigation {
+    display: flex;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    height: 50px;
+    width: 100vw;
+    background-color: #fff;
+    box-shadow: 0px 1px 10px 0px ;
+
+    font-family: SourceSansPro--s-bold;
+
+    .a-logo {
+        margin-right: auto;
+    }
+
+    .o-navigation__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        padding: 5px;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        text-decoration: none;
+
+        color: $color-theme-030;
+    }
+
+    .o-navigation__item:hover {
+        color: $color-ui-010;
+    }
+
+    .o-navigation__item:focus {
+        $color: $color-theme-020;
+    }
+}

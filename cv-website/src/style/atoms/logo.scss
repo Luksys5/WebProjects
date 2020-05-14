@@ -1,0 +1,20 @@
+.a-logo {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__image {
+        padding-left: $s-spacing;
+        padding-right: $xs-spacing;
+        height: 30px;
+    }
+
+    &__text {
+        padding-left: $xs-spacing;
+        padding-right: $xs-spacing;
+        font-family: Roboto-medium;
+        font-size: 18px;
+    }
+}

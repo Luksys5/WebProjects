@@ -1,0 +1,33 @@
+.m-section {
+    margin-top: $m-spacing;
+    margin-bottom: $l-spacing;
+
+    &__header {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: $m-spacing + $s-spacing;
+        width: 100%;
+        color: $color-theme-030;
+
+        .a-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: $xs-spacing;
+
+            svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        .h3 {
+            margin-bottom: 0;
+        }
+    }
+
+    &__content {
+        margin-left: $s-spacing;
+        margin-right: $s-spacing;
+    }
+}
