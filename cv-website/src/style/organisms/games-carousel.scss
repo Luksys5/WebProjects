@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    overflow: hidden;
 
     &__selected {
         position: absolute;
@@ -30,13 +31,20 @@
 
             display: flex;
             flex-direction: column;
-            // justify-content: space-evenly;
         }
 
-        &__details {
-            font-size: 12px;
-            font-family: OpenSans;
-            color: $color-shade-050;
+        &__info {
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+
+            &__details {
+                font-size: 12px;
+                font-family: OpenSans;
+                color: $color-shade-050;
+            }
         }
 
         &__links {

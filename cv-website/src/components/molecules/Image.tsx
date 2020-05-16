@@ -1,16 +1,29 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 type ImageProps = {
-    credit: string;
-    url: string;
+    height: number;
+    src: string;
+    placeholderSrc: string;
+    credit?: string;
+    creditUrl?: string;
 }
 
-export const Image: React.FC<ImageProps> = ({ credit, url }) => {
+export const Image: React.FC<ImageProps> = ({ height, src, placeholderSrc, credit, creditUrl }) => {
     return (
         <div className="m-image">
-            <img src={url} alt="none" />
+            <LazyLoadImage
+                alt="none"
+                className="lazyload"
+                src="images/background/me-1920.png"
+                effect="blur"
+            />
+
             <div className="m-image__credit">
-                { credit }
+                <a href={creditUrl}>
+                    { credit }
+                </a>
+
             </div>
         </div>
     );

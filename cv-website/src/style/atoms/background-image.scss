@@ -1,16 +1,17 @@
 .a-bg-image {
     position: fixed;
     top: 0;
-    min-width: 100%;
-    min-height:100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    right: 0;
     z-index: -1;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
 
     transform: scale(1.01);
+
+    img {
+        min-width: 100vw;
+        height: 100vh;
+    }
 
     &--blur {
         filter: blur(2px);

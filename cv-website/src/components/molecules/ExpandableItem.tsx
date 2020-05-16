@@ -11,8 +11,8 @@ type ExpandableItemProps = {
 export const ExpandableItem: React.FC<ExpandableItemProps> = ({ header, valuableInfo, info, content }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <div className="m-expandable-item">
-            <div className="m-expandable-item__summary">
+        <div className="m-expandable-item"> 
+            <div className="m-expandable-item__summary"  onClick={() => setIsOpen(!isOpen)}> 
                 <div>
                     <h4>{ header }</h4>
                     <div>
@@ -22,9 +22,9 @@ export const ExpandableItem: React.FC<ExpandableItemProps> = ({ header, valuable
                 </div>
 
                 { isOpen ?
-                    <IconSprite className="active" name="unfoldLess" onClick={() => setIsOpen(!isOpen)} />
+                    <IconSprite className="active" name="unfoldLess" />
                     :
-                    <IconSprite name="unfoldMore" onClick={() => setIsOpen(!isOpen)} />
+                    <IconSprite name="unfoldMore" />
                 }
             </div>
 

@@ -10,7 +10,7 @@ export const HomePage: React.SFC<HomePageProps> = () => {
         <div className='p-home'>
             <div className='p-home__panels'>
                 <Panel title="About me" texts={texts.aboutMeSummary} position="left" size="full"  linkUrl="/about" />
-                <Panel title="News!" position="center" size="half" imageSrc="images/cyberfix.png" imageUrl="/games?$id=1" />
+                <Panel title="News!" position="center" size="half" imageSrc="images/games/cyberfix.png" imageUrl="/games?$id=1" />
             </div>
         </div>
     );

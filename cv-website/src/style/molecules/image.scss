@@ -1,19 +1,23 @@
 .m-image {
     width: 100%;
-    height: 400px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: $color-shade-010;
 
     img {
         width: 100%;
-        height: 400px;
+        height: auto;
     }
 
     &__credit {
         color: $color-shade-030;
+        height: 30px;
+        width: 100%;
+        background-color: #fff;
         font-size: 14px;
-        margin: $s-spacing;
+        padding: $s-spacing;
         font-family: Roboto-light;
     }
 }

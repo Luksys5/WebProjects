@@ -40,14 +40,13 @@ const GamesCarousel: React.FC<CarouselProps> = ({ gamesInfo, location: { search 
                             <img src={selectedGame.imageUrl} alt="none" />
                         </div>
                         <div className="o-carousel__selected__sidepane">
-                            <h3 className='h3'>
-                                { selectedGame.title }
-                            </h3>
-                            <div className="o-carousel__selected__details">
-                                { selectedGame.details }
-                            </div>
-                            <div className="o-carousel__selected__details">
-                                { selectedGame.details }
+                            <div className="o-carousel__selected__info">
+                                <h3 className='h3 o-carousel__selected__info__header'>
+                                    { selectedGame.title }
+                                </h3>
+                                <div className="o-carousel__selected__info__details">
+                                    { selectedGame.details }
+                                </div>
                             </div>
                             <div className="o-carousel__selected__links">
                                 {

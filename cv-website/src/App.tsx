@@ -1,9 +1,10 @@
 import React from 'react';
 import './style/App.scss';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { BackgroundContent } from './components/templates/BackgroundContent';
 import { StoreProvider } from './StoreProvider';
 import AppRouteTransitions from './AppRouteTransitions';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export function App() {
     return (

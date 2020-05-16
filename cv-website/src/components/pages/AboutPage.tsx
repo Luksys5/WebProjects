@@ -9,7 +9,13 @@ import { IconSprite } from '../atoms/IconSprite';
 export const AboutPage: React.FC = () => {
     return (
         <Card className="p-about">
-            <Image url="images/meditate.png" credit="Photo by: H J" />
+            <Image
+                height={270}
+                src="images/background/me-1920.png"
+                placeholderSrc="images/background/me-1920-treshold.png"
+                credit="Photo by: H J"
+                creditUrl="https://www.flickr.com/people/183565491@N03/"
+            />
             <Section header="Well hello there!" iconName="hello">
                 { Texts.aboutMe.map((text, index) => {
                         const splitted = text.split('LINK=');
@@ -25,7 +31,6 @@ export const AboutPage: React.FC = () => {
                         );
                     })
                 }
-
             </Section>
 
             <Section header="Education" iconName="education">
