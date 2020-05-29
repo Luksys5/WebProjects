@@ -1,30 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ReactTooltip from 'react-tooltip';
-import { navigationItems } from '../organisms/NavigationBar';
 import { withRouter, RouteComponentProps } from 'react-router';
+import { StorageContext } from '../../storage/StorageContext';
 
 type CardProps = RouteComponentProps & {
+    contentClassName?: string;
     className?: string;
+    lightHeader?: boolean
+    credit?: () => JSX.Element;
+    links?: JSX.Element[];
 };
-const Card: React.FC<CardProps> = ({ children, className, location }) => {
-    const [title, setTitle] = useState('');
-    useEffect(
-        () => {
-            const item = navigationItems.find(el => el.path !== '/' && location.pathname.match(new RegExp('^' + el.path)));
-            setTitle(item ? item.title : '');
-        },
-        [location.pathname]
-    );
+
+const Card: React.FC<CardProps> = ({ children, className, contentClassName, lightHeader, credit, links }) => {
+    const { navTitle } = useContext(StorageContext);
 
     return (
-        <div className="m-card">
+        <div className={`m-card ${className}`}>
             <ReactTooltip type="info" effect="solid" place="top" />
-            <header className="m-card__header">
-                <h1 className="h1">{ title }</h1>
+            <header className={`m-card__header m-card__header--${lightHeader ? 'light' : 'dark'}`}>
+                <h1 className="h1">{ navTitle }</h1>
             </header>
-            <div className={`m-card__content ${className}`}>
+            <div className={`m-card__content ${contentClassName}`}>
                 { children }
             </div>
+            { links &&
+                <div className="m-card__links">
+                    { links }
+                </div>
+            }
+            { credit &&
+                <div className="m-card__credit">
+                    { credit() }
+                </div>
+            }
         </div>
     );
 }

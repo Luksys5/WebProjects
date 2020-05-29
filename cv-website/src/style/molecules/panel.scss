@@ -2,6 +2,9 @@
     width: 400px;
     height: 600px;
     margin-top: auto;
+
+    background-image: linear-gradient(to bottom right, #39b2af, #55367d);
+    box-shadow: rgba(70,118,151, .4) 3px 3px 7px 1px;
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 25px;
@@ -10,10 +13,6 @@
     flex-direction: column;
     justify-content: space-between;
 
-    backdrop-filter: 2px;
-    box-shadow: rgba(70,118,151, .4) 3px 3px 7px 1px;
-
-    background-image: linear-gradient(to bottom right, #39b2af, #55367d);
 
     &--left {
         left: 8vw;
@@ -41,38 +40,60 @@
     }
 
     &__img {
-        img {
+
+        .m-image {
+            background: none;
             width: 80%;
-            // height: 100%;
-            box-shadow: rgba(16, 5, 59, .4) 3px 3px 7px 2px;
+
+            span.lazy-load-image-background {
+                overflow: hidden;
+
+                img.lazyload {
+                    width: 100%;
+                    box-shadow: inset(1px 1px);
+                    filter: grayscale(95%);
+                    transform: scale(1.3);
+                    transition: transform 1s, filter 1s ease-in-out;
+                }
+            }
+            
+        }
+
+        .m-image:hover {
+
+            box-shadow: 0 0 3px 2px $color-ui-010;
+
+            .lazy-load-image-background.lazy-load-image-loaded {
+                img.lazyload {
+                    transform: scale(1.0);
+                    filter: grayscale(5%);
+                }
+
+            }
         }
         
-        margin-bottom: $xl-spacing;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: auto;
+        margin-top: auto;
         cursor: pointer;
         transition: ease-out;
-    }
-
-    &__img:hover {
-        transform: scale(1.01);
     }
 
     &__link {
         margin-bottom: $l-spacing;
         text-decoration: none !important;
-        color: $color-theme-030;
+        color: white;
+        color: $color-gradient-010;
         font-family: SourceSansPro-s--bold;
         font-size: 24px;
     }
 
     &__link:hover {
-        color: $color-theme-020;
+        color: $color-ui-020;
+        // @include text-gradient(45deg, $color-gradient-010, $color-gradient-020)
     }
-
-    &__link:focus {
-        $color: $color-theme-020;
-    }
-
-
 }
 
 .m-panel--size-half {

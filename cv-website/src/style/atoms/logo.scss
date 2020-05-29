@@ -4,6 +4,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-right: auto;
+    cursor: pointer;
 
     &__image {
         padding-left: $s-spacing;
@@ -16,5 +18,19 @@
         padding-right: $xs-spacing;
         font-family: Roboto-medium;
         font-size: 18px;
+        text-decoration: none;
+        color: $color-theme-030;
+        display: none;
     }
+
+    @include mq(S) {
+        &__text {
+            display: block;
+        }
+    }
+
+}
+
+.a-logo:hover {
+    text-decoration: none;
 }

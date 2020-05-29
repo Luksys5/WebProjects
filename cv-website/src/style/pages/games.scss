@@ -1,2 +1,26 @@
+.p-games:before {
+    content: '';
+    z-index: -1;
+    background: url('/images/background/games.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100%);
+    height: calc(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    filter: grayscale(60%);
+}
+
 .p-games {
+    background-color: #1B2435;
+
+    &__img-credit {
+        position: absolute;
+        right: 0;
+        width: auto;
+        display: flex;
+
+    }
 }

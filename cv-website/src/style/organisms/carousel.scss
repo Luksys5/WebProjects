@@ -1,0 +1,58 @@
+.o-carousel {
+    position: relative;
+    margin-top: $s-spacing;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    overflow: hidden;
+
+    > div {
+        display: flex;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: $s-spacing;
+        margin-bottom: $s-spacing;
+        padding-top: 75%;
+        
+        &__img {
+            margin-right: $m-spacing;
+
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+
+            span.lazy-load-image-background {
+                overflow: hidden;
+
+                img.lazyload {
+                    width: 100px;
+                    height: 100px;
+                    box-shadow: inset(1px 1px);
+                    filter: grayscale(95%);
+                    transform: scale(1.3);
+                    transition: transform 1s, filter 1s ease-in-out;
+                }
+            }
+        }
+
+        &__img:hover {
+            box-shadow: 0 0 3px 2px $color-ui-010;
+
+            .lazy-load-image-background.lazy-load-image-loaded {
+                img.lazyload {
+                    transform: scale(1.0);
+                    filter: grayscale(5%);
+                }
+
+            }
+        }
+
+        &__img:first-child {
+            margin-left: 0;
+        }
+    }
+}

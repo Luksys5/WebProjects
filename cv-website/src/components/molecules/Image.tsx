@@ -1,30 +1,35 @@
-import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import React, { useState } from 'react';
+import { LazyLoadImage, LazyLoadImageProps } from 'react-lazy-load-image-component';
 
-type ImageProps = {
-    height: number;
+type ImageProps = LazyLoadImageProps & {
+    className?: string;
     src: string;
-    placeholderSrc: string;
     credit?: string;
     creditUrl?: string;
+    onClick?: () => void;
 }
 
-export const Image: React.FC<ImageProps> = ({ height, src, placeholderSrc, credit, creditUrl }) => {
+export const Image: React.FC<ImageProps> = ({ className, onClick, src, credit, creditUrl, ...lazyLoadProps }) => {
     return (
-        <div className="m-image">
+        <div
+            className={`m-image ${className}`}
+            onClick={onClick}
+        >
             <LazyLoadImage
                 alt="none"
                 className="lazyload"
-                src="images/background/me-1920.png"
+                src={src}
                 effect="blur"
+                {...lazyLoadProps}
             />
 
-            <div className="m-image__credit">
-                <a href={creditUrl}>
-                    { credit }
-                </a>
-
-            </div>
+            { credit && creditUrl &&
+                <div className="m-image__credit">
+                    <a href={creditUrl}>
+                        { credit }
+                    </a>
+                </div>
+            }
         </div>
     );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Image } from './Image';
 
 type PanelProps = RouteComponentProps & {
     title: string;
@@ -9,12 +10,20 @@ type PanelProps = RouteComponentProps & {
     imageUrl?: string;
     position: 'left' | 'center';
     size: 'full' | 'half';
+    onClick?: () => void;
 }
 
-const Panel: React.FC<PanelProps> = ({ history, title, texts, imageSrc, imageUrl, linkUrl, position, size}) => {
+const Panel: React.FC<PanelProps> = ({ history, title, texts, imageSrc, imageUrl, linkUrl, position, size, onClick}) => {
 
     const redirectToLink = (url: string) => {
         history.push(url);
+    }
+
+    const onImageClick = () => {
+        if (onClick) {
+            onClick();
+        }
+        redirectToLink(imageUrl as string);
     }
 
     return (
@@ -38,13 +47,16 @@ const Panel: React.FC<PanelProps> = ({ history, title, texts, imageSrc, imageUrl
             {
                 imageSrc && imageUrl &&
                     <div className='m-panel__img'>
-                        <img src={imageSrc} alt="none" onClick={() => redirectToLink(imageUrl)} />
+                        <Image
+                            src={imageSrc}
+                            onClick={onImageClick}
+                        />
                     </div>
 
             }
 
             { linkUrl &&
-                <Link className='m-panel__link' to={linkUrl}>
+                <Link className='m-panel__link' to={linkUrl} onClick={onClick}>
                     Learn More
                 </Link>
             }

@@ -26,8 +26,23 @@
         }
     }
 
+    &__paragraphs {
+        margin-left: $m-spacing;
+        margin-right: $m-spacing;
+
+        a {
+            color: #000;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: $color-ui-010;
+            text-decoration: none;
+        }
+    }
+
     &__content {
-        margin-left: $s-spacing;
-        margin-right: $s-spacing;
+        margin-left: $m-spacing;
+        margin-right: $m-spacing;
     }
 }

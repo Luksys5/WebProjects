@@ -8,30 +8,14 @@ import { IconSprite } from '../atoms/IconSprite';
 
 export const AboutPage: React.FC = () => {
     return (
-        <Card className="p-about">
+        <Card contentClassName="p-about">
             <Image
-                height={270}
                 src="images/background/me-1920.png"
                 placeholderSrc="images/background/me-1920-treshold.png"
                 credit="Photo by: H J"
                 creditUrl="https://www.flickr.com/people/183565491@N03/"
             />
-            <Section header="Well hello there!" iconName="hello">
-                { Texts.aboutMe.map((text, index) => {
-                        const splitted = text.split('LINK=');
-                        return (
-                            <p key={index} className="a-paragraph">
-                                { splitted[0] }
-                                { splitted.length > 1 &&
-                                    <Link to={splitted[1]}>
-                                        { splitted[1].replace('/', '')}
-                                    </Link>
-                                }
-                            </p>
-                        );
-                    })
-                }
-            </Section>
+            <Section header="Well hello there!" iconName="hello" paragraphs={Texts.aboutMe} />
 
             <Section header="Education" iconName="education">
                 <p className="a-paragraph">
@@ -57,7 +41,7 @@ export const AboutPage: React.FC = () => {
                 <IconSprite data-tip="BASKETBALL!!" name='basketball' />
                 <IconSprite data-tip="Jogging" name='running' />
                 <IconSprite data-tip="C'mon of course it's tennis" name='tennis' />
-                <IconSprite data-tip="Martial arts and Judo" name='judo' />
+                <IconSprite data-tip="Martial arts and Porno" name='judo' />
                 <IconSprite data-tip="Camping" name='fireplace' />
                 <IconSprite data-tip="Cooking" name='grill' />
             </Section>

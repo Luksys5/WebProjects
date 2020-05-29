@@ -12,12 +12,20 @@
     }
 
     &__credit {
-        color: $color-shade-030;
         height: 30px;
         width: 100%;
         background-color: #fff;
         font-size: 14px;
         padding: $s-spacing;
         font-family: Roboto-light;
+
+        a {
+            color: $color-shade-030;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: $color-ui-010;
+        }
     }
 }

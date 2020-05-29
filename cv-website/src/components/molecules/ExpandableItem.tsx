@@ -12,7 +12,7 @@ export const ExpandableItem: React.FC<ExpandableItemProps> = ({ header, valuable
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="m-expandable-item"> 
-            <div className="m-expandable-item__summary"  onClick={() => setIsOpen(!isOpen)}> 
+            <div className={`m-expandable-item__summary ${isOpen ? 'm-expandable-item__summary--open' : ''}`}  onClick={() => setIsOpen(!isOpen)}> 
                 <div>
                     <h4>{ header }</h4>
                     <div>

@@ -1,16 +1,15 @@
 .m-game-link {
-    height: 30px;
-    max-width: 180px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-
+    justify-content: space-evenly;
     align-items: center;
+    transition: background-color 200ms ease-in-out;
+    cursor: pointer;
 
     &__img {
         height: 30px;
         margin-right: 2px;
         padding-left: 5px;
-        box-shadow: rgb(50, 50, 50) 2px 0px 1px 0px;
         
         img {
             max-width: 100%;
@@ -18,26 +17,25 @@
         }
     }
 
-    &__icons {
-        width: 60px;
-        height: 30px;
-        box-shadow: rgb(50, 50, 50) -2px 0 1px 0px;
-        background: rgb(102,102,102);
-        background: linear-gradient(90deg, rgba(102,102,102,1) 0%, rgba(125,125,125,1) 100%);
+    .a-icon {
         display: flex;
-        justify-content: space-around;
-        align-items: center;
+        color: $color-ui-010;
+        cursor: pointer;
+        transition: color 200ms ease-in-out;
+        width: 30px;
+        height:30px;
 
-        .a-icon {
-            display: flex;
-            color: white;
-            cursor: pointer;
+        svg {
+            width: 30px; height:30px;
         }
-
-        .a-icon:hover {
-            color: $color-shade-020;
-        }
-
     }
 
+}
+
+.m-game-link:hover {
+    background-color: $color-shade-020;
+
+    .a-icon {
+        color: $color-ui-020;
+    }
 }

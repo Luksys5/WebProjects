@@ -6,11 +6,11 @@
         justify-content: space-between;
         align-items: center;
         text-align: left;
-        color: $color-theme-030;
         margin-bottom: $m-spacing;
+        padding-left: $s-spacing;
         cursor: pointer;
-
-        padding-left: $xs-spacing;
+        color: black;
+        transition: padding 200ms ease-in-out;
 
         .a-icon {
             width: 32px;
@@ -23,13 +23,16 @@
             }
         }
         
-        .a-icon:hover {
-            color: $color-ui-010;
-        }
     }
 
     &__summary:hover {
-        box-shadow: 2px 2px 2px 1px $color-shade-030;
+        padding-left: 0;
+        color: $color-ui-010;
+    }
+
+    &__summary--open {
+        color: $color-theme-010;   
+        padding-left: 0;
     }
 
     &__valuable-info {

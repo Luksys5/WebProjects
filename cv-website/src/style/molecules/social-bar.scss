@@ -1,0 +1,53 @@
+.m-social-bar {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: auto;
+    margin-bottom: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: transform 1.5s ease-in-out;
+    z-index: map-get($zIndexMap, social);
+
+    box-shadow: -1px 1px 0px 0px rgba(0, 0, 0, 0.1);
+
+    &__row {
+        font-family: Roboto-light;
+        color: $color-theme-030;
+
+        .h4 {
+            font-size: 18px;
+        }
+    }
+
+    &--active {
+        transform: translateY(0);
+    }
+
+    &--inactive {
+        transform: translateY(-202px);
+    }
+
+    .a-icon {
+        margin-right: $s-spacing;
+        width: 25px;
+        height: 25px;
+
+        svg{
+            width: 25px;
+            height: 25px;
+        }
+        cursor: pointer;
+    }
+
+    .a-icon:hover {
+        transform: scale(1.05);
+        transition: ease-in-out;
+    }
+
+}

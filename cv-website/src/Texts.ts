@@ -18,9 +18,9 @@ export default {
         'While working on two teams wasn\'t the easiest thing he also could tell each team more about bugs how they are related and features what\'s blocking them to start doing it and other dependencies.' 
     ],
     'projectCargoSchmitzBull': [
-        'In my life I had several work projects they all fell between not bad and good range. This is not one of them',
-        'With big feature comes big responsibility and regarding that I mostly focus on time, planning, design, communication... But there\'s one thing that people forget sometimes and it is code cleanlines and readability (of course there is also limits on that)',
-        'In this sitecore project I\'ve been only few days and I fixed as many things as I could I learned the lesson for good'
+        'In my life I had several work projects they were challenging and awesome or just interesting to work on. This was not in that list',
+        'With big features comes big responsibility and regarding that I mostly focus on time, planning, design, communication... some people try to skip it or decrease the time spent on it and by doing so the product value decrease',
+        'I\'ve been only few days in this sitecore project and I fixed as many things as I could, there was no going back from code spaghetti. For me there was a lesson to learn from this project'
     ],
     'projectWesternacher': [
         'The Client required for a user-friendly SharePoint Online site collection with different sub-sites for document collaboration and generation.',
@@ -40,10 +40,10 @@ export default {
         'For development these technologies and skills were used: .Net, SharePoint-Client library for .Net and Javascript, design principles, JavaScript, JQuery, CSS.'
     ],
     'aboutMe': [
-        'You can call me Luke, I\'ve come from small town called Anykščiai which is based in Lithuania. I bet you can\'t find :P',
-        'So... I\'ve grown up and spent my childhood in country side village near town, so I got a bit used to nature and etc. I still like to go camping or just to get a short walk in nature after a long week, it helps me clear my head.',
-        'Currently I work at Macaw, it\'s quite a big company and I love the frontend work up so far. I\'ve done a couple of projects so far, you can check them out here, LINK=/experience',
-        'Other than that, I\'m also game developer which is my hobby after work, and I always wanted to make a website about myself and games that I created, link LINK=/games',
-        'Thanks for checking my site, aye!'
+        'You can call me Luke, I\'ve come from a small town called Anykščiai which is based in Lithuania. I bet you can\'t find it :P',
+        'So... I\'ve grown up and spent my childhood in a place surrounded mostly by nature, thus it has become an important part of my everyday life. Even though I currently reside in a capital city, I still enjoy camping or clearing my head by getting a short walk after a long week.',
+        'Currently I work at Macaw, it\'s quite a big company and I love the frontend work so far. I\'ve done a couple of projects and you can check them out here - experience',
+        'Other than that, I\'m also a game developer which is my main hobby after work, and I\'ve always wanted to make a website about myself and games that I\'ve created - `{/games;games}`',
+        'Thanks for visiting my site, aye!'
     ]
 };

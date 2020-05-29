@@ -2,20 +2,25 @@ import React from 'react';
 import './style/App.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { BackgroundContent } from './components/templates/BackgroundContent';
-import { StoreProvider } from './StoreProvider';
 import AppRouteTransitions from './AppRouteTransitions';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { StorageProvider } from './storage/StorageContext';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { GlobalData } from './GlobalData';
+import { ApolloClient } from 'apollo-boost';
 
 export function App() {
     return (
         <div className="App" >
-            <StoreProvider>
+            <ApolloProvider client={GlobalData.graphqlClient as ApolloClient<any>}>
                 <BrowserRouter>
-                    <BackgroundContent>
+                    <StorageProvider>
+                        <BackgroundContent>
                             <AppRouteTransitions />
-                    </BackgroundContent>
+                        </BackgroundContent>
+                    </StorageProvider>
                 </BrowserRouter>
-            </StoreProvider>
+            </ApolloProvider>
         </div>
     );
 }

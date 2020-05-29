@@ -1,9 +1,12 @@
 @import "./bootstrap.css";
 @import "./variables.scss";
 @import "./fonts.scss";
+@import "./mixins.scss";
 
 // atoms
 @import "./atoms/button.scss";
+@import "./atoms/graph-error.scss";
+@import "./atoms/loader.scss";
 @import "./atoms/logo.scss";
 @import "./atoms/background-image.scss";
 @import "./atoms/paragraph.scss";
@@ -11,15 +14,16 @@
 
 // molecules
 @import "./molecules/card.scss";
+@import "./molecules/teaser.scss";
 @import "./molecules/expandable-item.scss";
 @import "./molecules/game-link.scss";
 @import "./molecules/image.scss";
 @import "./molecules/panel.scss";
 @import "./molecules/section.scss";
-@import "./molecules/social-links.scss";
+@import "./molecules/social-bar.scss";
 
 // organisms
-@import "./organisms/games-carousel.scss";
+@import "./organisms/carousel.scss";
 @import "./organisms/navigation.scss";
 
 // pages
@@ -52,8 +56,45 @@
   overflow-y: visible;
   box-sizing: content-box;
   padding-right: 17px;
+  
+  .flex-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+  }
+
+  .flex-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
 }
 
 .bold {
     font-family: Roboto-medium;
 }
+
+.preload * {
+ -webkit-transition: none !important;
+ -moz-transition: none !important;
+ -ms-transition: none !important;
+ -o-transition: none !important;
+}
+
+.left-bottom-origin {
+    span.lazy-load-image-background.lazy-load-image-loaded {
+        img.lazyload {
+            transform-origin: 5% 75%;
+        }
+    }
+}
+
+.top-origin {
+    span.lazy-load-image-background.lazy-load-image-loaded {
+        img.lazyload {
+            transform-origin: 50% 15%;
+        }
+    }
+}
+
