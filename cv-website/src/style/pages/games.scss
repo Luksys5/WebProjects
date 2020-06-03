@@ -1,20 +1,47 @@
 .p-games:before {
     content: '';
     z-index: -1;
-    background: url('/images/background/games.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    // background: url('/images/background/games.jpg');
+    // background-size: cover;
+    // background-repeat: no-repeat;
     width: calc(100%);
     height: calc(100%);
     position: absolute;
     top: 0;
     left: 0;
     padding: 15px;
-    filter: grayscale(60%);
+    // filter: grayscale(80%);
 }
 
 .p-games {
-    background-color: #1B2435;
+    background-color: rgba(255,255, 255, 0.3);
+    backdrop-filter: blur(15px);
+
+    &__links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        color: $color-ui-010;
+        cursor: pointer;
+        margin-bottom: $l-spacing;
+
+        .a-icon {
+            margin-right: $s-spacing;
+            width: 25px;
+            height: 25px;
+            filter: grayscale(100%);
+            transition: filter .3s ease-out;
+
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .a-icon:hover {
+            filter: grayscale(0%);
+        }
+    }
 
     &__img-credit {
         position: absolute;

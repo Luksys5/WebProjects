@@ -1,0 +1,41 @@
+.m-login {
+    position: absolute;
+    top: calc(50% - 170px);
+    left: calc(50% - 235px);
+    width: 450px;
+    height: 280px;
+    padding: 50px;
+    z-index: map-get($map: $zIndexMap, $key: overlay);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 3px 0px #000;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    .a-icon {
+        position: absolute;
+        top: $s-spacing;
+        right: $s-spacing;
+        cursor: pointer;
+    }
+
+    &__buttons {
+        margin-top: $l-spacing;
+        display: flex;
+        justify-content: space-evenly;
+
+        * {
+            width: 150px;
+        }
+
+        &__google {
+            background: #EA4335;
+            border: none;
+            color: white;
+            font-family: Helvetica,sans-serif;
+            font-size: calc(.27548vw + 12.71074px);
+            padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px);
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+    
+}

@@ -51,6 +51,22 @@
             }
         }
 
+        &__img--selected {
+            box-shadow: 0 0 3px 2px $color-theme-010;
+
+            .lazy-load-image-background.lazy-load-image-loaded {
+                img.lazyload {
+                    transform: scale(1.0);
+                    filter: grayscale(5%);
+                }
+
+            }
+        }
+
+        &__img--selected:hover {
+            box-shadow: 0 0 3px 2px $color-theme-010;
+        }
+
         &__img:first-child {
             margin-left: 0;
         }

@@ -1,12 +1,54 @@
 .p-home {
-   &__panels {
-       display: flex;
-       flex-direction: row;
-       justify-content: space-evenly;
-       position: absolute;
-       bottom: 5vh;
+    &__header {
+        position: absolute;
+        top: 20vh;
+        left: 0;
+        right: 0;
+        color: $color-gradient-020;
+        font-family: OpenSans;
 
-       height: 80vh;
-       width: 70vw;
+        &__main {
+            color: $color-theme-030;
+        }
+    }
+
+    &__panels {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        margin-bottom: $m-spacing;
+
+        // width: 100vw;
+        // height: 100vh;
+        // top: 80%;
+
+        .m-panel--size-full {
+            width: 300px;
+        }
+
+        .m-panel {
+            // margin-left: $m-spacing;
+            // width: 300px;
+        }
+
+        @include mq(S) {
+            .m-panel--size-full {
+                width: 400px;
+            }
+        }
+
+
+        @include mq(L) {
+            flex-direction: row;
+            justify-content: space-evenly;
+            bottom: $l-spacing;
+            left: $l-spacing;
+            // top: 15vh;
+        
+            // height: 80vh;
+            // width: 75vw;
+
+        }
+
    }
 }

@@ -1,14 +1,19 @@
 .m-card {
     position: absolute;
     top: 10vh;
-    left: 10vw;
-    width: 80vw;
+    left: 5vw;
+    width: 90vw;
     min-height: 90vh;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, .4) 4px 4px 7px 2px;
     z-index: map-get($map: $zIndexMap, $key: card);
+
+    @include mq(L) {
+        left: 10vw;
+        width: 80vw;
+    }
 
     &__header {
         margin-top: $l-spacing;

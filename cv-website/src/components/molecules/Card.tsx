@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { withRouter, RouteComponentProps } from 'react-router';
 import { StorageContext } from '../../storage/StorageContext';
@@ -16,7 +16,6 @@ const Card: React.FC<CardProps> = ({ children, className, contentClassName, ligh
 
     return (
         <div className={`m-card ${className}`}>
-            <ReactTooltip type="info" effect="solid" place="top" />
             <header className={`m-card__header m-card__header--${lightHeader ? 'light' : 'dark'}`}>
                 <h1 className="h1">{ navTitle }</h1>
             </header>

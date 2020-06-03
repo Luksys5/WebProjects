@@ -7,6 +7,7 @@ import { GET_LATEST_GAME_QUERY } from '../../graphqlApi/queries/LatestGameQuery'
 import { Loader } from '../atoms/Loader';
 import { GraphError } from '../atoms/GraphError';
 import { LatestGameQuery } from '../../graphqlApi/types/Queries';
+import { Login } from '../molecules/Login';
 
 type HomePageProps = {
 }
@@ -17,18 +18,22 @@ export const HomePage: React.SFC<HomePageProps> = () => {
 
     return (
         <div className='p-home'>
+            <header className="p-home__header">
+                <h1 className="p-home__header__main">Lukas Tutkus</h1>
+                <h3 className="h3">Frontend developer and game development hobbyist</h3>
+            </header>
             <div className='p-home__panels'>
                 { loading && <Loader size="medium" /> }
                 { error && <GraphError message={error.message} error={error} hide={true} /> }
 
-                <Panel
+                {/* <Panel
                     title="About me"
                     texts={texts.aboutMeSummary}
                     position="left"
                     size="full"
                     linkUrl="/about"
                     onClick={() => setNavTitle(NavTitles.aboutMe)}
-                />
+                /> */}
 
                 { data && 
                     <Panel

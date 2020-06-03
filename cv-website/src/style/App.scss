@@ -5,7 +5,9 @@
 
 // atoms
 @import "./atoms/button.scss";
+@import "./atoms/frame.scss";
 @import "./atoms/graph-error.scss";
+@import "./atoms/like-component";
 @import "./atoms/loader.scss";
 @import "./atoms/logo.scss";
 @import "./atoms/background-image.scss";
@@ -17,6 +19,7 @@
 @import "./molecules/teaser.scss";
 @import "./molecules/expandable-item.scss";
 @import "./molecules/game-link.scss";
+@import "./molecules/login.scss";
 @import "./molecules/image.scss";
 @import "./molecules/panel.scss";
 @import "./molecules/section.scss";

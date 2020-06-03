@@ -35,10 +35,27 @@ namespace UPS.Function {
                     color: String
                 }
 
+                type Like {
+                    targetId: String, 
+                    type: Int,
+                    count: Int
+                }
+
+                type User {
+                    Id: String,
+                    LikeId: String
+                }
+
+                type Mutation {
+                    likeGame(userId: String, targetId: String, type: Int): Like
+                }
+
                 type Query {
                     games: [Game],
-                    game: Game,
-                    skills: [SkillGroup]
+                    skills: [SkillGroup],
+                    likes: [Like],
+                    getUserById(id: String): [User],
+                    game: Game
                 }
             ", _ =>
             {
@@ -48,16 +65,19 @@ namespace UPS.Function {
             
         }
         
-        public async Task<string> QueryAsync(string query, ILogger log) 
+        public async Task<string> QueryAsync(string query, string variablesJson, ILogger log) 
         {
             logger = log;
             log.LogInformation("Before execution");
+            var inputs = variablesJson.ToInputs();
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = schema;
                 _.Query = query;
+                _.Inputs = inputs;
             });
             log.LogInformation("After execution");
+            log.LogInformation(result.Data.ToString());
 
             if(result.Errors != null) {
                 return result.Errors[0].Message;

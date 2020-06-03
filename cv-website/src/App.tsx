@@ -8,6 +8,7 @@ import { StorageProvider } from './storage/StorageContext';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { GlobalData } from './GlobalData';
 import { ApolloClient } from 'apollo-boost';
+import ReactTooltip from 'react-tooltip';
 
 export function App() {
     return (
@@ -15,6 +16,7 @@ export function App() {
             <ApolloProvider client={GlobalData.graphqlClient as ApolloClient<any>}>
                 <BrowserRouter>
                     <StorageProvider>
+                        <ReactTooltip type="info" effect="solid" place="top" />
                         <BackgroundContent>
                             <AppRouteTransitions />
                         </BackgroundContent>

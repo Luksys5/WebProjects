@@ -55,6 +55,39 @@ namespace UPS.Function
             });
         }
 
+        [GraphQLMetadata("likes")]
+        public async Task<IEnumerable<Like>> GetLike()
+        {
+            TableQuery<Like> likeQuery = new TableQuery<Like>();
+            var likes = await GetAll<Like>(Creds.connectionKey, DB.likesTableName, likeQuery); 
+
+            return likes.Select(
+                like => new Like() {
+                    TargetId = like.TargetId,
+                    Type = like.Type,
+                    Count = like.Count
+                }
+            );
+        }
+
+        [GraphQLMetadata("getUserById")]
+        public async Task<IEnumerable<User>> GetUserById(string id)
+        {
+            if (string.IsNullOrEmpty(id)) {
+                return null;
+            }
+            
+            TableQuery<User> userQuery = new TableQuery<User>().Where(
+                TableQuery.GenerateFilterCondition("Id", QueryComparisons.Equal, id)
+            );
+            return await GetUser(userQuery);
+        }
+
+        public static async Task<IEnumerable<User>> GetUser(TableQuery<User> tableQuery)
+        {
+            return await GetAll<User>(Creds.connectionKey, DB.usersTableName, tableQuery);
+        }
+
         public async Task<IEnumerable<Game>> AddGamesLinks(IEnumerable<Game> games)
         {
             TableQuery<Link> linkQuery = new TableQuery<Link>();
@@ -82,7 +115,7 @@ namespace UPS.Function
             return await GetAll<Link>(Creds.connectionKey, DB.linkTableName, linkQuery);
         }
 
-        public async Task<IEnumerable<T>> GetAll<T>(string connectionKey, string tableName, TableQuery<T> query) where T : ITableEntity, new()
+        public static async Task<IEnumerable<T>> GetAll<T>(string connectionKey, string tableName, TableQuery<T> query) where T : ITableEntity, new()
         {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionKey);
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient(); 

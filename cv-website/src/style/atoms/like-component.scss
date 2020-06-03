@@ -1,0 +1,44 @@
+.a-like-component {
+    display: flex;
+    flex-direction: column;
+    z-index: inherit;
+    padding: $xs-spacing; 
+
+    .a-icon {
+        cursor: pointer;
+        color: $color-ui-010;
+
+        #selectfill {
+            stroke: $color-ui-010;
+            stroke-width: 3px;
+            fill: none;
+        }
+
+        &--loading {
+            cursor: default;
+        }
+
+        &--selected {
+            color: $color-theme-030;
+        }
+    }
+    
+
+    &__count {
+        color: $color-shade-040;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+    }
+}
+
+.a-like-component:hover {
+    svg {
+        color: $color-ui-020;
+
+        #selectfill {
+            fill: $color-ui-020;
+            stroke-width: 0;
+        }
+    }
+}

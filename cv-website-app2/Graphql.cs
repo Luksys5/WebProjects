@@ -22,10 +22,11 @@ namespace UPS.Function
             string query = req.Query["query"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
+
             query = query ?? data?.query;
 
             var server = new Server();
-            var json = await server.QueryAsync(query, log);
+            var json = await server.QueryAsync(query, data?.variables.ToString(Newtonsoft.Json.Formatting.None), log);
             return new OkObjectResult(json);
         }
     }
