@@ -56,7 +56,7 @@ export const StorageProvider: React.FC = ({ children }) => {
     const [likedGames, setLikedGames] = useState<string[]>([]);
     const userQueryResult = useQuery<UserQuery>(GET_USER_QUERY, {
         variables: {
-            id: localStorage.getItem(idKey)
+            id: userId ? userId : localStorage.getItem(idKey)
         }
     });
 

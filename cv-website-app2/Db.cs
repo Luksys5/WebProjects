@@ -34,6 +34,7 @@ namespace UPS.Function
 
     public class Like : TableEntity
     {
+        public string Id { get; set; }
         public string TargetId { get; set; }
         public int Type { get; set; }
         public int Count { get; set; }

@@ -63,6 +63,7 @@ namespace UPS.Function
 
             return likes.Select(
                 like => new Like() {
+                    Id = like.Id,
                     TargetId = like.TargetId,
                     Type = like.Type,
                     Count = like.Count

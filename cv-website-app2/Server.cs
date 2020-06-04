@@ -36,6 +36,7 @@ namespace UPS.Function {
                 }
 
                 type Like {
+                    id: String,
                     targetId: String, 
                     type: Int,
                     count: Int

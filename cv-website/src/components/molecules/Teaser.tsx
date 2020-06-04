@@ -21,7 +21,7 @@ export const Teaser: React.FC<TeaserProps> = ({ id, imgName, title, description,
             <div className="m-teaser__img">
                 <img src={`images/games/${imgName}`} alt="none" />
                 <div className="m-teaser__likes">
-                    <LikeGame targetId={id} type={0} count={gameLikes || 0} /> 
+                    <LikeGame id={""} targetId={id} type={0} count={gameLikes || 0} /> 
                 </div>
             </div>
             <div className={`m-teaser__details ${colorTheme ? 'm-teaser__details--' + colorTheme : ''}`}>

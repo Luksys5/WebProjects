@@ -18,11 +18,11 @@ const toastProps: ToastOptions = {
     progress: undefined,
 };
 
-type LikeComponentProps = Like;
+type LikeComponentProps = Like; 
+
 export const LikeGame: React.FC<LikeComponentProps> = ({ targetId, type, count }) => {
     const [likeGame, { loading, error, data }] = useMutation<LikeMutation>(LIKE_GAME);
     const { userId, setLoginActive, likedGames, setLikedGames } = useContext(StorageContext);
-    
 
     useEffect(
         () => {
@@ -48,10 +48,10 @@ export const LikeGame: React.FC<LikeComponentProps> = ({ targetId, type, count }
             }
         },
         [error]
-    )
+    );
 
     const likeGameHandler = () => {
-        if (loading) {
+        if (loading || likedGames.some(id => id === targetId)) {
             return;
         }
 

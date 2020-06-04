@@ -19,7 +19,8 @@
         }
 
         &--selected {
-            color: $color-theme-030;
+            color: $color-theme-010;
+            cursor: default;
         }
     }
     
@@ -33,12 +34,16 @@
 }
 
 .a-like-component:hover {
-    svg {
+    .a-icon {
         color: $color-ui-020;
 
         #selectfill {
             fill: $color-ui-020;
             stroke-width: 0;
+        }
+        &--selected {
+            color: $color-theme-010;
+            cursor: default;
         }
     }
 }
