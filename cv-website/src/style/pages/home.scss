@@ -18,17 +18,8 @@
         position: absolute;
         margin-bottom: $m-spacing;
 
-        // width: 100vw;
-        // height: 100vh;
-        // top: 80%;
-
         .m-panel--size-full {
             width: 300px;
-        }
-
-        .m-panel {
-            // margin-left: $m-spacing;
-            // width: 300px;
         }
 
         @include mq(S) {
@@ -38,17 +29,33 @@
         }
 
 
-        @include mq(L) {
+        @include mq(M) {
             flex-direction: row;
             justify-content: space-evenly;
             bottom: $l-spacing;
             left: $l-spacing;
-            // top: 15vh;
-        
-            // height: 80vh;
-            // width: 75vw;
-
         }
 
    }
+}
+
+@include mq('M-max') {
+    .p-home {
+        &__header {
+            top: 12vh;
+        }
+
+        &__panels {
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            top: 40vh;
+            
+            .m-panel {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
 }

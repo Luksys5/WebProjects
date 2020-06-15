@@ -10,12 +10,14 @@
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
+            flex-wrap: wrap;
 
             .a-icon {
                 color: #000;
                 display: block;
                 width: 32px;
                 height: 32px;
+                margin: 5px;
 
                 svg {
                     width: 32px;

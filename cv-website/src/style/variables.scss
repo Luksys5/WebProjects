@@ -22,6 +22,8 @@ $color-theme-050: #222F43;
 $color-ui-010: rgb(0, 123, 255);
 $color-ui-005: rgba(0, 123, 255, 125);
 $color-ui-020: #ff6200;
+$color-ui-030: #F696F0;
+
 $color-gradient-010: #39b2af;
 $color-gradient-020: #55367d;
 $color-inactive: #002246;
@@ -43,7 +45,7 @@ $ui-theme-gray: (
 $breakpoints: (  
     "XS":   375px,
 	"S":	576px,
-    // "M":	768px,
+    "M":	768px,
     "L":    900px,
     "XL":	1280px,
     // "XXL":  1367px, // 1px bigger than older dell latitudes

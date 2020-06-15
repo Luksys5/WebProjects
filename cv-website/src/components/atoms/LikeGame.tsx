@@ -74,7 +74,13 @@ export const LikeGame: React.FC<LikeComponentProps> = ({ targetId, type, count }
             {
                 <IconSprite
                     name="love"
-                    className={loading ? 'a-icon--loading' : likedGames.some(id => id === targetId) ? 'a-icon--selected' : ''}
+                    className={
+                        loading ?
+                            'a-icon--loading' :
+                            likedGames.some(id => id === targetId) ?
+                                'a-icon--selected' :
+                                ''
+                    }
                     onClick={likeGameHandler} />
             }
             <span className="a-like-component__count">

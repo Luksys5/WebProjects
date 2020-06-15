@@ -6,20 +6,24 @@
     max-width: 800px;
     overflow: hidden;
 
-    > div {
+    > div:first-child {
         display: flex;
+        height: calc((7/ 16) * 100vw);
+        position: relative;
+        min-height: 40vh;
+        max-height: 65vh;
     }
 
     &__items {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        margin-top: $s-spacing;
+        flex-wrap: wrap;
         margin-bottom: $s-spacing;
-        padding-top: 75%;
         
         &__img {
             margin-right: $m-spacing;
+            margin-top: $m-spacing;
 
             width: 100px;
             height: 100px;
@@ -70,5 +74,16 @@
         &__img:first-child {
             margin-left: 0;
         }
+    }
+}
+
+@include mq('M-max') {
+
+    .o-carousel {
+
+        > div:first-child {
+            height: calc((9/ 16) * 100vw);
+        }
+
     }
 }

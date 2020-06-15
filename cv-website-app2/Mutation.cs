@@ -20,8 +20,7 @@ namespace UPS.Function {
             );
             TableQuery<User> userQuery =  new TableQuery<User>().Where(filter);
             var users = await UPS.Function.Query.GetUser(userQuery);
-            var userAlreadyLikedGame = users.ToList().Any(user => user != null && user.LikeId == targetId);
-            if (userAlreadyLikedGame)
+            if (users.Count() != 0)
             {
                 return null;
             }
@@ -57,6 +56,7 @@ namespace UPS.Function {
                         ETag = "*",
                         PartitionKey = like.PartitionKey,
                         RowKey = like.RowKey, 
+                        Id = like.Id,
                         TargetId = targetId,
                         Type = type,
                         Count = like.Count + 1
@@ -74,6 +74,7 @@ namespace UPS.Function {
                         ETag = "*",
                         PartitionKey = DB.partitionKey,
                         RowKey = likes.Count().ToString(), 
+                        Id = System.Guid.NewGuid().ToString(),
                         TargetId = targetId,
                         Type = type,
                         Count = 1 

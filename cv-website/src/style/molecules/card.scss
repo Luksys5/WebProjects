@@ -49,6 +49,7 @@
             margin-right: $s-spacing;
             width: 25px;
             height: 25px;
+            margin: 5px;
             filter: grayscale(100%);
             transition: filter .3s ease-out;
 
@@ -82,5 +83,14 @@
             text-decoration: none;
             color: $color-ui-010;
         }
+    }
+}
+
+@include mq('M-max') {
+    .m-card__links {
+        flex-direction: column;
+        right: 20px;
+        top: 40px;
+        height: auto;
     }
 }

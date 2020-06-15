@@ -34,7 +34,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
     const { search } = useLocation();
     const { data } = useQuery<LikesQuery>(GET_LIKES_QUERY);
     const parsedPath = qs.parse(search.replace('?$', ''));
-    const itemIndex = items.findIndex((item) => item.id === parsedPath.id);
+    const itemIndex = items.findIndex((currItem) => currItem.id === parsedPath.id);
     const [selectedIndex, setSelectedIndex] = useState<number>(itemIndex > -1 ? itemIndex : 0);
     const item = items[selectedIndex];
 
@@ -51,15 +51,15 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
             </TransitionGroup>
             <div className="o-carousel__items">
                 {
-                    items.map((item, index) => {
+                    items.map((currItem, index) => {
                         return (
                             <Image
                                 key={index}
                                 className={
-                                    `o-carousel__items__img ${item.originPosition} 
+                                    `o-carousel__items__img ${currItem.originPosition} 
                                     ${index === selectedIndex ? 'o-carousel__items__img--selected' : ''}`
                                 }
-                                src={`images/games/${item.imgName}`}
+                                src={`images/games/${currItem.imgName}`}
                                 onClick={() => setSelectedIndex(index)}
                             />
                         );
