@@ -39,7 +39,6 @@
             bottom: 0;
             display: flex;
             justify-content: space-evenly;
-            margin-right: $s-spacing;
 
             z-index: map-get($map: $zIndexMap, $key: 'overlay');
         }

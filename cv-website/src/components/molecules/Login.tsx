@@ -23,7 +23,6 @@ export const Login: React.FC<LoginProps> = ({ active }) => {
     const googleLoginHandler = (response: (GoogleLoginInfo & { Ea?: string})) => {
         if (response.Ea) {
             setUserId(response.Ea);
-            debugger;
             localStorage.setItem(idKey, response.Ea);
             setLoginActive(false);
             return;

@@ -35,7 +35,7 @@ export const LikeGame: React.FC<LikeComponentProps> = ({ targetId, type, count }
                 setLikedGames(likedGames.concat(targetId));
             }
         },
-        [error]
+        [data]
     )
 
     useEffect(

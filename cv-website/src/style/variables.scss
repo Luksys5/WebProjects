@@ -13,29 +13,6 @@ $zIndexMap: (
     "social": 1
 );
 
-$color-theme-010: rgb(100, 100, 244);
-$color-theme-020: rgb(203, 235, 242);
-$color-theme-030: #3e375d;
-$color-theme-040: #3AB0AE;
-$color-theme-050: #222F43;
-
-$color-ui-010: rgb(0, 123, 255);
-$color-ui-005: rgba(0, 123, 255, 125);
-$color-ui-020: #ff6200;
-$color-ui-030: #F696F0;
-
-$color-gradient-010: #39b2af;
-$color-gradient-020: #55367d;
-$color-inactive: #002246;
-$color-error: #E74C3C;
-$color-info: #3498DB;
-
-$color-shade-010: #F5F4F5;
-$color-shade-020: darken($color-shade-010, 11.47%);
-$color-shade-030: darken($color-shade-020, 11.47%);
-$color-shade-040: darken($color-shade-030, 11.47%);
-$color-shade-050: darken($color-shade-040, 11.47%);
-
 $ui-theme-gray: (
     'background': #718492,
     'title': '#222F43',

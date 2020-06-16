@@ -8,6 +8,44 @@ import { GamesQuery } from '../../graphqlApi/types/Queries';
 import { GraphError } from '../atoms/GraphError';
 import { IconSprite } from '../atoms/IconSprite';
 
+const links = [
+    {
+        "data-delay-show": "500",
+        "data-tip": "Major updates on fb!",
+        "url": "https://www.facebook.com/UniqPointStudio/",
+        "noWrapper": false,
+        "name": "fb"
+    },
+    {
+        "data-delay-show": "500",
+        "data-tip": "Major updates on twitter",
+        "url": "https://twitter.com/point_uniq",
+        "noWrapper": false,
+        "name": "twitter"
+    },
+    {
+        "data-delay-show": "500",
+        "data-tip": "Major updates on insta!",
+        "url": "https://www.instagram.com/uniquepointstudio/",
+        "noWrapper": false,
+        "name": "instagram"
+    },
+    {
+        "data-delay-show": "500",
+        "data-tip": "Check out my stream!",
+        "url": "https://www.twitch.tv/uniquepointstudio",
+        "noWrapper": false,
+        "name": "twitch"
+    },
+    {
+        "data-delay-show": "500",
+        "data-tip": "Become my patreon!",
+        "url": "https://www.patreon.com/uniqpointstudio",
+        "noWrapper": false,
+        "name": "patreon"
+    },
+]
+
 export const GamesPage: React.FC = () => {
     const { loading, error, data } = useQuery<GamesQuery>(GET_GAMES_QUERY);
 
@@ -16,13 +54,17 @@ export const GamesPage: React.FC = () => {
             lightHeader={true}
             className="p-games"
             contentClassName="p-games__content"
-            links={[
-                <IconSprite key={0} data-delay-show="500" data-tip="Major updates on fb" onClick={() => window.open('https://www.facebook.com/UniqPointStudio/', '_blank')} noWrapper={false} name="fb" />,
-                <IconSprite key={1} data-delay-show="500" data-tip="Major updates on twitter" onClick={() => window.open('https://twitter.com/point_uniq', '_blank')} noWrapper={false} name="twitter" />,
-                <IconSprite key={2} data-delay-show="500" data-tip="Major updates on insta" onClick={() => window.open('https://www.instagram.com/uniquepointstudio/', '_blank')} noWrapper={false} name="instagram" />,
-                <IconSprite key={3} data-delay-show="500" data-tip="Check out my stream" onClick={() => window.open('https://www.twitch.tv/uniquepointstudio', '_blank')} noWrapper={false} name="twitch" />,
-                <IconSprite key={4} data-delay-show="500" data-tip="Become my patreon!" onClick={() => window.open('https://www.patreon.com/user', '_blank')} noWrapper={false} name="patreon" />,
-            ]}
+            links={
+                links.map(
+                    (link, index) => 
+                        // @ts-ignore
+                        <IconSprite
+                            key={index}
+                            onClick={() => window.open(link.url, '_blank')}
+                            {...link}
+                        />
+                )
+            }
         >
             {
                 loading && <Loader size="medium" />

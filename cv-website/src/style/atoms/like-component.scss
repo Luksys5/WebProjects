@@ -1,12 +1,17 @@
 .a-like-component {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     z-index: inherit;
-    padding: $xs-spacing; 
+    backdrop-filter: blur(5px);
 
     .a-icon {
-        cursor: pointer;
+        min-width: 40px;
+        display: flex;
+        justify-content: center;
+        padding: $xs-spacing;
         color: $color-ui-010;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.4);
 
         #selectfill {
             stroke: $color-ui-010;
@@ -19,13 +24,16 @@
         }
 
         &--selected {
-            color: $color-ui-030;
+            color: $color-theme-050;
             cursor: default;
         }
     }
     
 
     &__count {
+        min-width: 40px;
+        padding: $xs-spacing;
+        background-color: rgba(0, 0, 0, 0.4);
         color: $color-shade-010;
         font-family: Roboto-medium;
     }
@@ -41,7 +49,7 @@
         }
 
         &--selected {
-            color: $color-ui-030;
+            color: $color-theme-050;
             cursor: default;
         }
     }

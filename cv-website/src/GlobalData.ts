@@ -15,6 +15,9 @@ export const globalInit = () => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
         } }),
-        cache: new InMemoryCache()
+        cache: new InMemoryCache({
+            // @ts-ignore
+            dataIdFromObject: o => (o._id ? `${o.__typename}:${o._id}`: null),
+        })
     });
 }
