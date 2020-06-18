@@ -1,6 +1,6 @@
 import React from 'react';
 import './style/App.scss';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { BackgroundContent } from './components/templates/BackgroundContent';
 import AppRouteTransitions from './AppRouteTransitions';
 import 'react-lazy-load-image-component/src/effects/blur.css';
