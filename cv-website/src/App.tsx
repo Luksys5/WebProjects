@@ -1,6 +1,6 @@
 import React from 'react';
 import './style/App.scss';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { BackgroundContent } from './components/templates/BackgroundContent';
 import AppRouteTransitions from './AppRouteTransitions';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -14,14 +14,14 @@ export function App() {
     return (
         <div className="App" >
             <ApolloProvider client={GlobalData.graphqlClient as ApolloClient<any>}>
-                <BrowserRouter>
+                <HashRouter>
                     <StorageProvider>
                         <ReactTooltip type="info" effect="solid" place="top" />
                         <BackgroundContent>
                             <AppRouteTransitions />
                         </BackgroundContent>
                     </StorageProvider>
-                </BrowserRouter>
+                </HashRouter>
             </ApolloProvider>
         </div>
     );
