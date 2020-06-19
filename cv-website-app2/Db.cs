@@ -29,6 +29,7 @@ namespace UPS.Function
         public string Description { get; set; }
         public DateTime ReleasedDate { get; set; }
         public string ImgName { get; set; }
+        public string Devices { get; set; }
         public List<Link> links { get; set; }
     }
 

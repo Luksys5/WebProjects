@@ -1,0 +1,31 @@
+
+.m-message {
+    display: flex;
+    flex-direction: column;
+
+    &__text-field {
+        position: relative;
+        width: 80%;
+        padding: $s-spacing;
+        padding-top: 30%;
+        border-radius: 5px;
+        box-shadow: 0 0 3px 1px $color-ui-010;
+        margin: $s-spacing;
+
+        textarea {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+            outline: 0;
+            border: none;
+            resize: none;
+            min-height: 100px;
+            background-color: transparent;
+            font-family: OpenSans;
+        }
+    }
+}

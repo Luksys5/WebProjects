@@ -7,6 +7,7 @@ import { Image } from '../molecules/Image';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_LIKES_QUERY } from '../../graphqlApi/queries/LikesQuery';
 import { LikesQuery } from '../../graphqlApi/types/Queries';
+// import { Comments } from './Comments';
 const qs = require('qs');
 
 export const ColorThemes = {
@@ -23,6 +24,7 @@ export type CarouselItemType = {
     description: string;
     colorTheme?: 'gray' | 'green' | 'blue' | 'brown';
     originPosition?: 'top-origin' | 'bottom-left-origin' | 'bottom-right-origin';
+    devices: string;
     links: Link[];
 }
 
@@ -67,6 +69,7 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
                 }
             </div>
 
+            {/* <Comments /> */}
         </div>
     )
 }

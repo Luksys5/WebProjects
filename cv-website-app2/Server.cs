@@ -25,6 +25,7 @@ namespace UPS.Function {
                     description: String,
                     imgName: String,
                     releasedDate: DateTime,
+                    devices: String,
                     links: [Link]
                 }
 

@@ -7,14 +7,14 @@
         justify-content: start;
         align-items: center;
         margin-top: $l-spacing + $m-spacing;
-        margin-bottom: $m-spacing + $s-spacing;
+        margin-bottom: $m-spacing;
         width: 100%;
         color: $color-theme-030;
 
         .a-icon {
             width: 32px;
             height: 32px;
-            margin-right: $xs-spacing;
+            margin-right: $s-spacing;
 
             svg {
                 width: 32px;

@@ -1,0 +1,35 @@
+
+.o-comments {
+    background-color: $color-shade-010;
+    padding: $m-spacing;
+    margin: $xs-spacing;
+    margin-top: $l-spacing;
+    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.3);
+
+    &__header {
+        display: flex;
+        align-items: center;
+        padding-bottom: $m-spacing;
+        border-bottom: 1px solid $color-theme-010;
+        margin-top:0;
+        color: $color-theme-030;
+
+        .a-icon {
+            color: $color-theme-030;
+            margin-right: $s-spacing;
+            margin-bottom: -5px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        margin-left: $s-spacing;
+        margin-top: $s-spacing;
+    }
+
+    .m-message {
+        margin-top: $m-spacing;
+    }
+
+}

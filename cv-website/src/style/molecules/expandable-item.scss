@@ -25,9 +25,11 @@
         
     }
 
-    &__summary:hover {
-        padding-left: 0;
-        color: $color-ui-010;
+    @media (hover: hover) {
+        &__summary:hover {
+            padding-left: 0;
+            color: $color-ui-010;
+        }
     }
 
     &__summary--open {

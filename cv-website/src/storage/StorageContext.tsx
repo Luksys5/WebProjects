@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Game } from '../graphqlApi/types/Game';
-import { AsyncData } from '../graphqlApi/types/AsyncData';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { navigationItems, NavigationItem } from '../components/organisms/NavigationBar';
@@ -57,7 +55,8 @@ export const StorageProvider: React.FC = ({ children }) => {
     const userQueryResult = useQuery<UserQuery>(GET_USER_QUERY, {
         variables: {
             id: userId ? userId : localStorage.getItem(idKey)
-        }
+        },
+        skip: !userId && !localStorage.getItem(idKey)
     });
 
 

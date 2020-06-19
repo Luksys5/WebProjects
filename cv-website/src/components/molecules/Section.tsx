@@ -48,7 +48,7 @@ export const Section: React.FC<SectionProps> = ({ className, contentClassName, i
         <div className={`m-section ${className || ''}`}>
             <div className="m-section__header">
                 { iconName && <IconSprite name={iconName} /> }
-                <h3 className="h3">{ header }</h3>
+                <h2 className="h2">{ header }</h2>
             </div>
             <div className="m-section__paragraphs">
                 { paragraphs && paragraphs.map(

@@ -1,0 +1,78 @@
+
+.m-comment {
+    display: flex;
+    text-align: left;
+    margin-bottom: $s-spacing;
+    margin-top: $s-spacing;
+    flex-wrap: wrap;
+
+    &__photo {
+        width: 40px;
+        margin-right: $m-spacing;
+        border-radius: 5px;
+
+        img {
+            border-radius: 5px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__details {
+        margin-bottom: $xs-spacing;
+
+        &__name {
+            font-family: Roboto-medium;
+            margin-right: $s-spacing;
+        }
+
+        &__time {
+            font-size: $medium-fontsize;
+            color: $color-shade-030;
+        }
+    }
+
+    &__text {
+        font-family: OpenSans;
+    }
+
+    &__actions {
+        display: flex;
+        width: fit-content;
+        margin-top: $xs-spacing;
+        font-family: Roboto-light;
+        font-size: $medium-fontsize;
+        color: $color-shade-040;
+
+        &--reply {
+            margin-right: $s-spacing;
+        }
+
+        @media (hover: hover) {
+            &--reply:hover {
+                font-weight: 600;
+                color: $color-shade-050;
+                cursor: pointer;
+            }
+
+            &--hide:hover {
+                font-weight: 600;
+                color: $color-shade-050;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .m-message {
+        flex: 1 0 100%;
+        margin-left: $m-spacing;
+    }
+
+    &__replies {
+        flex: 1 0 100%;
+        margin-left: $m-spacing;
+    }
+}

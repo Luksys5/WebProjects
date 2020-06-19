@@ -6,5 +6,6 @@ export type Game = {
     description: string;
     releasedDate: string;
     imgName: string;
+    devices: string;
     links: Link[];
 }

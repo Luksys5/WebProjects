@@ -1,4 +1,3 @@
-@import "./bootstrap.css";
 @import "./colors.scss";
 @import "./variables.scss";
 @import "./fonts.scss";
@@ -17,17 +16,20 @@
 
 // molecules
 @import "./molecules/card.scss";
-@import "./molecules/teaser.scss";
+@import "./molecules/comment.scss";
 @import "./molecules/expandable-item.scss";
 @import "./molecules/game-link.scss";
 @import "./molecules/login.scss";
+@import "./molecules/message.scss";
 @import "./molecules/image.scss";
 @import "./molecules/panel.scss";
 @import "./molecules/section.scss";
 @import "./molecules/social-bar.scss";
+@import "./molecules/teaser.scss";
 
 // organisms
 @import "./organisms/carousel.scss";
+@import "./organisms/comments.scss";
 @import "./organisms/navigation.scss";
 
 // pages
@@ -42,6 +44,27 @@
 .h1, .h2, .h3, .h4 {
   font-family: Roboto-medium;
   font-weight: 500;
+  margin: 0;
+}
+
+.h1 {
+    font-size: 42px;
+    line-height: 48px;
+}
+
+.h2 {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.h3 {
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.h4 {
+    font-size: 24px;
+    line-height: 28px;
 }
 
 #root, .App {

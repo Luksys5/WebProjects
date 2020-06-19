@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { ApolloError } from 'apollo-boost';
+import { ToastProps } from '../../GlobalData';
 
 type GraphErrorProps = {
     error: ApolloError;
@@ -12,15 +13,8 @@ export const GraphError: React.FC<GraphErrorProps> = ({ error, message, hide }) 
     useEffect(
         () => {
             toast.error(
-                error.message, {
-                    position: "bottom-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                }
+                error.message,
+                ToastProps
             );
         },
         []

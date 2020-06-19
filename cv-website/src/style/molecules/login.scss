@@ -23,7 +23,18 @@
         justify-content: space-evenly;
 
         * {
-            width: 150px;
+            width: fit-content;
+            margin-right: $s-spacing;
+        }
+
+        button {
+            font-size: $regular-fontsize;
+            padding-left: $m-spacing;
+            padding-right: $m-spacing;
+
+            padding-top: $m-spacing;
+            padding-bottom: $m-spacing;
+            outline: 0;
         }
 
         &__google {

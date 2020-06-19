@@ -8,6 +8,7 @@ export const GET_GAMES_QUERY = gql`
             description,
             releasedDate,
             imgName,
+            devices,
             links {
                 id,
                 gameId,

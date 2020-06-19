@@ -1,6 +1,7 @@
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
+import { ToastOptions } from 'react-toastify';
 
 export const webAppData = (window as any).cvWebApp; 
 export class GlobalData {
@@ -21,3 +22,13 @@ export const globalInit = () => {
         })
     });
 }
+
+export const ToastProps: ToastOptions = {
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+};

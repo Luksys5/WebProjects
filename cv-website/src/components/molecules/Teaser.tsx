@@ -3,6 +3,7 @@ import { CarouselItemType } from '../organisms/Carousel';
 import { GameLink } from './GameLink';
 import { Like } from '../../graphqlApi/types/Like';
 import { LikeGame } from '../atoms/LikeGame';
+import { IconSprite } from '../atoms/IconSprite';
 
 type TeaserProps = CarouselItemType & {
     likes: Like[];
@@ -14,12 +15,38 @@ enum LikeTypes {
     Love = 2
 }
 
-export const Teaser: React.FC<TeaserProps> = ({ id, imgName, title, description, links, colorTheme, likes }) => {
-    const gameLikes = likes.find(like => like.targetId === id && like.type === LikeTypes.Hot)?.count; 
+type DeviceValue = "0" | "1";
+type DeviceName = "adb" | "pc";
+
+const devicesNames =  {
+    "0": "adb",
+    "1": "pc"
+}
+
+export const Teaser: React.FC<TeaserProps> = ({ id, imgName, title, description, links, colorTheme, devices, likes }) => {
+    const gameLikes = likes.find(like => like.targetId === id && like.type === LikeTypes.Hot)?.count;
+
+    const renderDevices = () => {
+        if (devices && devices.length > 0) {
+            const multipleDevice: DeviceValue[] = devices.split(',') as DeviceValue[];
+            if (multipleDevice.length > 1) {
+                return multipleDevice.map(
+                    (device: DeviceValue, index) => <IconSprite key={index} name={devicesNames[device] as DeviceName} />
+                );
+            }
+            const firstDevice: DeviceValue = devices as DeviceValue;
+            return <IconSprite name={devicesNames[firstDevice] as DeviceName} /> 
+        }
+        return null;
+    }
+
     return (
         <div className="m-teaser">
             <div className="m-teaser__img">
                 <img src={`images/games/${imgName}`} alt="none" />
+                <div className="m-teaser__devices">
+                    { renderDevices() }
+                </div>
                 <div className="m-teaser__likes">
                     <LikeGame id={""} targetId={id} type={0} count={gameLikes || 0} /> 
                 </div>
