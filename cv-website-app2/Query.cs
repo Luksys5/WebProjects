@@ -56,7 +56,7 @@ namespace UPS.Function
         }
 
         [GraphQLMetadata("likes")]
-        public async Task<IEnumerable<Like>> GetLike()
+        public async Task<IEnumerable<Like>> GetLikes()
         {
             TableQuery<Like> likeQuery = new TableQuery<Like>();
             var likes = await GetAll<Like>(Creds.connectionKey, DB.likesTableName, likeQuery); 
@@ -70,6 +70,16 @@ namespace UPS.Function
                 }
             );
         }
+
+        [GraphQLMetadata("comments")]
+        public async Task<IEnumerable<Comment>> GetComments()
+        {
+            TableQuery<Comment> commentQuery = new TableQuery<Comment>();
+            var comments = await GetAll<Comment>(Creds.connectionKey, DB.commentsTableName, commentQuery); 
+
+            return comments;
+        }
+
 
         [GraphQLMetadata("getUserById")]
         public async Task<IEnumerable<User>> GetUserById(string id)

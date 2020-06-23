@@ -40,6 +40,8 @@ export const NavTitles = {
     games: "Games"
 }
 
+// const FB: any = window['FB' as any];
+
 export const StorageContext = React.createContext<StorageProps>(initialValue);
 
 const matchNavigation = (el: NavigationItem, pathName: string) => el.path !== '/' && pathName.match(new RegExp('^' + el.path));
@@ -51,6 +53,7 @@ export const StorageProvider: React.FC = ({ children }) => {
     const [userId, setUserId] = useState<string>("");
     const [loginActive, setLoginActive] = useState(false);
     const [loading, setLoading] = useState(false);
+    // const [loginStatus, setLoginStatus] = useState<LoginStatus>('unknown');
     const [likedGames, setLikedGames] = useState<string[]>([]);
     const userQueryResult = useQuery<UserQuery>(GET_USER_QUERY, {
         variables: {
@@ -58,7 +61,6 @@ export const StorageProvider: React.FC = ({ children }) => {
         },
         skip: !userId && !localStorage.getItem(idKey)
     });
-
 
     useEffect(
         () => {

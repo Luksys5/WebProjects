@@ -7,6 +7,7 @@ export const webAppData = (window as any).cvWebApp;
 export class GlobalData {
     public static graphqlUri = "";
     public static graphqlClient: ApolloClient<unknown> | undefined = undefined;
+    public static fbClient: any = undefined;
 }
 
 export const globalInit = () => {
@@ -21,6 +22,7 @@ export const globalInit = () => {
             dataIdFromObject: o => (o._id ? `${o.__typename}:${o._id}`: null),
         })
     });
+    GlobalData.fbClient = window['FB' as any] as any;
 }
 
 export const ToastProps: ToastOptions = {

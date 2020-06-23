@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '../molecules/Card';
 import { Carousel } from '../organisms/Carousel';
 import { useQuery } from '@apollo/react-hooks';
@@ -7,6 +7,8 @@ import { Loader } from '../atoms/Loader';
 import { GamesQuery } from '../../graphqlApi/types/Queries';
 import { GraphError } from '../atoms/GraphError';
 import { IconSprite } from '../atoms/IconSprite';
+import { FBContext } from '../../storage/FBContext';
+import { StorageContext } from '../../storage/StorageContext';
 
 const links = [
     {
@@ -48,6 +50,12 @@ const links = [
 
 export const GamesPage: React.FC = () => {
     const { loading, error, data } = useQuery<GamesQuery>(GET_GAMES_QUERY);
+    const { status } = useContext(FBContext);
+    const { setLoginActive } = useContext(StorageContext);
+
+    if (status === 'unknown') {
+        setLoginActive(true);
+    }
 
     return (
         <Card

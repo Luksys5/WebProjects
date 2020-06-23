@@ -43,6 +43,15 @@ namespace UPS.Function {
                     count: Int
                 }
 
+                type Comment {
+                    id: String,
+                    rootId: String
+                    userId: String,
+                    text: String,
+                    name: String,                    
+                    date: DateTime
+                }
+
                 type User {
                     Id: String,
                     LikeId: String
@@ -56,6 +65,7 @@ namespace UPS.Function {
                     games: [Game],
                     skills: [SkillGroup],
                     likes: [Like],
+                    comments: [Comment],
                     getUserById(id: String): [User],
                     game: Game
                 }

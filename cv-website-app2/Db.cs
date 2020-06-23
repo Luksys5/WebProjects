@@ -11,6 +11,7 @@ namespace UPS.Function
         public static string skillsTableName = "skillMatrix";
         public static string linkTableName = "links";
         public static string likesTableName = "likes";
+        public static string commentsTableName = "comments";
         public static string usersTableName = "users";
     }
 
@@ -39,6 +40,16 @@ namespace UPS.Function
         public string TargetId { get; set; }
         public int Type { get; set; }
         public int Count { get; set; }
+    }
+
+    public class Comment: TableEntity
+    {
+        public string Id { get;set; }
+        public string RootId { get;set; }
+        public string UserId { get;set; }
+        public string Text { get;set; }
+        public string Name { get;set; }
+        public DateTime Date { get;set; }
     }
 
     public class DBSkillGroup : TableEntity
