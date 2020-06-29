@@ -10,6 +10,7 @@ import { GlobalData } from './GlobalData';
 import { ApolloClient } from 'apollo-boost';
 import ReactTooltip from 'react-tooltip';
 import { FBProvider } from './storage/FBContext';
+import { GAuthProvider } from './storage/GAuthContext';
 
 export function App() {
     return (
@@ -18,10 +19,12 @@ export function App() {
                 <HashRouter>
                     <StorageProvider>
                         <FBProvider>
-                            <ReactTooltip type="info" effect="solid" place="top" />
-                            <BackgroundContent>
-                                <AppRouteTransitions />
-                            </BackgroundContent>
+                            <GAuthProvider>
+                                <ReactTooltip type="info" effect="solid" place="top" />
+                                <BackgroundContent>
+                                    <AppRouteTransitions />
+                                </BackgroundContent>
+                            </GAuthProvider>
                         </FBProvider>
                     </StorageProvider>
                 </HashRouter>
