@@ -1,0 +1,49 @@
+
+// base
+@import "base/variables";
+@import "base/colors";
+
+// typography
+@import "typography/fonts";
+
+// atoms
+
+// molecules
+@import "molecules/card";
+@import "molecules/navigation";
+
+// organisms
+
+// pages
+@import "pages/matches-page";
+@import "pages/swipe-page";
+
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    // transform: rotate(45deg);
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgb(237,6,72);
+        background: linear-gradient(90deg, rgba(237,6,72,1) 0%, rgba(9,28,121,1) 100%);
+        z-index: -1;
+    }
+}

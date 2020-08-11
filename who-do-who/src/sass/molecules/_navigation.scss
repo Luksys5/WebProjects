@@ -1,0 +1,19 @@
+.m-navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: $color-white;
+
+    a {
+        font-family: $default-font;
+        font-weight: 500;
+        color: $color-theme-020;
+        flex: 1 1 50%;
+        text-decoration: none;
+        padding: $s-spacing;
+
+        &.router-link-exact-active {
+            color: $color-theme-010;
+        }
+    }
+}
