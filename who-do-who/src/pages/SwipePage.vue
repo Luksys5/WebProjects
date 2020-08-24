@@ -1,5 +1,5 @@
 <template>
-  <div class="p-swipe-page">
+  <div class="p-page p-swipe-page">
       <template v-for="(user, index) in users">
           <Card :image="user.image" :name="user.name" :age="user.age" :key="index" />
           YEEEP
@@ -12,15 +12,15 @@
 import Card from '@/components/Card.vue';
 
 export default {
-  name: 'SwipePage',
-  components: {
-    Card,
-  },
-  computed: {
-    users() {
-      return this.$store.state.users;
+    name: 'SwipePage',
+    components: {
+        Card
     },
-  },
+    computed: {
+        users() {
+            return this.$store.state.users;
+        }
+    }
 };
 </script>
 

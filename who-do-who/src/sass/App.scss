@@ -7,14 +7,19 @@
 @import "typography/fonts";
 
 // atoms
+@import "atoms/icon-base";
+@import "atoms/rating";
 
 // molecules
 @import "molecules/card";
+@import "molecules/person-desc";
+@import "molecules/rate";
 @import "molecules/navigation";
 
 // organisms
 
 // pages
+@import "pages/page";
 @import "pages/matches-page";
 @import "pages/swipe-page";
 

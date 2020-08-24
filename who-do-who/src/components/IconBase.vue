@@ -1,38 +1,54 @@
 <template>
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        :width="width"
-        :height="height"
-        viewBox="0 0 24 24"
-    >
-        <title :id="iconName" lang="en">{{iconName}}</title>
-        <g :fill="iconColor">
+    <div class="a-icon-base" v-bind:class="[className]">
+        <svg
+            class="a-icon-base__icon"
+            xmlns="http://www.w3.org/2000/svg"
+            :width="width"
+            :height="height"
+            :aria-labelledby="iconName"
+            :viewBox="getViewBox()"
+            :fill="iconColor"
+            v-if="text"
+        >
             <slot />
-        </g>
-    </svg>
+        </svg>
+        <span class="a-icon-base__text">{{ text }}</span>
+    </div>
 </template>
 
 <script>
-export default {
+export default Vue.extend({
+    name: 'icon-base',
     props: {
+        className: {
+            type: String
+        },
         iconName: {
             type: String,
             default: 'box'
         },
         width: {
             type: [Number, String],
-            default: 18
+            default: 24
         },
         height: {
             type: [Number, String],
-            default: 18
+            default: 24
         },
         iconColor: {
             type: String,
             default: 'currentColor'
+        },
+        text: {
+            text: String
+        }
+    },
+    methods: {
+        getViewBox() {
+            return `0 0 ${this.$props.width} ${this.$props.height}`;
         }
     }
-}
+});
 </script>
 
 <style scoped>

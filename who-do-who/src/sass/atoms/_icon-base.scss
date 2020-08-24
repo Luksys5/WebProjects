@@ -1,0 +1,13 @@
+.a-icon-base {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    margin-top: $xs-spacing;
+    margin-bottom: $xs-spacing;
+
+    span {
+        margin-left: $xs-spacing;
+        font-size: $default-fontsize;
+        height: 24px;
+    }
+}
