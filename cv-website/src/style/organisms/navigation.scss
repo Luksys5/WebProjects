@@ -20,11 +20,11 @@
         margin-right: $s-spacing;
         text-decoration: none;
 
-        color: #000;
+        color: #fff;
         transition: 200ms ease-in-out;
 
         &--selected {
-            color: $color-theme-010;
+            color: $color-theme-030;
         }
     }
 
@@ -33,7 +33,7 @@
     }
 
     .o-navigation__item:hover {
-        color: $color-ui-010;
+        color: $color-theme-030;
         text-decoration: none;
     }
 }

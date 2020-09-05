@@ -1,17 +1,4 @@
 .p-home {
-    &__header {
-        position: absolute;
-        top: 20vh;
-        left: 0;
-        right: 0;
-        color: $color-gradient-020;
-        font-family: OpenSans;
-
-        &__main {
-            color: $color-theme-030;
-        }
-    }
-
     &__panels {
         display: flex;
         flex-direction: column;
@@ -41,10 +28,6 @@
 
 @include mq('M-max') {
     .p-home {
-        &__header {
-            top: 12vh;
-        }
-
         &__panels {
             margin-left: auto;
             margin-right: auto;

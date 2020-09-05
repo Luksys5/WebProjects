@@ -5,7 +5,7 @@
     width: 450px;
     height: 280px;
     padding: 50px;
-    z-index: map-get($map: $zIndexMap, $key: overlay);
+    z-index: map-get($map: $zIndexMap, $key: "login-overlay");
     backdrop-filter: blur(20px);
     box-shadow: 0 0 3px 0px #000;
     background-color: rgba(255, 255, 255, 0.5);

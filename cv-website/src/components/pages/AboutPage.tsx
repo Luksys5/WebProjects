@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from '../molecules/Card';
 import { Section } from '../molecules/Section';
-import { Link } from 'react-router-dom';
 import { Image } from '../molecules/Image';
 import Texts from '../../Texts';
 import { IconSprite } from '../atoms/IconSprite';
@@ -10,8 +9,8 @@ export const AboutPage: React.FC = () => {
     return (
         <Card contentClassName="p-about">
             <Image
-                src="images/background/me-1920.png"
-                placeholderSrc="images/background/me-1920-treshold.png"
+                src="images/background/me.jpg"
+                placeholderSrc="images/background/me.jpg"
                 credit="Photo by: H J"
                 creditUrl="https://www.flickr.com/people/183565491@N03/"
             />

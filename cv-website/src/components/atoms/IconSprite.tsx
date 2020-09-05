@@ -12,7 +12,7 @@ export interface IconSpriteProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export class IconSprite extends React.Component<IconSpriteProps> {
     public render(): JSX.Element | null {
-        const { name, className, onClick, noWrapper, ...spanProps } = this.props;
+        const { name, className, noWrapper, ...spanProps } = this.props;
 
         if (noWrapper) {
             return icons[name];
@@ -20,7 +20,6 @@ export class IconSprite extends React.Component<IconSpriteProps> {
             return (
                 <span
                     className={`a-icon ${className} ${name ? 'a-icon--' + name : ''}`}
-                    onClick={onClick}
                     {...spanProps}
                 >
                     {

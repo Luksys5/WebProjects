@@ -9,12 +9,12 @@ export const BackgroundContent: React.FC = ({ children }) => {
     const { loginActive, loading } = useContext(StorageContext);
     return (
         <div className='t-bg-content'>
-            <BackgroundImage />
-            <NavigationBar />
             <Frame active={loginActive || loading}>
                 <Login active={loginActive} />
-                { children }
             </Frame>
+            <BackgroundImage />
+            <NavigationBar />
+            { children }
         </div>
     );
 }

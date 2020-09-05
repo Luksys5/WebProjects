@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import Panel from '../molecules/Panel';
-import texts from '../../Texts';
 import { StorageContext, NavTitles } from '../../storage/StorageContext';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_LATEST_GAME_QUERY } from '../../graphqlApi/queries/LatestGameQuery';
 import { Loader } from '../atoms/Loader';
 import { GraphError } from '../atoms/GraphError';
 import { LatestGameQuery } from '../../graphqlApi/types/Queries';
-import { Login } from '../molecules/Login';
 
 type HomePageProps = {
 }
@@ -18,8 +16,8 @@ export const HomePage: React.SFC<HomePageProps> = () => {
 
     return (
         <div className='p-home'>
-            <header className="p-home__header">
-                <h1 className="p-home__header__main">Lukas Tutkus</h1>
+            <header className="m-header">
+                <h1 className="h1 m-header__title">Lukas Tutkus</h1>
                 <h3 className="h3">Frontend developer and game development hobbyist</h3>
             </header>
             <div className='p-home__panels'>

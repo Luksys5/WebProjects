@@ -9,6 +9,8 @@ $medium-fontsize: 14px;
 $small-fontsize: 12px; 
 
 $zIndexMap: (
+    "frame-overlay": 5,
+    "login-overlay": 6,
     "backgroundImg": -1,
     "navigation": 3,
     "loader": 4,

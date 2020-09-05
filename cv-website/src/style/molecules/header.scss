@@ -1,0 +1,22 @@
+.m-header {
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    color: $color-gradient-020;
+    font-family: OpenSans;
+
+    h1 {
+        font-size: 48px;
+        color: #fff;
+        margin-bottom: $m-spacing;
+    }
+
+    h3 {
+        color: $color-theme-005;
+    }
+
+    @include mq('M-max') {
+        top: 15vh;
+    }
+}

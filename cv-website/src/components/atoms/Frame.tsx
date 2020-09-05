@@ -5,6 +5,8 @@ type FrameProps = {
 }
 
 export const Frame: React.FC<FrameProps> = ({ children, active }) =>
-    <div className={`a-frame ${active ? 'a-frame--active' : ''}`}>
-        { children }
-    </div>
+    <>
+        {children}
+        <div className={`a-frame ${active ? 'a-frame--active' : ''}`}>
+        </div>
+    </>
